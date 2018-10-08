@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/mapview"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llActions"/>
+
+    <LinearLayout
+        android:id="@+id/progressContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="#66000000"
+        android:visibility="gone">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#333333">
+
+        <ba.wurth.mb.Classes.TypefacedButton
+            app:typeface="Roboto-Condensed.ttf"
+            android:id="@+id/btnRoute"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:background="#00000000"
+            android:padding="5dp"
+            android:drawablePadding="5dp"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/textSizeSmall"
+            android:text="@string/GetRoute"
+            android:visibility="visible"/>
+
+        <View style="@style/separator" android:layout_margin="5dp" />
+
+        <ba.wurth.mb.Classes.TypefacedButton
+            app:typeface="Roboto-Condensed.ttf"
+            android:id="@+id/btnOptimized"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:background="#00000000"
+            android:padding="5dp"
+            android:drawablePadding="5dp"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/textSizeSmall"
+            android:text="@string/GetRouteOptimized"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+

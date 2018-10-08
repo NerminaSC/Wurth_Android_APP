@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:fillViewport="true"
+        android:background="#eaeaea">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.6"
+                android:baselineAligned="false"
+                android:background="#FFFFFF"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <ImageView
+                        android:contentDescription="@string/Info"
+                        android:id="@+id/imgLogo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="50dp"
+                        android:layout_marginTop="100dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:clickable="false"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/logo" />
+
+                    <TextView
+                        android:id="@+id/litText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/marker_progress"
+                        android:textSize="@dimen/textSizeLarge"
+                        android:gravity="center"
+                        android:textColor="#333333"
+                        android:text=""/>
+
+                    <ProgressBar
+                        android:visibility="gone"
+                        android:indeterminate="true"
+                        android:layout_below="@+id/imgLogo"
+                        android:layout_centerInParent="true"
+                        android:layout_width="50dp" android:layout_height="50dp"
+                        android:id="@+id/marker_progress" style="?android:attr/progressBarStyle"
+                        android:layout_gravity="center_vertical|center_horizontal" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
+                android:baselineAligned="false"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="0dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_centerInParent="true"
+                        android:background="#00000000"
+                        android:drawableTop="@drawable/icon_system_checkinternet"
+                        android:id="@+id/btnCheckInternet"
+                        android:paddingTop="0dp"
+                        android:drawablePadding="5dp"
+                        android:textAllCaps="true"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:text="Provjera INTERNET-a" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="3dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_centerInParent="true"
+                        android:background="#00000000"
+                        android:drawableTop="@drawable/icon_system_checkservice"
+                        android:id="@+id/btnCheckService"
+                        android:paddingTop="0dp"
+                        android:drawablePadding="5dp"
+                        android:textAllCaps="true"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:text="Provjera servisa" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="0dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_centerInParent="true"
+                        android:background="#00000000"
+                        android:drawableTop="@drawable/icon_system_poweroff"
+                        android:id="@+id/btnExit"
+                        android:paddingTop="0dp"
+                        android:drawablePadding="5dp"
+                        android:textAllCaps="true"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:text="Izlaz iz aplikacije"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
+                android:baselineAligned="false"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="3dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        android:id="@+id/btnClearDatabase"
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="0dp"
+                        android:background="#00000000"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/icon_system_cleardatabase"
+                        android:paddingTop="0dp"
+                        android:textAllCaps="true"
+                        android:text="Obriši bazu podataka"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="0dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_centerInParent="true"
+                        android:background="#00000000"
+                        android:drawableTop="@drawable/icon_system_getdatabase"
+                        android:id="@+id/btnGetDatabase"
+                        android:paddingTop="0dp"
+                        android:drawablePadding="5dp"
+                        android:textAllCaps="true"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:text="Nova baza podataka"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="3dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        android:id="@+id/btnApplication"
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="0dp"
+                        android:background="#00000000"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/icon_system_getapplication"
+                        android:paddingTop="0dp"
+                        android:textAllCaps="true"
+                        android:text="Nova aplikacija"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
+                android:baselineAligned="false"
+                android:visibility="gone"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="0dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_centerInParent="true"
+                        android:background="#00000000"
+                        android:drawableTop="@drawable/icon_system_getdatabase"
+                        android:id="@+id/btnRefreshDatabase"
+                        android:paddingTop="0dp"
+                        android:drawablePadding="5dp"
+                        android:textAllCaps="true"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:text="Osvježi bazu podataka"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>	

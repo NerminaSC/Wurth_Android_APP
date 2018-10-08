@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <color name="module">#CC0000</color>
+     <color name="white">#ffffff</color>
+     <color name="black">#000000</color>
+     <color name="green">#2D9B68</color>
+     <color name="red">#CE3234</color>
+     <color name="blue">#2C99CE</color>
+     <color name="grey_1">#666666</color>
+     <color name="grey_2">#CCCCCC</color>
+     <color name="grey_3">#F5F5F5</color>
+     <color name="grey_4">#AAAAAA</color>
+     <color name="separator_line">#666666</color>
+     
+     <!-- Transparent -->
+     <color name="transparent">#00000000</color>
+     <color name="semitransparent">#80000000</color>
+     <color name="transparent_green">#DD2D9B68</color>
+     <color name="transparent_red">#DDCE3234</color>
+     <color name="transparent_blue">#DD2C99CE</color>
+
+
+    <!-- SETTINGS -->
+    <color name="settings_title">#333333</color>
+    <color name="settings_subtitle">#666666</color>
+
+    <!-- DIVIDERS -->
+    <color name="divider_list_group">#DADADA</color>
+    <color name="divider_list_group_thin">#DADADA</color>
+
+    <!-- LABELS 6 FORMS -->
+    <color name="header">#333333</color>
+    <color name="label">#666666</color>
+    <color name="label_required">#FF0000</color>
+    <color name="list_header">#000000</color>
+    <color name="list_title">#111111</color>
+    <color name="list_subtitle">#666666</color>
+
+    <!-- ORDERS -->
+    <color name="synced">#27ae60</color>
+    <color name="draft">#2c3e50</color>
+    <color name="reserved">#2980b9</color>
+    <color name="canceled">#C0392B</color>
+
+    <color name="Row">#FFFFFF</color>
+    <color name="altRow">#F0F0F0</color>
+
+
+</resources>

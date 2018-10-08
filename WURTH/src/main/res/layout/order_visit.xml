@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="25dp">
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Light.ttf"
+                style="@style/header"
+                android:text="@string/Visit_PleaseSetProperties"/>
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/Visit_StartedAt" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litStartDate"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:hint="@string/Date" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litStartTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:hint="@string/Time" />
+
+            </LinearLayout>
+
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/Visit_EndedAt" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litEndDate"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:hint="@string/Date" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litEndTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:hint="@string/Time" />
+
+            </LinearLayout>
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/Visit_Note" />
+
+            <EditText
+                android:id="@+id/txbNote"
+                style="@style/textbox"
+                android:layout_height="50dp"
+                android:singleLine="false"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

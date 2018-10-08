@@ -1,0 +1,150 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=530056, tid=0x0000000000080cd4
+#
+# JRE version:  (8.0_76-b03) (build )
+# Java VM: OpenJDK 64-Bit Server VM (25.76-b03 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000000207e000):  JavaThread "Unknown thread" [_thread_in_vm, id=527572, stack(0x0000000001e90000,0x0000000001f90000)]
+
+Stack: [0x0000000001e90000,0x0000000001f90000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x000000000207e000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=527572, stack(0x0000000001e90000,0x0000000001f90000)]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ PSYoungGen      total 28672K, used 491K [0x00000000eab00000, 0x00000000ecb00000, 0x0000000100000000)
+  eden space 24576K, 2% used [0x00000000eab00000,0x00000000eab7ae20,0x00000000ec300000)
+  from space 4096K, 0% used [0x00000000ec700000,0x00000000ec700000,0x00000000ecb00000)
+  to   space 4096K, 0% used [0x00000000ec300000,0x00000000ec300000,0x00000000ec700000)
+ ParOldGen       total 65536K, used 0K [0x00000000c0000000, 0x00000000c4000000, 0x00000000eab00000)
+  object space 65536K, 0% used [0x00000000c0000000,0x00000000c0000000,0x00000000c4000000)
+ Metaspace       used 771K, capacity 4480K, committed 4480K, reserved 1056768K
+  class space    used 73K, capacity 384K, committed 384K, reserved 1048576K
+
+Card table byte_map: [0x0000000011540000,0x0000000011750000] byte_map_base: 0x0000000010f40000
+
+Marking Bits: (ParMarkBitMap*) 0x0000000051fa9d00
+ Begin Bits: [0x0000000011cb0000, 0x0000000012cb0000)
+ End Bits:   [0x0000000012cb0000, 0x0000000013cb0000)
+
+Polling page: 0x0000000001db0000
+
+CodeCache: size=245760Kb used=328Kb max_used=328Kb free=245431Kb
+ bounds [0x0000000002180000, 0x00000000023f0000, 0x0000000011180000]
+ total_blobs=57 nmethods=0 adapters=38
+ compilation: enabled
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.074 loading class java/lang/Short
+Event: 0.074 loading class java/lang/Short done
+Event: 0.074 loading class java/lang/Integer
+Event: 0.074 loading class java/lang/Integer done
+Event: 0.074 loading class java/lang/Long
+Event: 0.075 loading class java/lang/Long done
+Event: 0.077 loading class java/lang/NullPointerException
+Event: 0.077 loading class java/lang/NullPointerException done
+Event: 0.077 loading class java/lang/ArithmeticException
+Event: 0.077 loading class java/lang/ArithmeticException done
+
+
+Dynamic libraries:
+0x00007ff614e50000 - 0x00007ff614e81000 	C:\Users\Nermina Cergic\Downloads\android-studio-ide-145.3225885-windows\android-studio\jre\bin\java.exe
+0x00007ffcc7550000 - 0x00007ffcc76fc000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffcc4e50000 - 0x00007ffcc4f8e000 	C:\Windows\system32\KERNEL32.DLL
+0x00007ffcc4ab0000 - 0x00007ffcc4bc5000 	C:\Windows\system32\KERNELBASE.dll
+0x00007ffcc4bd0000 - 0x00007ffcc4c7a000 	C:\Windows\system32\ADVAPI32.dll
+0x00007ffcc7270000 - 0x00007ffcc73e7000 	C:\Windows\system32\USER32.dll
+0x00007ffcc22e0000 - 0x00007ffcc255a000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.9600.17810_none_6240b9c7ecbd0bda\COMCTL32.dll
+0x00007ffcc71c0000 - 0x00007ffcc726a000 	C:\Windows\system32\msvcrt.dll
+0x00007ffcc7050000 - 0x00007ffcc70a9000 	C:\Windows\SYSTEM32\sechost.dll
+0x00007ffcc73f0000 - 0x00007ffcc7531000 	C:\Windows\system32\RPCRT4.dll
+0x00007ffcc4f90000 - 0x00007ffcc50e1000 	C:\Windows\system32\GDI32.dll
+0x00007ffcc7180000 - 0x00007ffcc71b6000 	C:\Windows\system32\IMM32.DLL
+0x00007ffcc4c90000 - 0x00007ffcc4de2000 	C:\Windows\system32\MSCTF.dll
+0x0000000051710000 - 0x00000000517e2000 	C:\Users\Nermina Cergic\Downloads\android-studio-ide-145.3225885-windows\android-studio\jre\jre\bin\msvcr100.dll
+0x00000000517f0000 - 0x0000000052024000 	C:\Users\Nermina Cergic\Downloads\android-studio-ide-145.3225885-windows\android-studio\jre\jre\bin\server\jvm.dll
+0x00007ffcc0d90000 - 0x00007ffcc0d99000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffcbcef0000 - 0x00007ffcbcf12000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffcc21a0000 - 0x00007ffcc21aa000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffcc68e0000 - 0x00007ffcc68e7000 	C:\Windows\system32\PSAPI.DLL
+0x00007ffcc6ff0000 - 0x00007ffcc704a000 	C:\Windows\system32\WS2_32.dll
+0x00007ffcbcec0000 - 0x00007ffcbceea000 	C:\Windows\SYSTEM32\WINMMBASE.dll
+0x00007ffcc7540000 - 0x00007ffcc7549000 	C:\Windows\system32\NSI.dll
+0x00007ffcc4770000 - 0x00007ffcc47bf000 	C:\Windows\SYSTEM32\cfgmgr32.dll
+0x00007ffcc34b0000 - 0x00007ffcc34d8000 	C:\Windows\SYSTEM32\DEVOBJ.dll
+0x00007ffcc0b90000 - 0x00007ffcc0b9f000 	C:\Users\Nermina Cergic\Downloads\android-studio-ide-145.3225885-windows\android-studio\jre\jre\bin\verify.dll
+0x00007ffcb25b0000 - 0x00007ffcb25d9000 	C:\Users\Nermina Cergic\Downloads\android-studio-ide-145.3225885-windows\android-studio\jre\jre\bin\java.dll
+0x00007ffcb2760000 - 0x00007ffcb2776000 	C:\Users\Nermina Cergic\Downloads\android-studio-ide-145.3225885-windows\android-studio\jre\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Djava.awt.headless=true -Xmx1024M -Dfile.encoding=windows-1250 -Duser.country=US -Duser.language=en -Duser.variant 
+java_command: com.android.dx.command.Main --dex --num-threads=4 --output C:\Users\Nermina Cergic\AndroidStudioProjects\Wurth_Android_APP\WURTH\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-maps-9.4.0_c16e548fb3234cf84cf29c67a04dc37ddeb6391a.jar C:\Users\Nermina Cergic\AndroidStudioProjects\Wurth_Android_APP\WURTH\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\9.4.0\jars\classes.jar
+java_class_path (initial): C:\Users\Nermina Cergic\AppData\Local\Android\sdk\build-tools\23.0.2\lib\dx.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Git\cmd\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\nodejs\; C:\Python27;c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\MySQL\MySQL Fabric 1.5 & MySQL Utilities 1.5\;C:\Program Files (x86)\MySQL\MySQL Fabric 1.5 & MySQL Utilities 1.5\Doctrine extensions for PHP\;C:\Users\Nermina Cergic\AppData\Roaming\npm;
+USERNAME=Nermina Cergic
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 42 Stepping 7, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 8.1 , 64 bit Build 9600 (6.3.9600.17415)
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 42 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, clmul, ht, tsc, tscinvbit
+
+Memory: 4k page, physical 6224236k(636376k free), swap 14164528k(9524k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.76-b03) for windows-amd64 JRE (1.8.0_76-release-b03), built on Jun 29 2016 19:09:20 by "ralucas" with MS VC++ 10.0 (VS2010)
+
+time: Thu Oct 20 10:41:48 2016
+elapsed time: 2 seconds (0d 0h 0m 2s)
+

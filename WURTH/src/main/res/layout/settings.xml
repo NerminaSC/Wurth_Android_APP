@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llActions">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:id="@+id/tblContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <TableRow>
+                    <ba.wurth.mb.Classes.TypefacedTextView
+                        app:typeface="Roboto-BoldCondensed.ttf"
+                        style="@style/settings_group_header"
+                        android:text="@string/Synchronization"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"/>
+
+                </TableRow>
+
+                <TableRow
+                    style="@style/table_row">
+
+                    <LinearLayout
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:orientation="vertical">
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto-Bold.ttf"
+                            style="@style/settings_title"
+                            android:text="@string/SynchronizationEnabled" />
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto.ttf"
+                            style="@style/settings_subtitle"
+                            android:text="@string/SynchronizationEnabledDesc" />
+
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/chkSyncEnabled"
+                        style="@style/CheckBoxCustom"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="center"
+                        android:checked="true"/>
+
+                </TableRow>
+
+                <TableRow
+                    style="@style/table_row">
+
+                    <LinearLayout
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:orientation="vertical">
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto-Bold.ttf"
+                            style="@style/settings_title"
+                            android:text="@string/SynchronizationUse3G" />
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto.ttf"
+                            style="@style/settings_subtitle"
+                            android:text="@string/SynchronizationUse3GDesc" />
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/chkUse3G"
+                        style="@style/CheckBoxCustom"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="center"
+                        android:checked="true" />
+
+                </TableRow>
+
+                <TableRow
+                    style="@style/table_row">
+
+                    <LinearLayout
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:orientation="vertical">
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto-Bold.ttf"
+                            style="@style/settings_title"
+                            android:text="@string/SynchronizationSyncInterval" />
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto.ttf"
+                            style="@style/settings_subtitle"
+                            android:text="@string/SynchronizationSyncIntervalDesc" />
+
+                        <SeekBar
+                            style="@style/SeekBarCustom"
+                            android:id="@+id/sbActivitesInterval"
+                            android:max="719"
+                            android:progress="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp" />
+
+                    </LinearLayout>
+
+                    <ba.wurth.mb.Classes.TypefacedTextView
+                        app:typeface="Roboto.ttf"
+                        android:id="@+id/litActivitesInterval"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="center"
+                        android:text="1 min"
+                        android:textColor="@color/grey_1"
+                        android:textSize="@dimen/textSizeMedium"/>
+
+                </TableRow>
+
+                <TableRow
+                    style="@style/table_row">
+
+                    <LinearLayout
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:orientation="vertical">
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto-Bold.ttf"
+                            style="@style/settings_title"
+                            android:text="@string/SynchronizationSyncIntervalServer" />
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto.ttf"
+                            style="@style/settings_subtitle"
+                            android:text="@string/SynchronizationSyncIntervalServerDesc" />
+
+                        <SeekBar
+                            style="@style/SeekBarCustom"
+                            android:id="@+id/sbServerInterval"
+                            android:max="719"
+                            android:progress="60"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp" />
+
+                    </LinearLayout>
+
+                    <ba.wurth.mb.Classes.TypefacedTextView
+                        app:typeface="Roboto.ttf"
+                        android:id="@+id/litServerInterval"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="center"
+                        android:text="60 min"
+                        android:textColor="@color/grey_1"
+                        android:textSize="@dimen/textSizeMedium"/>
+
+                </TableRow>
+
+                <TableRow
+                    style="@style/table_row">
+
+                    <LinearLayout
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:orientation="vertical">
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto-Bold.ttf"
+                            style="@style/settings_title"
+                            android:text="@string/SynchronizationLocations" />
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto.ttf"
+                            style="@style/settings_subtitle"
+                            android:text="@string/SynchronizationLocationsDesc" />
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/chkSyncLocations"
+                        style="@style/CheckBoxCustom"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="center"
+                        android:checked="true" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <LinearLayout
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:orientation="vertical">
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto-Bold.ttf"
+                            style="@style/settings_title"
+                            android:text="@string/SynchronizationUse3GDocuments" />
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto.ttf"
+                            style="@style/settings_subtitle"
+                            android:text="@string/SynchronizationUse3GDocumentsDesc" />
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/chkSync3GDocuments"
+                        style="@style/CheckBoxCustom"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="center"
+                        android:checked="true" />
+
+                </TableRow>
+
+                <TableRow>
+                    <ba.wurth.mb.Classes.TypefacedTextView
+                        app:typeface="Roboto-BoldCondensed.ttf"
+                        style="@style/settings_group_header"
+                        android:text="@string/Locations"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"/>
+                </TableRow>
+
+                <TableRow style="@style/table_row">
+
+                    <LinearLayout
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:orientation="vertical">
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto-Bold.ttf"
+                            style="@style/settings_title"
+                            android:text="@string/LocationEnabled" />
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto.ttf"
+                            style="@style/settings_subtitle"
+                            android:text="@string/LocationsEnabledDesc" />
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/chkLocationServiceEnabled"
+                        style="@style/CheckBoxCustom"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="center"
+                        android:checked="false" />
+
+                </TableRow>
+
+                <TableRow style="@style/table_row">
+
+                    <LinearLayout
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:orientation="vertical">
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto-Bold.ttf"
+                            style="@style/settings_title"
+                            android:text="@string/LocationsSyncInterval" />
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto.ttf"
+                            style="@style/settings_subtitle"
+                            android:text="@string/LocationsSyncIntervalDesc" />
+
+                        <SeekBar
+                            style="@style/SeekBarCustom"
+                            android:id="@+id/sbLocationInterval"
+                            android:max="59"
+                            android:progress="5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <ba.wurth.mb.Classes.TypefacedTextView
+                        app:typeface="Roboto.ttf"
+                        android:id="@+id/litLocationInterval"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="center"
+                        android:text="5 min"
+                        android:textColor="@color/grey_1"
+                        android:textSize="@dimen/textSizeMedium"
+                        android:layout_marginBottom="10dp" />
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/llActions"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="0dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="#333333">
+
+        <ba.wurth.mb.Classes.TypefacedButton
+            app:typeface="Roboto-Condensed.ttf"
+            android:id="@+id/btnSave"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:background="#00000000"
+            android:drawableLeft="@drawable/light_accept"
+            android:padding="5dp"
+            android:drawablePadding="0dp"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/textSizeSmall"
+            android:text="@string/Update"
+            android:visibility="visible"/>
+
+        <View style="@style/separator" android:layout_margin="5dp" />
+
+        <ba.wurth.mb.Classes.TypefacedButton
+            app:typeface="Roboto-Condensed.ttf"
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:background="#00000000"
+            android:drawableLeft="@drawable/light_cancel"
+            android:padding="5dp"
+            android:drawablePadding="0dp"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/textSizeSmall"
+            android:text="@string/Cancel"
+            android:visibility="visible"/>
+
+        <View style="@style/separator" android:layout_margin="5dp" />
+
+        <ba.wurth.mb.Classes.TypefacedButton
+            app:typeface="Roboto-Condensed.ttf"
+            android:id="@+id/btnDefault"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:background="#00000000"
+            android:drawableLeft="@drawable/light_copy"
+            android:padding="5dp"
+            android:drawablePadding="0dp"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/textSizeSmall"
+            android:text="Reset"
+            android:visibility="visible"/>
+    </LinearLayout>
+
+</RelativeLayout>

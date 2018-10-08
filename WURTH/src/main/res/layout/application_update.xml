@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
+    android:id="@+id/layout_root"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:padding="10dp"
+    android:gravity="center"
+    android:layout_margin="10dp">
+
+    <ImageView
+        android:contentDescription="@string/Info"
+        android:id="@+id/imgLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:clickable="false"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo" />
+    
+	<ba.wurth.mb.Classes.TypefacedTextView
+		app:typeface="Roboto-BoldCondensed.ttf"
+		android:id="@+id/Title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="@dimen/textSizeXLarge"
+        android:text="@string/ApplicationDownload"
+        android:gravity="center" 
+        android:layout_above="@+id/text"/>
+
+	<ba.wurth.mb.Classes.TypefacedTextView
+		app:typeface="Roboto-Condensed.ttf"
+        android:id="@+id/text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:text="@string/ApplicationMissingSub"
+        android:textSize="@dimen/textSizeMedium" 
+        android:layout_above="@+id/llActions"/>
+    
+	<LinearLayout
+        android:id="@+id/llActions"
+        android:background="#000000"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center"
+	    android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:padding="0dp"
+        android:layout_marginTop="15dp">
+    	
+		<ImageView
+		    android:contentDescription="@string/Info"
+		    android:id="@+id/dialogButtonGoogle"
+	        android:layout_width="0dp"
+	        android:layout_weight="0.5"
+	        android:layout_height="wrap_content"
+		    android:layout_marginTop="5dp"
+		    android:layout_marginRight="10dp"
+		    android:scaleType="fitCenter"
+		    android:adjustViewBounds="true"
+		    android:src="@drawable/google_play" />    		
+
+		<ba.wurth.mb.Classes.TypefacedButton
+			app:typeface="Roboto-BoldCondensed.ttf"
+	        android:id="@+id/dialogButtonSC"
+	        android:background="@drawable/btn_grey"
+	        android:textColor="#000000"
+	        android:textSize="@dimen/textSizeMedium"
+	        android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+	        android:layout_width="0dp"
+	        android:layout_weight="0.5"
+	        android:layout_height="wrap_content"
+	        android:text="Source Code"
+	        android:layout_marginTop="5dp"
+	        android:layout_marginLeft="10dp" />
+	    	    
+	</LinearLayout>
+     
+</RelativeLayout>

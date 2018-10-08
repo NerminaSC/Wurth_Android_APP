@@ -1,0 +1,199 @@
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_alert"
+	android:layout_width="match_parent" 
+	android:layout_height="wrap_content"
+	android:id="@+id/scrollView1">
+
+	<LinearLayout
+		android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:paddingTop="10dp"
+		android:paddingBottom="10dp"
+		android:paddingLeft="2dp"
+		android:paddingRight="2dp">
+
+	    <TextView 
+	        style="@style/label_dialog" 
+	        android:id="@+id/lblProductName" 
+	        android:singleLine="true"
+	        android:layout_marginTop="0dp" 
+	        android:layout_marginLeft="10dp" />
+	    	    
+		<LinearLayout 
+		    android:orientation="horizontal"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="0dp">
+
+			<TextView android:id="@+id/lblQuantity" style="@style/textbox_dialog" android:text="@string/Qty" android:layout_width="80dp" android:layout_marginRight="0dp" />
+					    
+			<ba.wurth.mb.Classes.TypefacedButton
+		   		app:typeface="Roboto-BoldCondensed.ttf"
+			    android:id="@+id/ibtnMinus_Quantity"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:background="@drawable/icon_minus_mdpi"
+			    android:visibility="gone" />
+
+   			<EditText 
+   			    style="@style/textbox_dialog"
+			 	android:id="@+id/txbQuantity"
+			    android:ems="10"
+			    android:inputType="numberDecimal"			 	
+   			    android:layout_width="100dp"
+   			    android:gravity="center"
+   			    android:selectAllOnFocus="true"
+   			    android:text="">
+			</EditText>			
+
+			<ba.wurth.mb.Classes.TypefacedButton
+		   		app:typeface="Roboto-BoldCondensed.ttf"
+			    android:id="@+id/ibtnPlus_Quantity"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:background="@drawable/icon_plus_mdpi"
+			    android:visibility="gone" />
+   					    
+		</LinearLayout>
+
+		
+		<LinearLayout 
+		    android:orientation="horizontal"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="0dp" 
+		    android:visibility="gone">
+
+			<TextView style="@style/textbox_dialog" android:text="@string/ClientDiscount" android:layout_width="80dp" android:layout_marginRight="0dp"/>
+					    
+			<ba.wurth.mb.Classes.TypefacedButton
+		   		app:typeface="Roboto-BoldCondensed.ttf"
+			    android:id="@+id/ibtnMinus_ClientDiscount"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:background="@drawable/icon_minus_mdpi"
+			    android:visibility="gone" />
+
+   			<EditText 
+   			    style="@style/textbox_dialog" 
+			 	android:id="@+id/txbClientDiscount"
+			    android:ems="10"
+			    android:inputType="numberDecimal"			 	
+   			    android:layout_width="100dp"
+   			    android:gravity="center"
+   			    android:selectAllOnFocus="true"
+   			    android:text="" />
+
+			<ba.wurth.mb.Classes.TypefacedButton
+		   		app:typeface="Roboto-BoldCondensed.ttf"
+			    android:id="@+id/ibtnPlus_ClientDiscount"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:background="@drawable/icon_plus_mdpi"
+			    android:visibility="gone" />
+   					    
+		</LinearLayout>
+		    
+		<LinearLayout 
+		    android:orientation="horizontal"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="0dp"
+		    android:visibility="visible">
+
+			<TextView style="@style/textbox_dialog" android:text="@string/DiscountPerc" android:layout_width="80dp" android:layout_marginRight="0dp"/>
+
+			<ba.wurth.mb.Classes.TypefacedButton
+		   		app:typeface="Roboto-BoldCondensed.ttf"
+			    android:id="@+id/ibtnMinus_UserDiscount"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:background="@drawable/icon_minus_mdpi"
+			    android:visibility="gone" />
+
+   			<EditText 
+   			    style="@style/textbox_dialog" 
+			 	android:id="@+id/txbUserDiscount"
+			    android:ems="10"
+			    android:inputType="numberDecimal"			 	
+   			    android:layout_width="100dp"
+   			    android:gravity="center"
+   			    android:selectAllOnFocus="true"
+   			    android:text="" />
+   						
+			<ba.wurth.mb.Classes.TypefacedButton
+		   		app:typeface="Roboto-BoldCondensed.ttf"
+			    android:id="@+id/ibtnPlus_UserDiscount"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:background="@drawable/icon_plus_mdpi"
+			    android:visibility="gone" />
+   					    
+		</LinearLayout>		    
+
+		<TextView style="@style/textbox_dialog" android:text="@string/Note" android:visibility="visible" />
+		<EditText style="@style/textbox_dialog" android:inputType="text" android:id="@+id/txbNote" android:singleLine="false" android:lines="2" android:gravity="top" android:visibility="visible" />
+
+		<LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="10dp"
+	        android:gravity="center">
+
+			<ba.wurth.mb.Classes.TypefacedButton
+		   		app:typeface="Roboto-BoldCondensed.ttf"
+		        style="@style/btn_red"
+		        android:background="@drawable/btn_red"
+		        android:layout_width="100dp"
+		    	android:text="@string/Cancel"
+		    	android:id="@+id/btnCloseDialog" />
+		              
+			<ba.wurth.mb.Classes.TypefacedButton
+		   		app:typeface="Roboto-BoldCondensed.ttf"
+			    style="@style/btn_green" 
+				android:background="@drawable/btn_green"
+				android:text="@string/Submit"
+				android:id="@+id/btnUpdateOrder"
+				android:layout_marginLeft="15dp" />		              
+
+		</LinearLayout>
+		
+		<LinearLayout
+			android:orientation="horizontal"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content">
+	   		<TextView style="@style/textbox_dialog" android:text="@string/Price" android:layout_marginTop="0dp" />
+			<TextView style="@style/label_dialog" android:id="@+id/lblPrice" android:layout_marginTop="0dp" android:layout_marginLeft="5dp" />
+	    </LinearLayout>	    
+	    
+		<LinearLayout
+			android:orientation="horizontal"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content">
+   			<TextView style="@style/textbox_dialog" android:text="@string/Discount" android:layout_marginTop="0dp" />
+			<TextView style="@style/label_dialog" android:id="@+id/lblDiscount" android:layout_marginTop="0dp" android:layout_marginLeft="5dp"/>
+	    </LinearLayout>	    
+	    
+		<LinearLayout
+			android:orientation="horizontal"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content">
+	   		<TextView style="@style/textbox_dialog" android:text="@string/PriceWithDiscount" android:layout_marginTop="0dp" />
+			<TextView style="@style/label_dialog" android:id="@+id/lblPriceWithDiscount" android:layout_marginTop="0dp" android:layout_marginLeft="5dp" />
+	    </LinearLayout>	    
+
+		<LinearLayout
+			android:orientation="horizontal"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content">
+	   		<TextView style="@style/textbox_dialog" android:text="@string/Total" android:layout_marginTop="0dp" />
+			<TextView style="@style/label_dialog" android:id="@+id/lblTotal" android:layout_marginTop="0dp" android:layout_marginLeft="5dp" />
+	    </LinearLayout>	    
+	    	    		
+		
+	</LinearLayout>
+
+</ScrollView>

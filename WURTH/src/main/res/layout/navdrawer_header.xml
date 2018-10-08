@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:background="#00FFFFFF">
+
+    <ba.wurth.mb.Classes.TypefacedTextView
+        app:typeface="Roboto-BoldCondensed.ttf"
+        android:id="@+id/litUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:gravity="center_vertical"
+        android:text=""
+        android:textSize="@dimen/textSizeSmall"
+        android:textColor="#333333"/>
+
+    <ba.wurth.mb.Classes.TypefacedTextView
+        app:typeface="Roboto.ttf"
+        android:id="@+id/litClient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="@dimen/textSizeMedium"
+        android:gravity="center_vertical"
+        android:text=""
+        android:textSize="@dimen/TextSizeMicro"
+        android:textColor="#666666"/>
+
+</RelativeLayout>

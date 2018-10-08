@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main">
+
+    <LinearLayout
+        android:id="@+id/llContainer"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="25dp">
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-Light.ttf"
+            style="@style/header"
+            android:visibility="visible"
+            android:text="@string/OrderAdditional_DeliveryDate"/>
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            style="@style/textbox"
+            android:focusable="false"
+            android:id="@+id/litDeliveryDate"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="25dp"
+            android:singleLine="true"
+            android:hint="@string/Date" />
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-Light.ttf"
+            style="@style/header"
+            android:visibility="visible"
+            android:text="@string/OrderAdditional_Title"/>
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-Condensed.ttf"
+            style="@style/label"
+            android:text="@string/OrderAdditional_CompanyName" />
+
+        <EditText
+            android:id="@+id/txbCompanyName"
+            style="@style/textbox"
+            android:singleLine="true"
+            android:gravity="left"
+            android:text="" />
+
+        <Spinner
+            android:id="@+id/spSalutation"
+            style="@style/Spinner_01"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="0dp"/>
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-Condensed.ttf"
+            style="@style/label_required"
+            android:text="@string/OrderAdditional_Name" />
+
+        <EditText
+            android:id="@+id/txbName"
+            style="@style/textbox"
+            android:singleLine="true"
+            android:gravity="left"
+            android:text="" />
+
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-Condensed.ttf"
+            style="@style/label_required"
+            android:text="@string/Address" />
+
+        <EditText
+            android:id="@+id/txbAddress"
+            style="@style/textbox"
+            android:singleLine="true"
+            android:gravity="left"
+            android:text="" />
+
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-Condensed.ttf"
+            style="@style/label_required"
+            android:text="@string/PostalCode" />
+
+        <EditText
+            android:id="@+id/txbPostalcode"
+            style="@style/textbox"
+            android:singleLine="true"
+            android:gravity="left"
+            android:text="" />
+
+
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-Condensed.ttf"
+            style="@style/label"
+            android:text="@string/City" />
+
+        <EditText
+            android:id="@+id/txbCity"
+            style="@style/textbox"
+            android:singleLine="true"
+            android:gravity="left"
+            android:text="" />
+
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-Condensed.ttf"
+            style="@style/label"
+            android:text="@string/Country" />
+
+        <Spinner
+            android:id="@+id/spCountry"
+            style="@style/Spinner_01" />
+
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-Condensed.ttf"
+            style="@style/label_required"
+            android:text="@string/Telephone" />
+
+        <EditText
+            android:id="@+id/txbTelephone"
+            style="@style/textbox"
+            android:singleLine="true"
+            android:gravity="left"
+            android:text="" />
+
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-Condensed.ttf"
+            style="@style/label"
+            android:text="@string/Fax" />
+
+        <EditText
+            android:id="@+id/txbFax"
+            style="@style/textbox"
+            android:singleLine="true"
+            android:gravity="left"
+            android:text="" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+</ScrollView>

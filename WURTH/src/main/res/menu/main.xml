@@ -1,0 +1,78 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!-- Search / will display always -->
+<item
+    android:id="@+id/action_search"
+    android:icon="@drawable/ic_search"
+    android:title="Search"
+    app:actionLayout="@layout/searchview"
+    app:showAsAction="collapseActionView|ifRoom" />
+
+<item
+    android:id="@+id/action_send"
+    android:icon="@drawable/dark_good"
+    android:title="@string/Add"
+    android:visible="false"
+    app:showAsAction="ifRoom" />
+
+<item
+    android:id="@+id/action_add_client"
+    android:icon="@drawable/dark_new"
+    android:title="@string/Add"
+    android:visible="false"
+    app:showAsAction="ifRoom">
+
+    <menu>
+        <item android:id="@+id/action_createorder" android:title="@string/CreateOrder" />
+        <item android:id="@+id/action_notevisit" android:title="@string/NoteVisit" />
+        <item android:id="@+id/action_client_location" android:title="@string/Location" />
+    </menu>
+</item>
+
+    <item
+        android:id="@+id/action_order"
+        android:icon="@drawable/dark_list"
+        android:title="@string/CreateOrder"
+        android:visible="false"
+        app:showAsAction="ifRoom">
+    </item>
+
+
+<item
+    android:id="@+id/action_add_deliveryplace"
+    android:icon="@drawable/dark_new"
+    android:title="@string/Add"
+    android:visible="false"
+    app:showAsAction="ifRoom">
+
+    <menu>
+        <item android:id="@+id/action_deliveryplace_createorder" android:title="@string/CreateOrder" />
+        <item android:id="@+id/action_deliveryplace_notevisit" android:title="@string/NoteVisit" />
+        <item android:id="@+id/action_deliveryplace_properties" android:title="@string/DeliveryPlace_AddProperties" />
+        <item android:id="@+id/action_deliveryplace_competitions" android:title="@string/DeliveryPlace_AddCompetitionValue" />
+        <item android:id="@+id/action_deliveryplace_merchandises" android:title="@string/DeliveryPlace_AddMerchandises" />
+        <item android:id="@+id/action_deliveryplace_product_placement" android:title="@string/DeliveryPlace_AddProductPlacement" />
+        <item android:id="@+id/action_deliveryplace_location" android:title="@string/Location" />
+    </menu>
+</item>
+
+<item
+    android:id="@+id/action_bluetooth"
+    android:icon="@drawable/ic_search"
+    android:title="@string/BluetoothServiceStart"
+    app:showAsAction="never"  />
+
+<item
+    android:id="@+id/action_settings"
+    android:icon="@drawable/ic_search"
+    android:title="@string/Settings"
+    app:showAsAction="never"
+    android:visible="false"/>
+
+<item
+    android:id="@+id/action_logout"
+    android:title="@string/Logout"
+    app:showAsAction="never"  />
+</menu>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <ba.wurth.mb.Classes.TypefacedTextView
+        app:typeface="Roboto-BoldCondensed.ttf"
+        android:id="@+id/navmenusection_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="SECTION"
+        android:textSize="@dimen/TextSizeMicro"
+        android:paddingTop="15dp"
+        android:paddingBottom="7dp"
+        android:paddingLeft="5dp"
+        android:textColor="#111111" />
+
+</RelativeLayout>

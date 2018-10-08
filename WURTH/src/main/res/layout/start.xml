@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:components="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:fillViewport="true"
+        android:background="#eaeaea">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.4"
+                android:baselineAligned="false"
+                android:background="@color/module"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="5dp" >
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="RobotoCondensed-Light.ttf"
+                            android:id="@+id/litYesterday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="0"
+                            android:textColor="#FFFFFF"
+                            android:shadowColor="#7F000000"
+                            android:shadowDx="-1"
+                            android:shadowDy="-1"
+                            android:shadowRadius="1"
+                            android:textSize="@dimen/textSizeXLarge"/>
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginTop="@dimen/textSizeXLarge"
+                            android:paddingTop="5dp"
+                            android:text="@string/RevenueYesterday"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="@dimen/TextSizeMicro"
+                            android:gravity="center"  />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentLeft="true"
+                        android:padding="10dp" >
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="RobotoCondensed-Light.ttf"
+                            android:id="@+id/litToday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="#FFFFFF"
+                            android:shadowColor="#7F000000"
+                            android:shadowDx="-1"
+                            android:shadowDy="-1"
+                            android:shadowRadius="1"
+                            android:textSize="@dimen/textSizeXXLarge"
+                            android:gravity="center"  />
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="@dimen/textSizeXXLarge"
+                            android:paddingTop="10dp"
+                            android:text="@string/RevenueToday"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="@dimen/TextSizeMicro"
+                            android:gravity="center"  />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentRight="true"
+                        android:padding="10dp">
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="RobotoCondensed-Light.ttf"
+                            android:id="@+id/litMonth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:text="0"
+                            android:textColor="#FFFFFF"
+                            android:shadowColor="#7F000000"
+                            android:shadowDx="-1"
+                            android:shadowDy="-1"
+                            android:shadowRadius="1"
+                            android:textSize="@dimen/textSizeXXLarge" />
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="@dimen/textSizeXXLarge"
+                            android:paddingTop="10dp"
+                            android:text="@string/ThisMonthRevenue"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="@dimen/TextSizeMicro"
+                            android:gravity="center"  />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:paddingRight="15dp"
+                        android:paddingTop="5dp" >
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="RobotoCondensed-Light.ttf"
+                            android:id="@+id/litThisMonthPlaned"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="0"
+                            android:textColor="#FFFFFF"
+                            android:shadowColor="#7F000000"
+                            android:shadowDx="-1"
+                            android:shadowDy="-1"
+                            android:shadowRadius="1"
+                            android:textSize="@dimen/textSizeXLarge"/>
+
+                        <ba.wurth.mb.Classes.TypefacedTextView
+                            app:typeface="Roboto.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="@dimen/textSizeXLarge"
+                            android:paddingTop="5dp"
+                            android:text="@string/ThisMonthPlaned"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="@dimen/TextSizeMicro"
+                            android:gravity="center"  />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerInParent="true"
+                        android:padding="15dp">
+
+                        <ba.wurth.mb.Classes.TextProgressBar
+                            android:id="@+id/pg"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:indeterminate="false"
+                            android:layout_margin="25dp"
+                            android:progress="0"
+                            android:max="100"
+                            android:progressDrawable="@drawable/progressbar"
+                            components:textSize="@dimen/textSizeMedium"
+                            components:textColor="#000000"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            components:text="0%" />
+
+                        <ba.wurth.mb.Classes.TextProgressBar
+                            android:id="@+id/pgAlt"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:indeterminate="false"
+                            android:layout_margin="25dp"
+                            android:progress="0"
+                            android:max="100"
+                            android:progressDrawable="@drawable/progressbaralt"
+                            components:textSize="@dimen/textSizeMedium"
+                            components:textColor="#000000"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            components:text="" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
+                android:baselineAligned="false"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="0dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_centerInParent="true"
+                        android:background="#00000000"
+                        android:drawableTop="@drawable/icon_createorder"
+                        android:id="@+id/btnCreateOrder"
+                        android:paddingTop="0dp"
+                        android:drawablePadding="5dp"
+                        android:textAllCaps="true"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:text="@string/CreateOrder" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="3dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_centerInParent="true"
+                        android:background="#00000000"
+                        android:drawableTop="@drawable/icon_notevisit"
+                        android:id="@+id/btnNoteVisit"
+                        android:paddingTop="0dp"
+                        android:drawablePadding="5dp"
+                        android:textAllCaps="true"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:text="@string/NoteVisit" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="0dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_centerInParent="true"
+                        android:background="#00000000"
+                        android:drawableTop="@drawable/icon_clients"
+                        android:id="@+id/btnClients"
+                        android:paddingTop="0dp"
+                        android:drawablePadding="5dp"
+                        android:textAllCaps="true"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:text="@string/Clients"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
+                android:baselineAligned="false"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="3dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        android:id="@+id/btnProducts"
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="0dp"
+                        android:background="#00000000"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/icon_products"
+                        android:paddingTop="0dp"
+                        android:textAllCaps="true"
+                        android:text="@string/Catalog"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="0dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_centerInParent="true"
+                        android:background="#00000000"
+                        android:drawableTop="@drawable/icon_memo"
+                        android:id="@+id/btnMemo"
+                        android:paddingTop="0dp"
+                        android:drawablePadding="5dp"
+                        android:textAllCaps="true"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:text="Memo"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="3dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        android:id="@+id/btnDiary"
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="0dp"
+                        android:background="#00000000"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/icon_diary"
+                        android:paddingTop="0dp"
+                        android:textAllCaps="true"
+                        android:text="@string/Diary"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
+                android:baselineAligned="false"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="0dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_centerInParent="true"
+                        android:background="#00000000"
+                        android:drawableTop="@drawable/icon_orders"
+                        android:id="@+id/btnOrders"
+                        android:paddingTop="0dp"
+                        android:drawablePadding="5dp"
+                        android:textAllCaps="true"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:text="@string/Orders" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="3dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_centerInParent="true"
+                        android:background="#00000000"
+                        android:drawableTop="@drawable/icon_tasks"
+                        android:id="@+id/btnTasks"
+                        android:paddingTop="0dp"
+                        android:drawablePadding="5dp"
+                        android:textAllCaps="true"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:text="@string/Tasks" />
+
+                    <ba.wurth.mb.Classes.TypefacedTextView
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:id="@+id/litTask"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_margin="5dp"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:padding="3dp" >
+
+                    <ba.wurth.mb.Classes.TypefacedButton
+                        app:typeface="Roboto-Condensed.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_centerInParent="true"
+                        android:background="#00000000"
+                        android:drawableTop="@drawable/icon_note_activity"
+                        android:id="@+id/btnActivity"
+                        android:paddingTop="0dp"
+                        android:drawablePadding="5dp"
+                        android:textAllCaps="true"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:text="@string/Activity" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>	

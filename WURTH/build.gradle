@@ -1,0 +1,90 @@
+apply plugin: 'android'
+
+repositories {
+    jcenter({url "http://jcenter.bintray.com/"})
+    maven { url 'https://maven.google.com' }
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 13
+        versionName "2.1.14"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+
+        debug {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            debuggable true
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'lib/arm64-v8a/libsqlite3x.so'
+        exclude 'lib/x86/libsqlite3x.so'
+        exclude 'lib/x86_64/libsqlite3x.so'
+    }
+
+    useLibrary 'org.apache.http.legacy'
+}
+
+
+
+dependencies {
+
+    implementation 'io.requery:sqlite-android:3.22+'
+
+    implementation "com.android.support:support-core-utils:27+"
+    implementation 'com.android.support:gridlayout-v7:27+'
+    implementation 'com.android.support:support-v4:27+'
+    implementation 'com.android.support:appcompat-v7:27+'
+    implementation 'com.android.support:design:27+'
+    implementation 'ch.acra:acra:4.5.0'
+    implementation 'com.fasterxml.jackson.core:jackson-core:+'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:+'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:+'
+    implementation 'com.github.flavienlaurent.datetimepicker:library:0.0.2'
+    implementation 'com.google.zxing:core:+'
+    implementation 'it.sephiroth.android.library.imagezoom:imagezoom:2.1.+'
+    implementation 'com.google.android.gms:play-services-maps:+'
+    implementation 'com.google.android.gms:play-services-location:+'
+
+    implementation files('libs/GraphView-3.1.3.jar')
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+}

@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llActions">
+
+        <LinearLayout
+            android:id="@+id/llContainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="25dp">
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/BranchType1" />
+
+            <Spinner
+                android:id="@+id/spBranchType1"
+                style="@style/Spinner_01" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/BranchType6" />
+
+            <Spinner
+                android:id="@+id/spBranchType6"
+                style="@style/Spinner_01" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/BranchType2" />
+
+            <Spinner
+                android:id="@+id/spBranchType2"
+                style="@style/Spinner_01"
+                android:layout_marginBottom="10dp" />
+
+            <Spinner
+                android:id="@+id/spBranchType2_00"
+                style="@style/Spinner_01"
+                android:layout_marginBottom="10dp"/>
+
+            <Spinner
+                android:id="@+id/spBranchType2_01"
+                style="@style/Spinner_01" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/BranchType3" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_BranchType3"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/BranchType4" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_BranchType4"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/BranchType8" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_BranchType8"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/BranchType5" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_BranchType5"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:enabled="false"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/BranchType7" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_BranchType7"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:enabled="false"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedButton
+                app:typeface="Roboto-BoldCondensed.ttf"
+                android:id="@+id/btnAdd"
+                android:background="@drawable/btn_red"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/textSizeSmall"
+                android:padding="5dp"
+                android:gravity="center"
+                android:text="@string/Add" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Light.ttf"
+                style="@style/header"
+                android:layout_marginTop="25dp"
+                android:visibility="visible"
+                android:text="@string/Branches"/>
+
+            <TableLayout
+                android:id="@+id/tblBranches"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:background="#333333"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#FFFFFF"
+                        android:padding="5dp"
+                        android:singleLine="false"
+                        android:lines="2"
+                        android:ellipsize="none"
+                        android:text="@string/BranchType_00"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#FFFFFF"
+                        android:padding="5dp"
+                        android:singleLine="false"
+                        android:lines="2"
+                        android:text="@string/BranchType_01"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#FFFFFF"
+                        android:padding="5dp"
+                        android:singleLine="false"
+                        android:lines="2"
+                        android:text="@string/BranchType_02"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#FFFFFF"
+                        android:padding="5dp"
+                        android:text="@string/BranchType_03"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#FFFFFF"
+                        android:padding="5dp"
+                        android:text="@string/BranchType_04"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#FFFFFF"
+                        android:padding="5dp"
+                        android:text="@string/BranchType_05"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#000000"
+                        android:padding="5dp"
+                        android:singleLine="false"
+                        android:lines="2"
+                        android:ellipsize="none"
+                        android:gravity="center"
+                        android:text=""/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#000000"
+                        android:padding="5dp"
+                        android:singleLine="false"
+                        android:lines="2"
+                        android:ellipsize="none"
+                        android:gravity="center"
+                        android:text="0"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#000000"
+                        android:padding="5dp"
+                        android:singleLine="false"
+                        android:lines="2"
+                        android:ellipsize="none"
+                        android:gravity="center"
+                        android:text="0"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#000000"
+                        android:padding="5dp"
+                        android:singleLine="false"
+                        android:lines="2"
+                        android:ellipsize="none"
+                        android:gravity="center"
+                        android:text="0"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#000000"
+                        android:padding="5dp"
+                        android:singleLine="false"
+                        android:lines="2"
+                        android:ellipsize="none"
+                        android:gravity="center"
+                        android:text=""/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#000000"
+                        android:padding="5dp"
+                        android:singleLine="false"
+                        android:lines="2"
+                        android:ellipsize="none"
+                        android:gravity="center"
+                        android:text="0"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:background="#333333"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#FFFFFF"
+                        android:padding="5dp"
+                        android:singleLine="false"
+                        android:lines="2"
+                        android:ellipsize="none"
+                        android:text="@string/BusinessCategory"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#FFFFFF"
+                        android:padding="5dp"
+                        android:singleLine="false"
+                        android:lines="2"
+                        android:text="@string/BranchType3"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#FFFFFF"
+                        android:padding="5dp"
+                        android:singleLine="false"
+                        android:lines="2"
+                        android:text="@string/BranchType4"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#FFFFFF"
+                        android:padding="5dp"
+                        android:text="@string/BranchType5"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#FFFFFF"
+                        android:padding="5dp"
+                        android:text="@string/BranchType7"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textColor="#FFFFFF"
+                        android:padding="5dp"
+                        android:text=""/>
+
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

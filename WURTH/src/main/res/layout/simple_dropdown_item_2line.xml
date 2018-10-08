@@ -1,0 +1,66 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="0dp"
+        android:paddingTop="8dp">
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="RobotoCondensed-Bold"
+            android:id="@+id/text1"
+            android:singleLine="true"
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:padding="0dp"
+            android:textColor="#666666"
+            android:textSize="@dimen/TextSizeMicro"
+            android:text=""
+            android:textAllCaps="true"
+            android:ellipsize="marquee" />
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-Condensed"
+            android:id="@+id/text2"
+            android:singleLine="true"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:layout_margin="0dp"
+            android:padding="0dp"
+            android:gravity="right"
+            android:textColor="@color/module"
+            android:textSize="@dimen/TextSizeMicro"
+            android:textAllCaps="true"
+            android:ellipsize="marquee" />
+    </LinearLayout>
+
+    <ba.wurth.mb.Classes.TypefacedTextView
+        app:typeface="Roboto-Condensed"
+        android:id="@+id/text3"
+        android:singleLine="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="0dp"
+        android:textColor="#000000"
+        android:textSize="@dimen/textSizeSmall"
+        android:textAllCaps="true" />
+</LinearLayout>
+
+
+

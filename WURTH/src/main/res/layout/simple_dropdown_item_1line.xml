@@ -1,0 +1,11 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    style="?android:attr/dropDownItemStyle"
+    android:singleLine="false"
+    android:layout_width="match_parent"
+    android:textColor="#333333"
+    android:textSize="@dimen/textSizeSmall"
+    android:textAllCaps="true"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp" />

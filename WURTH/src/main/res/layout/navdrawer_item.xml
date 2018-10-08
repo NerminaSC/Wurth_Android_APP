@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingRight="10dp">
+
+    <ImageView
+        android:id="@+id/navmenuitem_icon"
+        android:scaleType="fitCenter"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"/>
+
+    <ba.wurth.mb.Classes.TypefacedTextView
+        app:typeface="Roboto.ttf"
+        android:id="@+id/navmenuitem_label"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navmenuitem_label_height"
+        android:layout_toRightOf="@id/navmenuitem_icon"
+        android:layout_marginLeft="10dp"
+        android:gravity="center_vertical"
+        android:text=""
+        android:textSize="@dimen/textSizeSmall"
+        android:textColor="#666666"/>
+
+</RelativeLayout>

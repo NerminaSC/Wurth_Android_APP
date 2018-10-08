@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/tabsLayout" 
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" 
+	android:background="@drawable/tab_bg_selector"
+	android:padding="10dip" 
+	android:gravity="center" 
+	android:orientation="vertical">
+
+	<ba.wurth.mb.Classes.TypefacedTextView
+	    app:typeface="Roboto-Bold.ttf" 
+	    android:id="@+id/tabsText" 
+	    android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:singleLine="true"
+		android:ellipsize="marquee" 
+		android:text=""
+		android:textSize="@dimen/textSizeSmall" 
+		android:textColor="@drawable/tab_text_selector" />
+	
+</LinearLayout-->
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="0dip"
+android:layout_height="64dip"
+android:layout_weight="1"
+android:layout_marginLeft="-3dip"
+android:layout_marginRight="-3dip"
+android:orientation="vertical">
+
+<ImageView android:id="@+id/icon"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    />
+
+<TextView android:id="@+id/title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    style="?android:attr/tabWidgetStyle"
+    />
+
+</RelativeLayout>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/bg_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llActions">
+
+        <LinearLayout
+            android:id="@+id/llContainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="25dp">
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/VehicleType1" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_VehicleType1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/VehicleType2" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_VehicleType2"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/VehicleType3" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_VehicleType3"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/VehicleType4" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_VehicleType4"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/VehicleType5" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_VehicleType5"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

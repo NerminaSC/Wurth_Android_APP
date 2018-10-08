@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SpinnerCustom" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/custom_spinner_background_holo_light</item>
+    </style>
+
+    <style name="EditTextCustom" parent="android:Widget.EditText">
+        <item name="android:background">@drawable/custom_edit_text_holo_light</item>
+    </style>
+
+</resources>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/llActions">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="25dp">
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/Name" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/label_textbox_readonly"
+                android:focusable="true"
+                android:id="@+id/litName"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/Location" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/label_textbox_readonly"
+                android:focusable="true"
+                android:id="@+id/litLocation"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="-" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/Code" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/label_textbox_readonly"
+                android:focusable="true"
+                android:id="@+id/litCode"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/Description" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/label_textbox_readonly"
+                android:focusable="true"
+                android:id="@+id/litDescription"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/Address" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/label_textbox_readonly"
+                android:focusable="true"
+                android:id="@+id/litAddress"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/City" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/label_textbox_readonly"
+                android:focusable="true"
+                android:id="@+id/litCity"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/Telephone" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/label_textbox_readonly"
+                android:focusable="true"
+                android:id="@+id/litTelephone"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/Fax" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/label_textbox_readonly"
+                android:focusable="true"
+                android:id="@+id/litFax"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/Mobile" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/label_textbox_readonly"
+                android:focusable="true"
+                android:id="@+id/litMobile"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/EmailAddress" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/label_textbox_readonly"
+                android:focusable="true"
+                android:id="@+id/litEmailAddress"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                style="@style/label"
+                android:text="@string/Website" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/label_textbox_readonly"
+                android:focusable="true"
+                android:id="@+id/litWebsite"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

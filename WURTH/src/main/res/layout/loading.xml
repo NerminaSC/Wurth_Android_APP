@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_loading"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_margin="50dp">
+    
+	<ba.wurth.mb.Classes.TypefacedTextView
+		app:typeface="Roboto-BoldCondensed.ttf"
+		android:id="@+id/Title"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="15dp"
+		android:layout_marginTop="0dp"
+		android:layout_marginRight="15dp"
+		android:layout_marginBottom="5dp"
+		android:layout_alignParentTop="true"
+		android:textColor="#FFFFFF"
+		android:textSize="@dimen/textSizeXLarge"
+		android:text="@string/PleaseWait"
+		android:gravity="center"
+		android:padding="5dp" />
+    
+	<LinearLayout 
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="00dp"
+		android:layout_below="@+id/Title"
+		android:gravity="center">
+	    
+		<ba.wurth.mb.Classes.TypefacedButton
+			app:typeface="Roboto-BoldCondensed.ttf"
+			android:id="@+id/btnCancel"
+			android:background="@drawable/btn_red" 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="#FFFFFF"
+			android:textSize="@dimen/textSizeLarge"
+			android:text="@string/Cancel"
+			android:gravity="center"
+			android:paddingTop="5dp"
+			android:paddingBottom="5dp"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp"
+			android:visibility="gone" />
+	    	    
+	</LinearLayout>
+	
+	
+</RelativeLayout>

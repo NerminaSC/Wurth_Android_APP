@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="0|1|2"
+    android:background="#E7E7E7">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_marginTop="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Condensed.ttf"
+                android:id="@+id/litTitle"
+                style="@style/list_title" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto.ttf"
+                android:id="@+id/litSubTitle"
+                style="@style/list_subtitle" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="right|center_vertical"
+            android:layout_weight="0"
+            android:orientation="vertical">
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Condensed.ttf"
+                android:id="@+id/litSupTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text=""
+                android:textSize="@dimen/TextSizeMicro"
+                android:textColor="#BBBBBB"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:singleLine="true" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:typeface="Roboto-Light.ttf"
+                android:id="@+id/litTotal"
+                android:gravity="right"
+                android:text=""
+                android:textSize="@dimen/textSizeMedium"
+                android:textColor="#666666"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+    </TableRow>
+</TableLayout>

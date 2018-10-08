@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main">
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:cacheColorHint="#E7E7E7"
+        android:fastScrollEnabled="true"
+        android:layout_below="@+id/llFilter"
+        android:layout_above="@+id/llActions" />
+
+
+    <LinearLayout
+        android:id="@+id/llFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/bg_filter"
+        android:visibility="visible"
+        android:layout_alignParentTop="true"
+        android:padding="8dp">
+
+        <ba.wurth.mb.Classes.TypefacedEditText
+            style="@style/textbox"
+            android:id="@+id/txbSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:hint="@string/Search"
+            android:textSize="@dimen/TextSizeMicro"
+            android:text=""/>
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:id="@+id/spSection" />
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            style="@style/textbox"
+            android:id="@+id/litDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:singleLine="true"
+            android:hint="@string/Date"
+            android:gravity="center"
+            android:contentDescription="0"
+            android:layout_marginLeft="5dp"
+            android:textColor="#000000"
+            android:textSize="@dimen/TextSizeMicro"
+            android:text=""/>
+
+        <ImageButton
+            android:id="@+id/btnClear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:src="@drawable/dark_backspace"
+            android:background="#00000000" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/llActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:background="#333333">
+
+        <ba.wurth.mb.Classes.TypefacedButton
+            app:typeface="Roboto-Condensed.ttf"
+            android:id="@+id/btnSend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:background="#00000000"
+            android:drawableLeft="@drawable/light_good"
+            android:padding="5dp"
+            android:drawablePadding="5dp"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/textSizeSmall"
+            android:text="@string/Send"
+            android:visibility="visible"/>
+
+        <View style="@style/separator" android:layout_margin="5dp" />
+
+        <ba.wurth.mb.Classes.TypefacedButton
+            app:typeface="Roboto-Condensed.ttf"
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:background="#00000000"
+            android:drawableLeft="@drawable/light_cancel"
+            android:padding="5dp"
+            android:drawablePadding="5dp"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/textSizeSmall"
+            android:text="@string/Close"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/progressContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@drawable/bg_main"
+        android:visibility="gone">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</RelativeLayout>

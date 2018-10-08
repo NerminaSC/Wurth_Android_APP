@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.Custom" parent="@style/Theme.AppCompat.Light">
+        <item name="actionBarItemBackground">@drawable/selectable_background_custom</item>
+        <item name="actionBarStyle">@style/ActionBar.Solid.Custom</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Custom</item>
+        <item name="actionModeBackground">@drawable/cab_background_top_custom</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Custom</item>
+        <item name="android:checkboxStyle">@style/CheckBoxCustom</item>
+
+        <item name="android:tabWidgetStyle">@style/TabCustom</item>
+
+        <item name="actionBarTabStyle">@style/TabCustom</item>
+        <item name="actionBarTabTextStyle">@style/TabTextCustom</item>
+
+    </style>
+
+    <style name="ActionBar.Solid.Custom" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="background">@drawable/ab_solid_custom</item>
+        <item name="backgroundStacked">@drawable/ab_stacked_solid_custom</item>
+        <item name="backgroundSplit">@drawable/ab_bottom_solid_custom</item>
+    </style>
+
+    <style name="EditTextCustom" parent="android:Widget.EditText">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="android:background">@drawable/custom_edit_text_holo_light</item>
+    </style>
+
+    <style name="AutoCompleteTextViewCustom" parent="android:Widget.AutoCompleteTextView">
+        <item name="android:dropDownSelector">@drawable/custom_list_selector_holo_light</item>
+        <item name="android:background">@drawable/custom_edit_text_holo_light</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="DropDownListView.Custom" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
+        <item name="android:listSelector">@drawable/selectable_background_custom</item>
+        <item name="android:divider">#EEEEEE</item>
+        <item name="android:dividerHeight">1dp</item>
+    </style>
+
+    <style name="CheckBoxCustom" parent="android:Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/custom_btn_check_holo_light</item>
+    </style>
+
+    <style name="RadioButtonCustom" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/custom_btn_radio_holo_light</item>
+    </style>
+
+    <style name="ButtonCustom" parent="android:Widget.Button">
+        <item name="android:background">@drawable/custom_btn_default_holo_light</item>
+        <item name="android:minHeight">48dip</item>
+        <item name="android:minWidth">64dip</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="ImageButtonCustom" parent="android:Widget.ImageButton">
+        <item name="android:background">@drawable/custom_btn_default_holo_light</item>
+    </style>
+
+    <style name="SpinnerCustom" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/custom_spinner_background_holo_light</item>
+        <item name="android:dropDownSelector">@drawable/custom_list_selector_holo_light</item>
+    </style>
+
+    <style name="SpinnerDropDownItemCustom" parent="android:Widget.DropDownItem.Spinner">
+        <item name="android:checkMark">@drawable/custom_btn_radio_holo_light</item>
+    </style>
+
+    <style name="TabCustom">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingLeft">12dip</item>
+        <item name="android:paddingRight">12dip</item>
+        <item name="android:background">@drawable/custom_tab_indicator_holo</item>
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:minWidth">80dip</item>
+    </style>
+
+    <style name="TabTextCustom">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">@dimen/TextSizeMicro</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps" tools:targetApi="14">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <!--item name="android:maxWidth">180dip</item-->
+    </style>
+
+    <style name="ProgressBarCustom" parent="android:Widget.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/custom_progress_horizontal_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/custom_progress_indeterminate_horizontal_holo_light</item>
+        <item name="android:minHeight">16dip</item>
+        <item name="android:maxHeight">16dip</item>
+    </style>
+
+    <style name="SeekBarCustom" parent="android:Widget.SeekBar">
+        <item name="android:progressDrawable">@drawable/custom_scrubber_progress_horizontal_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/custom_scrubber_progress_horizontal_holo_light</item>
+        <item name="android:minHeight">13dip</item>
+        <item name="android:maxHeight">13dip</item>
+        <item name="android:thumb">@drawable/custom_scrubber_control_selector_holo_light</item>
+        <item name="android:thumbOffset">16dip</item>
+        <item name="android:paddingLeft">16dip</item>
+        <item name="android:paddingRight">16dip</item>
+    </style>
+
+    <style name="RatingBarCustom" parent="android:Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/custom_ratingbar_full_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/custom_ratingbar_full_holo_light</item>
+    </style>
+
+    <style name="RatingBarBigCustom">
+        <item name="android:progressDrawable">@drawable/custom_ratingbar_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/custom_ratingbar_holo_light</item>
+        <item name="android:minHeight">35dip</item>
+        <item name="android:maxHeight">35dip</item>
+    </style>
+
+    <style name="RatingBarSmallCustom">
+        <item name="android:progressDrawable">@drawable/custom_ratingbar_small_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/custom_ratingbar_small_holo_light</item>
+        <item name="android:minHeight">16dip</item>
+        <item name="android:maxHeight">16dip</item>
+    </style>
+
+    <style name="ToggleCustom" parent="android:Widget.Button.Toggle">
+        <item name="android:background">@drawable/custom_btn_toggle_holo_light</item>
+        <item name="android:minHeight">48dip</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="ListViewCustom" parent="android:Widget.ListView">
+        <item name="android:listSelector">@drawable/custom_list_selector_holo_light</item>
+    </style>
+
+    <style name="ListViewCustom.White" parent="android:Widget.ListView.White">
+        <item name="android:listSelector">@drawable/custom_list_selector_holo_light</item>
+    </style>
+
+    <style name="SpinnerItemCustom" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+        <item name="android:textColor">#000000</item>
+    </style>
+
+</resources>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="0dp"
+    android:layout_marginBottom="1dp"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:stretchColumns="1"
+    android:background="#FFFFFF">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_marginTop="0dp">
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="RobotoCondensed-Bold.ttf"
+            android:background="@drawable/table_row"
+            android:id="@+id/litDiscountStart"
+            android:text="@string/Quantity"
+            android:textColor="#333333"
+            android:textSize="@dimen/textSizeSmall"
+            android:gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="RobotoCondensed-Bold.ttf"
+            android:background="@drawable/table_row"
+            android:text="@string/Discount"
+            android:textColor="#333333"
+            android:textSize="@dimen/textSizeSmall"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="RobotoCondensed-Bold.ttf"
+            android:background="@drawable/table_row"
+            android:text="@string/Price"
+            android:textColor="#333333"
+            android:textSize="@dimen/textSizeSmall"
+            android:gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-BoldCondensed.ttf"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/TextSizeMicro"
+            android:padding="5dp"
+            android:gravity="center"
+            android:text="" />
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="RobotoCondensed-Bold.ttf"
+            android:background="@drawable/table_row"
+            android:text="Od - Do"
+            android:textColor="#333333"
+            android:textSize="@dimen/textSizeSmall"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content" />
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="RobotoCondensed-Bold.ttf"
+            android:background="@drawable/table_row"
+            android:id="@+id/litPercentage"
+            android:text="R"
+            android:textColor="#333333"
+            android:textSize="@dimen/textSizeSmall"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content" />
+
+
+    </TableRow>
+</TableLayout>

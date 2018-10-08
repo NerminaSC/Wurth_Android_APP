@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="0|1|2"
+    android:background="#FFFFFF">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_marginTop="0dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:layout_weight="0.65"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:orientation="vertical">
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    app:typeface="Roboto-Condensed.ttf"
+                    android:id="@+id/litTitle"
+                    style="@style/list_title" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    app:typeface="RobotoCondensed-Light.ttf"
+                    android:id="@+id/litSubTitle"
+                    style="@style/list_subtitle" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ProgressBar
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="25dp"
+                        android:id="@+id/progress"
+                        android:indeterminate="true"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_gravity="center_vertical|center_horizontal" />
+
+                    <ba.wurth.mb.Classes.TypefacedTextView
+                        app:typeface="RobotoCondensed-Light.ttf"
+                        android:id="@+id/litPackage"
+                        android:textColor="#333333"
+                        style="@style/list_subtitle" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_weight="0.35"
+            android:orientation="vertical">
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Condensed.ttf"
+                android:id="@+id/litSupTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical"
+                android:text=""
+                android:textSize="@dimen/TextSizeMicro"
+                android:textColor="#999999"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/txbQuantity"
+                    style="@style/EditTextCustom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:contentDescription="0"
+                    android:ems="10"
+                    android:enabled="true"
+                    android:gravity="center"
+                    android:selectAllOnFocus="true"
+                    android:tag="0"
+                    android:visibility="visible"
+                    android:text="0"
+                    android:singleLine="true" />
+
+                <Spinner
+                    android:id="@+id/spPackage"
+                    style="@style/Spinner_01"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:layout_gravity="right"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Condensed.ttf"
+                android:id="@+id/litSubTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical"
+                android:text=""
+                android:textSize="@dimen/textSizeSmall"
+                android:textColor="#999999"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_marginTop="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <ba.wurth.mb.Classes.TypefacedButton
+                app:typeface="Roboto-BoldCondensed.ttf"
+                android:id="@+id/btnNote"
+                android:background="@drawable/btn_red"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/TextSizeMicro"
+                android:padding="3dp"
+                android:gravity="center"
+                android:text="@string/Note" />
+
+            <ba.wurth.mb.Classes.TypefacedButton
+                app:typeface="Roboto-BoldCondensed.ttf"
+                android:id="@+id/btnInfo"
+                android:background="@drawable/btn_red"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/TextSizeMicro"
+                android:padding="3dp"
+                android:gravity="center"
+                android:text="@string/Info" />
+
+            <ba.wurth.mb.Classes.TypefacedButton
+                app:typeface="Roboto-BoldCondensed.ttf"
+                android:id="@+id/btnAvailability"
+                android:background="@drawable/btn_red"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/TextSizeMicro"
+                android:padding="3dp"
+                android:gravity="center"
+                android:text="@string/Availability" />
+
+            <ba.wurth.mb.Classes.TypefacedButton
+                app:typeface="Roboto-BoldCondensed.ttf"
+                android:id="@+id/btnPricelist"
+                android:background="@drawable/btn_red"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/TextSizeMicro"
+                android:padding="3dp"
+                android:gravity="center"
+                android:text="@string/PriceList" />
+
+            <ba.wurth.mb.Classes.TypefacedButton
+                app:typeface="Roboto-BoldCondensed.ttf"
+                android:id="@+id/btnSendRequest"
+                android:background="@drawable/btn_red"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/TextSizeMicro"
+                android:padding="3dp"
+                android:gravity="center"
+                android:text="@string/SendRequest"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+    </TableRow>
+</TableLayout>

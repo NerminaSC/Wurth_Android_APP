@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/bg_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llActions">
+
+        <LinearLayout
+            android:id="@+id/llContainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="25dp">
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/Monday" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chkMonday"
+                    android:checked="false"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litMonday_StartTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="09:30"
+                    android:hint="@string/Time" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333"
+                    android:text="-" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litMonday_EndTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="10:00"
+                    android:hint="@string/Time" />
+
+            </LinearLayout>
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/Tuesday" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chkTuesday"
+                    android:checked="false"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litTuesday_StartTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="09:30"
+                    android:hint="@string/Time" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333"
+                    android:text="-" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litTuesday_EndTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="10:00"
+                    android:hint="@string/Time" />
+
+            </LinearLayout>
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/Wednesday" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chkWednesday"
+                    android:checked="false"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litWednesday_StartTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="09:30"
+                    android:hint="@string/Time" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333"
+                    android:text="-" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litWednesday_EndTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="10:00"
+                    android:hint="@string/Time" />
+
+            </LinearLayout>
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/Thursday" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chkThursday"
+                    android:checked="false"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litThursday_StartTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="09:30"
+                    android:hint="@string/Time" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333"
+                    android:text="-" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litThursday_EndTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="10:00"
+                    android:hint="@string/Time" />
+
+            </LinearLayout>
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/Friday" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chkFriday"
+                    android:checked="false"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litFriday_StartTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="09:30"
+                    android:hint="@string/Time" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333"
+                    android:text="-" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litFriday_EndTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="10:00"
+                    android:hint="@string/Time" />
+
+            </LinearLayout>
+
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/Saturday" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chkSaturday"
+                    android:checked="false"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litSaturday_StartTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="09:30"
+                    android:hint="@string/Time" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333"
+                    android:text="-" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litSaturday_EndTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="10:00"
+                    android:hint="@string/Time" />
+
+            </LinearLayout>
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/Sunday" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chkSunday"
+                    android:checked="false"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litSunday_StartTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="09:30"
+                    android:hint="@string/Time" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333"
+                    android:text="-" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litSunday_EndTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="10:00"
+                    android:hint="@string/Time" />
+
+            </LinearLayout>
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/Prefered" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litPrefered_StartTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="09:30"
+                    android:hint="@string/Time" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="#333333"
+                    android:text="-" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    style="@style/textbox"
+                    android:focusable="false"
+                    android:id="@+id/litPrefered_EndTime"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:singleLine="true"
+                    android:text="10:00"
+                    android:hint="@string/Time" />
+
+            </LinearLayout>
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/Duration" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_Duration"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:text="30"
+                android:hint="30 min" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/Frequency" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_Frequency"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:text="4"
+                android:hint="4" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

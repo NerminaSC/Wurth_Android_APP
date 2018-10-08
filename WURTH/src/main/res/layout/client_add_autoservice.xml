@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/bg_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llActions">
+
+        <LinearLayout
+            android:id="@+id/llContainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="25dp">
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType1" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_AutoServiceType1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:inputType="number"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType2" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_AutoServiceType2"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType3" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_AutoServiceType3"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType4" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_AutoServiceType4"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType5" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_AutoServiceType5"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType6" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_AutoServiceType6"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType7" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_AutoServiceType7"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType8" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_AutoServiceType8"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType9" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_AutoServiceType9"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType10" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_AutoServiceType10"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType11" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_AutoServiceType11"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType12" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_AutoServiceType12"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType13" />
+
+            <Spinner
+                android:id="@+id/spAutoServiceType13"
+                style="@style/Spinner_01" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/AutoServiceType14" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_AutoServiceType14"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

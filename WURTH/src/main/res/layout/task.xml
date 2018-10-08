@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/llActions"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="25dp">
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Light.ttf"
+                style="@style/header"
+                android:visibility="visible"
+                android:text="@string/Task"/>
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Condensed.ttf"
+                style="@style/label"
+                android:text="@string/Name" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                android:id="@+id/txbName"
+                style="@style/label_value"
+                android:text="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Condensed.ttf"
+                style="@style/label"
+                android:text="@string/Status" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                android:id="@+id/txbStatus"
+                style="@style/label_value"
+                android:text="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Condensed.ttf"
+                style="@style/label"
+                android:text="@string/Description" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                android:id="@+id/txbDescription"
+                style="@style/label_value"
+                android:text="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Condensed.ttf"
+                style="@style/label"
+                android:text="@string/StartTime" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                android:id="@+id/txbStartDate"
+                style="@style/label_value"
+                android:text="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Condensed.ttf"
+                style="@style/label"
+                android:text="@string/EndTime" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                android:id="@+id/txbEndDate"
+                style="@style/label_value"
+                android:text="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Light.ttf"
+                style="@style/header"
+                android:layout_marginTop="25dp"
+                android:visibility="visible"
+                android:text="@string/Users"/>
+
+            <LinearLayout
+                android:id="@+id/llUsers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Light.ttf"
+                style="@style/header"
+                android:layout_marginTop="25dp"
+                android:visibility="visible"
+                android:text="@string/Authorities"/>
+
+            <LinearLayout
+                android:id="@+id/llGroups"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Light.ttf"
+                style="@style/header"
+                android:layout_marginTop="25dp"
+                android:visibility="visible"
+                android:text="@string/Clients"/>
+
+            <LinearLayout
+                android:id="@+id/llClients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:orientation="vertical" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Light.ttf"
+                style="@style/header"
+                android:background="#333333"
+                android:visibility="visible"
+                android:layout_margin="0dp"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/textSizeMedium"
+                android:padding="15dp"
+                android:text="@string/History"/>
+
+            <LinearLayout
+                android:id="@+id/llHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/llActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#333333">
+
+        <ba.wurth.mb.Classes.TypefacedButton
+            app:typeface="Roboto-Condensed.ttf"
+            android:id="@+id/btnAddLog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:background="#00000000"
+            android:drawableLeft="@drawable/light_accept"
+            android:padding="5dp"
+            android:drawablePadding="5dp"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/textSizeSmall"
+            android:text="@string/CreateLog"
+            android:visibility="visible"/>
+
+        <View style="@style/separator" android:layout_margin="5dp" />
+
+        <ba.wurth.mb.Classes.TypefacedButton
+            app:typeface="Roboto-Condensed.ttf"
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:background="#00000000"
+            android:drawableLeft="@drawable/light_cancel"
+            android:padding="5dp"
+            android:drawablePadding="5dp"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/textSizeSmall"
+            android:text="@string/Cancel"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+</RelativeLayout>

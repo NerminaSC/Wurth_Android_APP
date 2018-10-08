@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="right|center_vertical"
+    android:background="#DD333333">
+
+    <ba.wurth.mb.Classes.TypefacedButton
+        app:typeface="Roboto-Condensed.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#00000000"
+        android:drawableLeft="@drawable/light_edit"
+        android:id="@+id/btnEdit"
+        android:padding="5dp"
+        android:drawablePadding="5dp"
+        android:textAllCaps="true"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/TextSizeMicro"
+        android:text="@string/Edit"
+        android:visibility="visible"/>
+
+    <View style="@style/separator" android:layout_margin="5dp" />
+
+    <ba.wurth.mb.Classes.TypefacedButton
+        app:typeface="Roboto-Condensed.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#00000000"
+        android:drawableLeft="@drawable/light_copy"
+        android:id="@+id/btnCopy"
+        android:padding="5dp"
+        android:drawablePadding="5dp"
+        android:textAllCaps="true"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/TextSizeMicro"
+        android:text="@string/Copy"
+        android:visibility="visible"/>
+
+    <View style="@style/separator" android:layout_margin="5dp" />
+
+    <ba.wurth.mb.Classes.TypefacedButton
+        app:typeface="Roboto-Condensed.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#00000000"
+        android:drawableLeft="@drawable/light_cancel"
+        android:id="@+id/btnCancel"
+        android:padding="5dp"
+        android:drawablePadding="5dp"
+        android:textAllCaps="true"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/TextSizeMicro"
+        android:text="@string/Void"
+        android:visibility="visible"/>
+
+    <View style="@style/separator" android:layout_margin="5dp" />
+
+    <ba.wurth.mb.Classes.TypefacedButton
+        app:typeface="Roboto-Condensed.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#00000000"
+        android:drawableLeft="@drawable/light_discard"
+        android:id="@+id/btnDelete"
+        android:padding="5dp"
+        android:drawablePadding="5dp"
+        android:textAllCaps="true"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/TextSizeMicro"
+        android:text="@string/Delete"
+        android:visibility="visible"/>
+
+</LinearLayout>

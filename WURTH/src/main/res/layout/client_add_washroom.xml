@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/bg_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llActions">
+
+        <LinearLayout
+            android:id="@+id/llContainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="25dp">
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/WashRoomType1" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_WashRoomType1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/WashRoomType2" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_WashRoomType2"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/WashRoomType3" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_WashRoomType3"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/WashRoomType4" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_WashRoomType4"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/WashRoomType5" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_WashRoomType5"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/WashRoomType6" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_WashRoomType6"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/WashRoomType7" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_WashRoomType7"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/WashRoomType8" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_WashRoomType8"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/WashRoomType9" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_WashRoomType9"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/WashRoomType10" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_WashRoomType10"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

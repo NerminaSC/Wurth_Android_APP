@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llActions">
+
+        <LinearLayout
+            android:id="@+id/llContainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="25dp">
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Condensed.ttf"
+                style="@style/label_required"
+                android:text="@string/Client" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/txbClients"
+                    style="@style/textbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="15dp"
+                    android:contentDescription="0"
+                    android:ems="10" />
+
+                <ImageButton
+                    android:id="@+id/btnClearClients"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:layout_marginRight="7dp"
+                    android:src="@drawable/dark_backspace"
+                    android:background="#00000000" />
+
+            </LinearLayout>
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/ClientName" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_Naziv" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_Name"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <CheckBox
+                style="@style/CheckBox_01"
+                android:id="@+id/chkCompetitions"
+                android:layout_marginTop="25dp"
+                android:text="@string/Competitions" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/ClientType" />
+
+            <Spinner
+                android:id="@+id/spClientType"
+                style="@style/Spinner_01" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/ClientOrganizationType" />
+
+            <Spinner
+                android:id="@+id/spClientOrgenizationType"
+                style="@style/Spinner_01" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/ClientRelation" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/txbClientAssociation"
+                    style="@style/textbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="15dp"
+                    android:contentDescription="0"
+                    android:ems="10" />
+
+                <ImageButton
+                    android:id="@+id/btnClearClientAssociations"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:layout_marginRight="7dp"
+                    android:src="@drawable/dark_backspace"
+                    android:visibility="visible"
+                    android:background="#00000000" />
+
+            </LinearLayout>
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/Address" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_Adresa" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_Address"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:tag="Adresa"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/Municipal" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_Municipal"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:tag="Općina"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/Place" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_Grad" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_Place"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:tag="Grad"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/PostalCode" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_PostalCode" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_PostalCode"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/Latitude" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_Latitude" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:id="@+id/lit_Latitude"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/Longitude" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_Longitude" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:id="@+id/lit_Longitude"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/IDNumber" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_IDBroj" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_IDNumber"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/PDVNumber" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_PDVBroj" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_PDVNumber"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <CheckBox
+                style="@style/CheckBox_01"
+                android:id="@+id/chkClientWholesale"
+                android:layout_marginTop="25dp"
+                android:text="@string/ClientWholesale" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/ClientCourtRegister" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_BrojSudskogRegistra" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_ClientCourtRegister"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/ClientMunicipalRegister" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_ClientMunicipalRegister"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/Bank1" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_Bank1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/BankNumber1" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_BankNumber1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/Bank" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_Bank2"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/BankNumber2" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_BankNumber2"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/Bank" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_Bank3"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/BankNumber3" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_BankNumber3"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/Owner" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_Vlasnik" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_Owner"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/TotalWorkers" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_TotalWorkers"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/ClientBusinessCode" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_ClientBusinessCode"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_required"
+                android:text="@string/EthicScore" />
+
+            <Spinner
+                android:id="@+id/spEthicScore"
+                style="@style/Spinner_01" />
+
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/ProposedPaymentDelay" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_ProposedPaymentDelay" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_ProposedPaymentDelay"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:inputType="numberDecimal"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/ProposedPaymentLimit" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_ProposedPaymentLimit" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_ProposedPaymentLimit"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:inputType="numberDecimal"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/ProposedRevenue" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_ProposedRevenue" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_ProposedRevenue"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:inputType="numberDecimal"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label"
+                android:text="@string/WWW" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                style="@style/label_hint"
+                android:id="@+id/_lit_WWW" />
+
+            <ba.wurth.mb.Classes.TypefacedEditText
+                style="@style/textbox"
+                android:focusable="true"
+                android:id="@+id/lit_WWW"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:hint="" />
+
+            <ba.wurth.mb.Classes.TypefacedTextView
+                app:typeface="Roboto-Condensed.ttf"
+                style="@style/label"
+                android:text="@string/Description" />
+
+            <EditText
+                android:id="@+id/lit_Description"
+                style="@style/textbox"
+                android:singleLine="false"
+                android:gravity="left"
+                android:text=""
+                android:layout_height="100dp" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+    <ba.wurth.mb.Classes.TypefacedTextView
+        app:typeface="Roboto-Condensed.ttf"
+        android:id="@+id/litTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:singleLine="false"
+        android:textSize="@dimen/textSizeSmall" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/litTitle"
+        android:paddingTop="0dp"
+        android:orientation="horizontal">
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-Condensed.ttf"
+            android:id="@+id/litSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:gravity="left|center_vertical"
+            android:textSize="@dimen/TextSizeMicro"
+            android:textAllCaps="true"/>
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            app:typeface="Roboto-Condensed.ttf"
+            android:id="@+id/litCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:gravity="right|center_vertical"
+            android:textSize="@dimen/TextSizeMicro"
+            android:textColor="@color/module"
+            android:textAllCaps="true"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
