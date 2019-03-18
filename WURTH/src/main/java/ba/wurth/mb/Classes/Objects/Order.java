@@ -65,7 +65,7 @@ public class Order {
 
             for (OrderItem element: order.items) {
 
-                element = order.setDiscount(element);
+                if(element.Kod_Zbirne_Cjen_Razrade != null && !element.Kod_Zbirne_Cjen_Razrade.equals("")) element = order.setDiscount(element);
 
                 if (wurthMB.getOrder().WATType == 1) {
                     element.Tax = 17.00;
@@ -118,8 +118,9 @@ public class Order {
 
             ArrayList<PricelistItem> items = DL_Wurth.GET_Pricelist(element.ArtikalID);
 
-            Double price = 0D;
-            Double discount = element.ClientDiscountPercentage;
+            Double price = element.Price_RT;
+            Double client_discount = element.ClientDiscountPercentage;
+            Double user_discount = element.UserDiscountPercentage;
             int priceKey = element.KljucCijene;
 
             ArrayList<PriceItem> Prices = new ArrayList<PriceItem>();
@@ -129,7 +130,7 @@ public class Order {
                 Double kolicina_zbirne_cjen_razrade = 0D;
 
                 for (OrderItem o_item : wurthMB.getOrder().items) {
-                    if(o_item.Kod_Zbirne_Cjen_Razrade.equals(element.Kod_Zbirne_Cjen_Razrade) && o_item.ProductID != element.ProductID)
+                    if(o_item.Kod_Zbirne_Cjen_Razrade != null && o_item.Kod_Zbirne_Cjen_Razrade.equals(element.Kod_Zbirne_Cjen_Razrade) && o_item.ProductID != element.ProductID)
                         kolicina_zbirne_cjen_razrade += o_item.Quantity * o_item.Pakovanje;
                 }
 
@@ -177,26 +178,24 @@ public class Order {
             }
 
             for (int i = 0; i < Prices.size(); i++) {
-                if (i == 0) {
+                if ((client_discount + user_discount) <= Prices.get(i).discount) {
                     price = Prices.get(i).price;
-                    discount = Prices.get(i).discount;
                     priceKey = Prices.get(i).priceKey;
-                }
-
-                if (discount < Prices.get(i).discount) {
-                    price = Prices.get(i).price;
-                    discount = Prices.get(i).discount;
-                    priceKey = Prices.get(i).priceKey;
+                    client_discount = Prices.get(i).discount;
+                    user_discount = 0D;
+                    element.KljucCijeneObracunat = false;
                 }
             }
 
-            if (priceKey == 2) price = price / 100;
-            if (priceKey == 3) price = price / 1000;
+            if (priceKey == 2 && !element.KljucCijeneObracunat) price = price / 100;
+            if (priceKey == 3 && !element.KljucCijeneObracunat) price = price / 1000;
 
-            element.ClientDiscountPercentage = discount;
+            element.ClientDiscountPercentage = client_discount;
+            element.UserDiscountPercentage = user_discount;
             element.Price_WS = price;
             element.Price_RT = price;
             element.KljucCijene = priceKey;
+            element.KljucCijeneObracunat = true;
 
         } catch (Exception e) {
             wurthMB.AddError("Order Calculate Totals", e.getMessage(), e);

@@ -33,6 +33,7 @@ public class OrderItem {
     public int Predefinisana_Dostupnost = 0;
 
     public int KljucCijene = 1;
+	public boolean KljucCijeneObracunat = false;
 	public boolean Special = false;
 
 }

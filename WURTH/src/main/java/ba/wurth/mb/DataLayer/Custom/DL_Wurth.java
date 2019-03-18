@@ -587,8 +587,8 @@ public class DL_Wurth {
                     " AND Bransa = '' " +
                     " AND PotencijalOD = 0 " +
                     " AND PotencijalDO = 0 " +
-                    " AND DatumOD = 0 " +
-                    " AND DatumDO = 0 " +
+                    " AND (DatumOD = 0 OR DatumOD <= " + System.currentTimeMillis() + ") " +
+                    " AND (DatumDO = 0 OR DatumDO >= " + System.currentTimeMillis() + ") " +
 
                     " GROUP BY KolicinaOD, KolicinaDO, KanalDistribucije " +
 
@@ -608,8 +608,8 @@ public class DL_Wurth {
                     " WHERE ArtikalID = " + ArtikalID +
                     " AND PartnerID = 0 " +
                     " AND NOT (Bransa = '') " + // AND PotencijalOD = 0 AND PotencijalDO = 0) " +
-                    " AND DatumOD = 0 " +
-                    " AND DatumDO = 0 " +
+                    " AND (DatumOD = 0 OR DatumOD <= " + System.currentTimeMillis() + ") " +
+                    " AND (DatumDO = 0 OR DatumDO >= " + System.currentTimeMillis() + ") " +
 
                     " GROUP BY KolicinaOD, KanalDistribucije, Bransa, PotencijalOD " +
 

@@ -492,7 +492,7 @@ public class DL_Sync {
                 JSONObject resp = new JSONObject(new CustomHttpClient().executeHttpPost("http://wurth.api.optimus.ba/services/wurth.asmx/GET_Clients_Count", postParameters));
 
                 Integer total_count_to_transfer = resp.getInt("Clients_Count");
-                Integer records_page_size = 2500;
+                Integer records_page_size = 1000;
                 Integer records_page_count = 1;
 
                 records_page_count = (total_count_to_transfer + records_page_size - 1) / records_page_size;
@@ -1176,7 +1176,7 @@ public class DL_Sync {
 
                     postParameters.add(new BasicNameValuePair("UserID", Long.toString(userID)));
                     postParameters.add(new BasicNameValuePair("DOE", Long.toString(_DOE)));
-                    postParameters.add(new BasicNameValuePair("offset", Long.toString(page * records_page_size)));
+                        postParameters.add(new BasicNameValuePair("offset", Long.toString(page * records_page_size)));
                     postParameters.add(new BasicNameValuePair("limit", Long.toString(records_page_size)));
 
                     JsonFactory jfactory = new JsonFactory();
@@ -2377,7 +2377,7 @@ public class DL_Sync {
             _cursor.close();
 
             if (wurthMB.loadComplete){
-                dt = (long) System.currentTimeMillis() - (long) (30L * 24L * 60L * 60L * 1000L);
+                dt = 0; //(long) System.currentTimeMillis() - (long) (30L * 24L * 60L * 60L * 1000L);
             }
 
             try {

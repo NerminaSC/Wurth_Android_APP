@@ -1,5 +1,6 @@
 package ba.wurth.mb.Adapters;
 
+import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +8,8 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.Html;
@@ -358,6 +361,7 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
                                                 return;
                                             }
 
+
                                             Double _PopustOD = (Double) litDiscountStart.getTag();
                                             Double _PopustDO = (Double) litDiscountEnd.getTag();
                                             Double _Discount = Double.parseDouble(txbDiscount.getText().toString().replaceAll("[^0-9]", ""));
@@ -412,7 +416,7 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
 
                                         }
 
-                                        mOrderItem.ClientDiscountPercentage = mPriceItem.discount;
+                                        mOrderItem.ClientDiscountPercentage = (Double) litDiscountStart.getTag();
                                         mOrderItem.KljucCijene = mPriceItem.priceKey;
 
                                         if (mPriceItem.priceKey == 1) mOrderItem.Price_WS = mPriceItem.price;
@@ -725,6 +729,9 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
                 if (mFragment instanceof OrderItemsFragment) {
                     ((OrderItemsFragment) mFragment).bindTotals();
                 }
+
+                handler.removeMessages(TRIGGER_SEARCH);
+                handler.sendEmptyMessageDelayed(TRIGGER_SEARCH, SEARCH_TRIGGER_DELAY_IN_MS);
             }
             catch (Exception ex) {
                 wurthMB.AddError("Add item in product list", ex.getMessage(), ex);
@@ -818,4 +825,19 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
             }
         }
     }
+
+    private final int TRIGGER_SEARCH = 1;
+    private final long SEARCH_TRIGGER_DELAY_IN_MS = 1000;
+
+    private Handler handler = new Handler() {
+        @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == TRIGGER_SEARCH) {
+                if (mFragment instanceof OrderItemsFragment) {
+                    ((OrderItemsFragment) mFragment).bindData();
+                }
+            }
+        }
+    };
 }
