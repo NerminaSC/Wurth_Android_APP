@@ -7,8 +7,9 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.CursorAdapter;
+
+import androidx.cursoradapter.widget.CursorAdapter;
+import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;

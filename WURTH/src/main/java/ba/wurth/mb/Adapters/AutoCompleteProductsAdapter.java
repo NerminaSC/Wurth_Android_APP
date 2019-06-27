@@ -2,7 +2,7 @@ package ba.wurth.mb.Adapters;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.support.v4.widget.SimpleCursorAdapter;
+import androidx.cursoradapter.widget.SimpleCursorAdapter;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;

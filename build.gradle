@@ -1,0 +1,33 @@
+
+buildscript {
+
+    ext.objectboxVersion = '2.3.3'
+
+    repositories {
+        jcenter {
+            url "http://jcenter.bintray.com/"
+        }
+        maven { url "https://jitpack.io" }
+        google()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.1'
+    }
+
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        jcenter {
+            url "http://jcenter.bintray.com/"
+        }
+        maven { url "https://jitpack.io" }
+        maven {
+            url 'https://maven.google.com'
+        }
+        mavenCentral()
+        google()
+    }
+}

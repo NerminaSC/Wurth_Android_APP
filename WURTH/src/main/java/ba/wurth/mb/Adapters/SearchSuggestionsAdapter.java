@@ -4,12 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.AbstractCursor;
 import android.database.Cursor;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
 

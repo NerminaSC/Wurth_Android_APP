@@ -435,6 +435,28 @@ public class DL_Wurth {
         return cur;
     }
 
+    public static Cursor GET_DeliveryPlaceDetails(Long DeliveryPlaceID) {
+        Cursor cur = null;
+        try {
+            cur = db_readonly.rawQuery("SELECT PARTNER_DETALJI.*, PARTNER.BrzaIsporuka, PARTNER.Veleprodaja, A.IME AS K2User, B.IME AS K1User, C.IME AS KAMUser, D.IME AS SpecialUser " +
+                            " FROM DeliveryPlaces " +
+                            " INNER JOIN PARTNER_DETALJI ON DeliveryPlaces._deliveryplaceid = PARTNER_DETALJI.CustomerID " +
+                            " INNER JOIN PARTNER ON DeliveryPlaces._deliveryplaceid = PARTNER.ID " +
+                            " LEFT JOIN KOMERCIJALISTI AS A ON PARTNER.KomercijalistaID = A.ID " +
+                            " LEFT JOIN KOMERCIJALISTI AS B ON PARTNER_DETALJI.K1 = B.ID " +
+                            " LEFT JOIN KOMERCIJALISTI AS C ON PARTNER_DETALJI.KAM = C.ID " +
+                            " LEFT JOIN KOMERCIJALISTI AS D ON PARTNER_DETALJI.KomercijalistaSpecijalista = D.ID " +
+                            " WHERE DeliveryPlaces.DeliveryPlaceID = ? "
+                    , new String[]{Long.toString(DeliveryPlaceID)});
+        } catch (Exception ex) {
+            wurthMB.AddError("GET_DeliveryPlaceDetails", ex.getMessage(), ex);
+        }
+
+        cur.getCount();
+
+        return cur;
+    }
+
     public static Cursor GET_ClientImages(Long ClientID) {
         Cursor cur = null;
         try {

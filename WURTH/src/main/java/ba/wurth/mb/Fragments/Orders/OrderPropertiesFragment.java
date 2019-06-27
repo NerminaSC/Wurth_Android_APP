@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SimpleCursorAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.cursoradapter.widget.SimpleCursorAdapter;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -28,6 +28,7 @@ import com.fourmob.datetimepicker.date.DatePickerDialog;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -36,6 +37,7 @@ import ba.wurth.mb.Adapters.AutoCompleteClientsAdapter;
 import ba.wurth.mb.Adapters.SpinnerAdapter;
 import ba.wurth.mb.Classes.Common;
 import ba.wurth.mb.Classes.Objects.Client;
+import ba.wurth.mb.Classes.Objects.OrderItem;
 import ba.wurth.mb.Classes.wurthMB;
 import ba.wurth.mb.DataLayer.Clients.DL_Clients;
 import ba.wurth.mb.DataLayer.Custom.DL_Wurth;
@@ -324,6 +326,8 @@ public class OrderPropertiesFragment extends Fragment implements DatePickerDialo
                             wurthMB.getOrder().ClientID = wurthMB.getOrder().client.ClientID;
                             wurthMB.getOrder().DeliveryPlaceID = cur.getLong(cur.getColumnIndex("DeliveryPlaceID"));
                             wurthMB.getOrder().PaymentMethodID = 0;
+                            wurthMB.getOrder().items = new ArrayList<OrderItem>();
+
                             txbDeliveryPlaces.setContentDescription(cur.getString(cur.getColumnIndex("DeliveryPlaceID")));
                             saveOrder();
                             checkTasks();

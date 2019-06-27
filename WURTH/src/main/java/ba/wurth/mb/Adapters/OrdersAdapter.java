@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -486,6 +486,32 @@ public class OrdersAdapter extends CursorAdapter {
                             o.PaymentDate = System.currentTimeMillis() + (24 * 60 * 60 * 1000);
                             o.OrderDate = System.currentTimeMillis();
 
+                            ArrayList<OrderItem> orderItems = o.items;
+
+                            o.items = new ArrayList<>();
+
+                            for (final OrderItem p: orderItems) {
+
+                                OrderItem tempOrderItem =  new OrderItem(){{
+                                    ArtikalID = p.ArtikalID;
+                                    ProductID = p.ProductID;
+                                    Grupa_Artikla = p.Grupa_Artikla;
+                                    UserDiscountPercentage = 0D;
+                                    ClientDiscountPercentage = 0D;
+                                    Pakovanje = p.Pakovanje;
+                                    ProductName = p.ProductName;
+                                    Quantity = p.Quantity;
+                                    Kod_Zbirne_Cjen_Razrade = p.Kod_Zbirne_Cjen_Razrade;
+                                    Note = "";
+                                }};
+
+                                tempOrderItem = o.setDiscount(tempOrderItem);
+
+                                if (tempOrderItem.Price_WS > 0) {
+                                    o.items.add(tempOrderItem);
+                                }
+                            }
+
                             try {
                                 JSONObject relation = new JSONObject(o.Relations);
                                 relation.put("Action", "Copy");
@@ -520,7 +546,7 @@ public class OrdersAdapter extends CursorAdapter {
                         }
                     }
                     catch (Exception ex) {
-
+                        wurthMB.AddError("Swipe Orders copy",ex.getMessage(),ex);
                     }
                 }
             });

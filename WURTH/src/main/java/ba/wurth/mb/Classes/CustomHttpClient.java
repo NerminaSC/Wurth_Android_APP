@@ -81,8 +81,8 @@ public class CustomHttpClient {
             HttpConnectionParams.setConnectionTimeout(params, HTTP_TIMEOUT);
             HttpConnectionParams.setSoTimeout(params, HTTP_TIMEOUT);
             client = new DefaultHttpClient(new ThreadSafeClientConnManager(params, mgr.getSchemeRegistry()), params);
-        	
-        	if (client == null) return null;
+
+            if (client == null) return null;
         	
             HttpPost request = new HttpPost(url);
             request.addHeader("Accept-Encoding", "gzip");

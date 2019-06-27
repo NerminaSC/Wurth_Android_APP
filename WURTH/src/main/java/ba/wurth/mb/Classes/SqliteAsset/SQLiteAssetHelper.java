@@ -128,7 +128,6 @@ public class SQLiteAssetHelper extends SQLiteOpenHelper {
      * should not call this method from the application main thread, including
      * from {@link android.content.ContentProvider#onCreate ContentProvider.onCreate()}.
      *
-     * @throws Exception if the database cannot be opened for writing
      * @return a read/write database object valid until {@link #close} is called
      */
     @Override
@@ -220,7 +219,6 @@ public class SQLiteAssetHelper extends SQLiteOpenHelper {
      * application main thread, including from
      * {@link android.content.ContentProvider#onCreate ContentProvider.onCreate()}.
      *
-     * @throws Exception if the database cannot be opened
      * @return a database object valid until {@link #getWritableDatabase}
      *     or {@link #close} is called.
      */
