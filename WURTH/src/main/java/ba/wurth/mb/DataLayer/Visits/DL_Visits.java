@@ -2,7 +2,6 @@ package ba.wurth.mb.DataLayer.Visits;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import io.requery.android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import org.apache.http.NameValuePair;
@@ -17,6 +16,7 @@ import ba.wurth.mb.Classes.Objects.Document;
 import ba.wurth.mb.Classes.Objects.Visit;
 import ba.wurth.mb.Classes.wurthMB;
 import ba.wurth.mb.DataLayer.Documents.DL_Documents;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class DL_Visits {
 	private static SQLiteDatabase db = wurthMB.dbHelper.getDB();

@@ -2,7 +2,6 @@ package ba.wurth.mb.Adapters;
 
 import android.content.Context;
 import android.database.Cursor;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,6 +10,8 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import ba.wurth.mb.Classes.wurthMB;
 import ba.wurth.mb.R;

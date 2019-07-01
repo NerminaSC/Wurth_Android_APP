@@ -10,7 +10,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -28,6 +27,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -268,6 +269,8 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
 
                         View extraView = null;
 
+                        Boolean has_custom_price = false;
+
                         ArrayList<PricelistItem> items = DL_Wurth.GET_Pricelist(mOrderItem.ArtikalID);
 
                         if (items.size() > 0) {
@@ -280,6 +283,8 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
                             for (int x = 0; x < items.size(); x++) {
 
                                 PricelistItem item = items.get(x);
+
+                                if(item.PartnerID > 0) has_custom_price = true;
 
                                 String percentage;
 
@@ -464,7 +469,7 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
                                 if (item.DatumDo > 0L) litEndDate.setText(dateFormatter.format(item.DatumDo));
                                 if (item.DatumOd > 0L && item.DatumDo > 0L) percentage += " (A)";
 
-                                if (KolicinaOD <= (mOrderItem.Quantity * mOrderItem.Pakovanje) && (KolicinaDO > (mOrderItem.Quantity * mOrderItem.Pakovanje) || KolicinaDO == 0D)) {
+                                if (KolicinaOD <= (mOrderItem.Quantity * mOrderItem.Pakovanje) && (KolicinaDO > (mOrderItem.Quantity * mOrderItem.Pakovanje) || KolicinaDO == 0D) && (has_custom_price ? item.PartnerID > 0 : true)) {
                                     tbl.setBackgroundColor(Color.parseColor("#ff9f9f"));
                                     txbDiscount.requestFocus();
                                 }

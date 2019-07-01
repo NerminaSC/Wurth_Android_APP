@@ -3,13 +3,14 @@ package ba.wurth.mb.Fragments.Products;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -51,12 +52,17 @@ public class CatalogFragment extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (CategoryArray.size() == 4) {
-                    ((ProductsActivity) getActivity()).setProductListTab(data.get(i).getCategoryID(), 0L, "", true);
-                }
-                else {
-                    CategoryArray.add((data.get(i)));
-                    new LongTask().execute();
+                try {
+                    Cursor cur = DL_Wurth.GET_Categories(data.get(i).getCategoryID(), "");
+
+                    if (cur.getCount() == 0) {
+                        ((ProductsActivity) getActivity()).setProductListTab(data.get(i).getCategoryID(), 0L, "", true);
+                    } else {
+                        CategoryArray.add((data.get(i)));
+                        new LongTask().execute();
+                    }
+                }catch (Exception e){
+
                 }
             }
         });
@@ -96,8 +102,7 @@ public class CatalogFragment extends Fragment {
     public void bindData() {
         try {
             new LongTask().execute();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -111,8 +116,7 @@ public class CatalogFragment extends Fragment {
                     getView().findViewById(R.id.progressContainer).setVisibility(View.VISIBLE);
                 }
                 data.clear();
-            }
-            catch ( Exception ex) {
+            } catch (Exception ex) {
 
             }
         }
@@ -123,12 +127,11 @@ public class CatalogFragment extends Fragment {
                 Cursor cur = DL_Wurth.GET_Categories(CategoryArray.get(CategoryArray.size() - 1).getCategoryID(), "");
                 if (cur != null) {
                     while (cur.moveToNext()) {
-                        data.add(new CategoryItem(cur.getLong(0),cur.getLong(1),cur.getString(2),cur.getString(3),cur.getString(4)));
+                        data.add(new CategoryItem(cur.getLong(0), cur.getLong(1), cur.getString(2), cur.getString(3), cur.getString(4)));
                     }
                     cur.close();
                 }
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 wurthMB.AddError("Product list", e.getMessage(), e);
             }
             return null;
@@ -139,7 +142,7 @@ public class CatalogFragment extends Fragment {
 
             try {
                 if (getView() != null) {
-                    String title = "" ;
+                    String title = "";
                     for (CategoryItem item : CategoryArray) {
                         if (!title.equals("")) title += " - ";
                         title += item.getName();

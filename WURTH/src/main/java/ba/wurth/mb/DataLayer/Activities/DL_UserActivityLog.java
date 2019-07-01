@@ -2,10 +2,10 @@ package ba.wurth.mb.DataLayer.Activities;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import io.requery.android.database.sqlite.SQLiteDatabase;
 
 import ba.wurth.mb.Classes.Objects.Record;
 import ba.wurth.mb.Classes.wurthMB;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class DL_UserActivityLog {
 

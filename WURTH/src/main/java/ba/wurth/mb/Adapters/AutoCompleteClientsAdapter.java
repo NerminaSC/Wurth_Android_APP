@@ -2,9 +2,10 @@ package ba.wurth.mb.Adapters;
 
 import android.content.Context;
 import android.database.Cursor;
-import androidx.cursoradapter.widget.SimpleCursorAdapter;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
 import ba.wurth.mb.R;
 

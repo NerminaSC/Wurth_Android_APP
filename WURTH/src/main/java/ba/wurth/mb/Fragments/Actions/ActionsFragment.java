@@ -1,24 +1,36 @@
 package ba.wurth.mb.Fragments.Actions;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 
+import ba.wurth.mb.Activities.Products.ProductActivity;
 import ba.wurth.mb.Adapters.ViewPagerAdapter;
 import ba.wurth.mb.Classes.Objects.Client;
+import ba.wurth.mb.Classes.Objects.Order;
 import ba.wurth.mb.Classes.VerticalViewPager;
 import ba.wurth.mb.Classes.wurthMB;
 import ba.wurth.mb.DataLayer.Custom.DL_Wurth;
+import ba.wurth.mb.Fragments.Products.ProductsListActionsFragment;
 import ba.wurth.mb.R;
 
 public class ActionsFragment extends Fragment {
@@ -31,6 +43,11 @@ public class ActionsFragment extends Fragment {
     public Long ClientID = 0L;
     public Long DeliveryPlaceID = 0L;
     public String searchWord = "";
+
+    GridView grid_images;
+    Client client = null;
+
+    ArrayList<ViewPagerAdapter.Items> ArtikalID_Array = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +67,8 @@ public class ActionsFragment extends Fragment {
         if (getArguments() != null && getArguments().getLong("DeliveryPlaceID", 0L) > 0) DeliveryPlaceID = getArguments().getLong("DeliveryPlaceID", 0L);
         if (getArguments() != null && getArguments().getLong("ProductID", 0L) > 0) ProductID = getArguments().getLong("ProductID", 0L);
         if (getArguments() != null && getArguments().getLong("ArtikalID", 0L) > 0) ArtikalID = getArguments().getLong("ArtikalID", 0L);
+
+        grid_images = (GridView) getView().findViewById(R.id.grid_images);
 
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.HONEYCOMB_MR1) new LongTask().execute();
         else new LongTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -183,14 +202,10 @@ public class ActionsFragment extends Fragment {
 
     private class LongTask extends AsyncTask<String, Void, Void> {
 
-        ArrayList<ViewPagerAdapter.Items> ArtikalID_Array = null;
-        Client client = null;
 
         @Override
         protected void onPreExecute() {
             try {
-                getView().findViewById(R.id.progressContainer).setVisibility(View.VISIBLE);
-
                 ArtikalID_Array = new ArrayList<ViewPagerAdapter.Items>();
                 client = null;
             }
@@ -290,7 +305,12 @@ public class ActionsFragment extends Fragment {
             try {
 
                 if (ArtikalID_Array.size() > 0 && client != null) {
-                    VerticalViewPager viewPager = (VerticalViewPager) getView().findViewById(R.id.pager);
+
+                    if (grid_images.getAdapter() == null) grid_images.setAdapter(new ImageAdapter(getActivity()));
+
+
+
+                  /*  VerticalViewPager viewPager = (VerticalViewPager) getView().findViewById(R.id.pager);
                     final ViewPagerAdapter adapter = new ViewPagerAdapter((AppCompatActivity) getActivity(), ArtikalID_Array, client);
                     viewPager.setAdapter(adapter);
 
@@ -311,15 +331,198 @@ public class ActionsFragment extends Fragment {
                         public void onPageScrollStateChanged(int state) {
 
                         }
-                    });
+                    });*/
                 }
 
             } catch (Exception e) {
                 wurthMB.AddError("Actions list PostExecute", e.getMessage(), e);
             }
-            getView().findViewById(R.id.progressContainer).setVisibility(View.GONE);
+          //  getView().findViewById(R.id.progressContainer).setVisibility(View.GONE);
 
         }
 
+    }
+
+    private class ImageAdapter extends BaseAdapter
+    {
+        private Context context;
+
+        public ImageAdapter(Context c)
+        {
+            context = c;
+        }
+
+        //---returns the number of images---
+        public int getCount() {
+            return ArtikalID_Array.size();
+        }
+
+        //---returns the ID of an item---
+        public Object getItem(int position) {
+            return position;
+        }
+
+        public long getItemId(int position) {
+            return position;
+        }
+
+        //---returns an ImageView view---
+        public View getView(int position, View convertView, ViewGroup parent)
+        {
+            ImageView view = new ImageView(getContext());
+            view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            view.setAdjustViewBounds(true);
+            view.setScaleType(ImageView.ScaleType.FIT_XY);
+            view.setTag(ArtikalID_Array.get(position));
+
+            try {
+
+                if (!ArtikalID_Array.get(position).slika.equals("")) {
+                    wurthMB.imageLoader.DisplayImage(ArtikalID_Array.get(position).slika, view);
+                }
+                else {
+                    view.setImageResource(R.drawable.no_image);
+                }
+
+                view.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(final View imageView) {
+
+                        try {
+
+                            if (wurthMB.getOrder() != null && wurthMB.getOrder().ClientID != client.ClientID) {
+
+                                final Dialog dialog = new Dialog(context, R.style.CustomDialog);
+                                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                                dialog.setContentView(R.layout.alert);
+                                dialog.setCancelable(false);
+
+                                ((TextView) dialog.findViewById(R.id.Title)).setText(R.string.Notification_AttentionNeeded);
+                                ((TextView) dialog.findViewById(R.id.text)).setText(R.string.Notification_OrderExist);
+
+                                dialog.findViewById(R.id.dialogButtonNEW).setVisibility(View.GONE);
+                                dialog.findViewById(R.id.dialogButtonCANCEL).setVisibility(View.VISIBLE);
+                                ((Button) dialog.findViewById(R.id.dialogButtonOK)).setText(R.string.Continue);
+
+                                dialog.findViewById(R.id.dialogButtonOK).setOnClickListener(new View.OnClickListener() {
+                                    public void onClick(View v) {
+                                        wurthMB.setOrder(new Order());
+
+                                        if (client != null) {
+                                            Cursor cur = DL_Wurth.GET_Partner(client._clientid);
+                                            wurthMB.getOrder().PartnerID = client._clientid;
+
+                                            if (cur != null) {
+                                                if (cur.moveToFirst()) {
+                                                    wurthMB.getOrder().client = DL_Wurth.GET_Client(cur.getLong(cur.getColumnIndex("ClientID")));
+                                                    wurthMB.getOrder().ClientID = wurthMB.getOrder().client.ClientID;
+                                                    wurthMB.getOrder().DeliveryPlaceID = cur.getLong(cur.getColumnIndex("DeliveryPlaceID"));
+                                                    wurthMB.getOrder().PaymentMethodID = 0;
+                                                }
+                                                cur.close();
+                                            }
+
+                                            if (!((ViewPagerAdapter.Items) imageView.getTag()).PZNA.equals("")) {
+                                                Bundle b = new Bundle();
+                                                b.putString("Kod_Zbirnog_Naziva", ((ViewPagerAdapter.Items) imageView.getTag()).PZNA);
+                                                ProductsListActionsFragment productsListActionsFragment = ProductsListActionsFragment.newInstance();
+                                                productsListActionsFragment.setArguments(b);
+                                                productsListActionsFragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "productsListActionsFragment");
+                                            } else if (((ViewPagerAdapter.Items) imageView.getTag()).PZNA.equals("") && !((ViewPagerAdapter.Items) imageView.getTag()).CatalogCode.equals("")) {
+                                                Bundle b = new Bundle();
+                                                b.putString("Sifra_Grupe", ((ViewPagerAdapter.Items) imageView.getTag()).CatalogCode);
+                                                ProductsListActionsFragment productsListActionsFragment = ProductsListActionsFragment.newInstance();
+                                                productsListActionsFragment.setArguments(b);
+                                                productsListActionsFragment.show(getActivity().getSupportFragmentManager(), "productsListActionsFragment");
+                                            } else {
+                                                Intent k = new Intent(getActivity(), ProductActivity.class);
+                                                k.putExtra("ACTION", 0);
+                                                k.putExtra("ArtikalID", ((ViewPagerAdapter.Items) imageView.getTag()).ArtikalID);
+                                                k.putExtra("ProductID", ((ViewPagerAdapter.Items) imageView.getTag()).ProductID);
+                                                getActivity().startActivity(k);
+                                            }
+                                        }
+                                        dialog.dismiss();
+                                    }
+                                });
+
+                                dialog.findViewById(R.id.dialogButtonCANCEL).setOnClickListener(new View.OnClickListener() {
+                                    public void onClick(View v) {
+                                        dialog.dismiss();
+                                    }
+                                });
+
+                                dialog.show();
+                            } else if (wurthMB.getOrder() != null && wurthMB.getOrder().ClientID == client.ClientID) {
+                                if (!((ViewPagerAdapter.Items) imageView.getTag()).PZNA.equals("")) {
+                                    Bundle b = new Bundle();
+                                    b.putString("Kod_Zbirnog_Naziva", ((ViewPagerAdapter.Items) imageView.getTag()).PZNA);
+                                    ProductsListActionsFragment productsListActionsFragment = ProductsListActionsFragment.newInstance();
+                                    productsListActionsFragment.setArguments(b);
+                                    productsListActionsFragment.show(getActivity().getSupportFragmentManager(), "productsListActionsFragment");
+                                } else if (((ViewPagerAdapter.Items) imageView.getTag()).PZNA.equals("") && !((ViewPagerAdapter.Items) imageView.getTag()).CatalogCode.equals("")) {
+                                    Bundle b = new Bundle();
+                                    b.putString("Sifra_Grupe", ((ViewPagerAdapter.Items) imageView.getTag()).CatalogCode);
+                                    ProductsListActionsFragment productsListActionsFragment = ProductsListActionsFragment.newInstance();
+                                    productsListActionsFragment.setArguments(b);
+                                    productsListActionsFragment.show(getActivity().getSupportFragmentManager(), "productsListActionsFragment");
+                                } else {
+                                    Intent k = new Intent(getActivity(), ProductActivity.class);
+                                    k.putExtra("ACTION", 0);
+                                    k.putExtra("ArtikalID", ((ViewPagerAdapter.Items) imageView.getTag()).ArtikalID);
+                                    k.putExtra("ProductID", ((ViewPagerAdapter.Items) imageView.getTag()).ProductID);
+                                    getActivity().startActivity(k);
+                                }
+                            } else {
+                                wurthMB.setOrder(new Order());
+
+                                if (client != null) {
+                                    Cursor cur = DL_Wurth.GET_Partner(client._clientid);
+                                    wurthMB.getOrder().PartnerID = client._clientid;
+
+                                    if (cur != null) {
+                                        if (cur.moveToFirst()) {
+                                            wurthMB.getOrder().client = DL_Wurth.GET_Client(cur.getLong(cur.getColumnIndex("ClientID")));
+                                            wurthMB.getOrder().ClientID = wurthMB.getOrder().client.ClientID;
+                                            wurthMB.getOrder().DeliveryPlaceID = cur.getLong(cur.getColumnIndex("DeliveryPlaceID"));
+                                            wurthMB.getOrder().PaymentMethodID = 0;
+                                        }
+                                        cur.close();
+                                    }
+
+                                    if (!((ViewPagerAdapter.Items) imageView.getTag()).PZNA.equals("")) {
+                                        Bundle b = new Bundle();
+                                        b.putString("Kod_Zbirnog_Naziva", ((ViewPagerAdapter.Items) imageView.getTag()).PZNA);
+                                        ProductsListActionsFragment productsListActionsFragment = ProductsListActionsFragment.newInstance();
+                                        productsListActionsFragment.setArguments(b);
+                                        productsListActionsFragment.show(getActivity().getSupportFragmentManager(), "productsListActionsFragment");
+                                    } else if (((ViewPagerAdapter.Items) imageView.getTag()).PZNA.equals("") && !((ViewPagerAdapter.Items) imageView.getTag()).CatalogCode.equals("")) {
+                                        Bundle b = new Bundle();
+                                        b.putString("Sifra_Grupe", ((ViewPagerAdapter.Items) imageView.getTag()).CatalogCode);
+                                        ProductsListActionsFragment productsListActionsFragment = ProductsListActionsFragment.newInstance();
+                                        productsListActionsFragment.setArguments(b);
+                                        productsListActionsFragment.show(getActivity().getSupportFragmentManager(), "productsListActionsFragment");
+                                    } else {
+                                        Intent k = new Intent(getActivity(), ProductActivity.class);
+                                        k.putExtra("ACTION", 0);
+                                        k.putExtra("ArtikalID", ((ViewPagerAdapter.Items) imageView.getTag()).ArtikalID);
+                                        k.putExtra("ProductID", ((ViewPagerAdapter.Items) imageView.getTag()).ProductID);
+                                        getActivity().startActivity(k);
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            wurthMB.AddError("ViewPagerAdapter", e.getMessage(), e);
+                        }
+                        return true;
+                    }
+
+                });
+
+            } catch (Exception e) {
+            }
+
+            return view;
+        }
     }
 }

@@ -3,7 +3,6 @@ package ba.wurth.mb.DataLayer.GPS;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import io.requery.android.database.sqlite.SQLiteDatabase;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -17,6 +16,7 @@ import java.util.Iterator;
 import ba.wurth.mb.Classes.CustomHttpClient;
 import ba.wurth.mb.Classes.GPS.Log;
 import ba.wurth.mb.Classes.wurthMB;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class DL_GPS {
 	//private Context ctx;

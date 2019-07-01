@@ -3,7 +3,6 @@ package ba.wurth.mb.Activities;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
-import io.requery.android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +15,7 @@ import java.util.Date;
 
 import ba.wurth.mb.Classes.wurthMB;
 import ba.wurth.mb.R;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class SystemActivity extends Activity {
 

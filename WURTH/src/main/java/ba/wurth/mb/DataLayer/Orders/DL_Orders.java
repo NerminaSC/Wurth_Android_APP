@@ -2,11 +2,6 @@ package ba.wurth.mb.DataLayer.Orders;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import io.requery.android.database.sqlite.SQLiteDatabase;
-
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -23,6 +18,7 @@ import ba.wurth.mb.Classes.Objects.Order;
 import ba.wurth.mb.Classes.Objects.OrderItem;
 import ba.wurth.mb.Classes.wurthMB;
 import ba.wurth.mb.DataLayer.Visits.DL_Visits;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class DL_Orders {
 	//private Context ctx;

@@ -3,7 +3,6 @@ package ba.wurth.mb.DataLayer.Temp;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import io.requery.android.database.sqlite.SQLiteDatabase;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -17,6 +16,7 @@ import ba.wurth.mb.Classes.Objects.Order;
 import ba.wurth.mb.Classes.Objects.Temp;
 import ba.wurth.mb.Classes.Objects.Temp_Acquisition;
 import ba.wurth.mb.Classes.wurthMB;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class DL_Temp {
     private static String TAG = "DataLayer";

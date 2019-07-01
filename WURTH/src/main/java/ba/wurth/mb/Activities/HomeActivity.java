@@ -4,15 +4,15 @@ import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.res.Configuration;
-import io.requery.android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -56,6 +56,7 @@ import ba.wurth.mb.R;
 import ba.wurth.mb.Services.LocationService;
 import ba.wurth.mb.Services.NotificationService;
 import ba.wurth.mb.Services.SyncService;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class HomeActivity extends AbstractNavDrawerActivity {
 

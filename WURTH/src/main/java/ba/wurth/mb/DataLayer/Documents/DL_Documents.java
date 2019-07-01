@@ -2,11 +2,6 @@ package ba.wurth.mb.DataLayer.Documents;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import io.requery.android.database.sqlite.SQLiteDatabase;
-
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -19,6 +14,7 @@ import ba.wurth.mb.Classes.Base64;
 import ba.wurth.mb.Classes.CustomHttpClient;
 import ba.wurth.mb.Classes.Objects.Document;
 import ba.wurth.mb.Classes.wurthMB;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class DL_Documents {
 	private static String methodName = "";

@@ -1,9 +1,10 @@
 package ba.wurth.mb.Activities.Diary;
 
 import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.MenuItem;
 
 import ba.wurth.mb.Classes.Objects.Client;
 import ba.wurth.mb.Classes.wurthMB;

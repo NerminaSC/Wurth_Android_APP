@@ -4,7 +4,6 @@ import android.database.Cursor;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 
 import ba.wurth.mb.Classes.wurthMB;
 import ba.wurth.mb.DataLayer.Custom.DL_Wurth;

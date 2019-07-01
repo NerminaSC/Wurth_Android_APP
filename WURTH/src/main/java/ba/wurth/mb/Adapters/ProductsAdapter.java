@@ -7,9 +7,6 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
-
-import androidx.cursoradapter.widget.CursorAdapter;
-import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -25,6 +22,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.cursoradapter.widget.CursorAdapter;
+import androidx.fragment.app.Fragment;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -414,6 +414,8 @@ public class ProductsAdapter extends CursorAdapter {
                         ((TextView) ItemDialog.findViewById(R.id.lblPrice)).setText(CustomNumberFormat.GenerateFormatCurrency(price) + "/" + mOrderItem.KljucCijene);
                         ((EditText) ItemDialog.findViewById(R.id.txbNote)).setText(mOrderItem.Note);
 
+                        Boolean has_custom_price = false;
+
                         View extraView = null;
 
                         ArrayList<PricelistItem> items = DL_Wurth.GET_Pricelist(mOrderItem.ArtikalID);
@@ -428,6 +430,8 @@ public class ProductsAdapter extends CursorAdapter {
                             for (int x = 0; x < items.size(); x++) {
 
                                 PricelistItem item = items.get(x);
+
+                                if(item.PartnerID > 0) has_custom_price = true;
 
                                 String percentage;
 
@@ -612,7 +616,7 @@ public class ProductsAdapter extends CursorAdapter {
                                 if (item.DatumDo > 0L) litEndDate.setText(dateFormatter.format(item.DatumDo));
                                 if (item.DatumOd > 0L && item.DatumDo > 0L) percentage += " (A)";
 
-                                if (KolicinaOD <= (mOrderItem.Quantity * mOrderItem.Pakovanje) && (KolicinaDO > (mOrderItem.Quantity * mOrderItem.Pakovanje) || KolicinaDO == 0D)) {
+                                if (KolicinaOD <= (mOrderItem.Quantity * mOrderItem.Pakovanje) && (KolicinaDO > (mOrderItem.Quantity * mOrderItem.Pakovanje) || KolicinaDO == 0D) && (has_custom_price ? item.PartnerID > 0 : true)) {
                                     tbl.setBackgroundColor(Color.parseColor("#ff9f9f"));
                                     txbDiscount.requestFocus();
                                 }

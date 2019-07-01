@@ -4,9 +4,6 @@ import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 
-import io.requery.android.database.sqlite.SQLiteDatabase;
-import io.requery.android.database.sqlite.SQLiteStatement;
-
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
@@ -37,6 +34,8 @@ import ba.wurth.mb.Classes.Objects.DeliveryPlace;
 import ba.wurth.mb.Classes.wurthMB;
 import ba.wurth.mb.DataLayer.Custom.DL_Wurth;
 import ba.wurth.mb.Fragments.Synchronization.SyncFragment;
+import io.requery.android.database.sqlite.SQLiteDatabase;
+import io.requery.android.database.sqlite.SQLiteStatement;
 
 public class DL_Sync {
     private static 	String methodName = "";

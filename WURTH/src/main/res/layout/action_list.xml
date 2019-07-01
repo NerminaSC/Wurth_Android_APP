@@ -6,39 +6,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_main">
 
-    <ba.wurth.mb.Classes.VerticalViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <LinearLayout
-        android:id="@+id/progressContainer"
+    <GridView
+        android:id="@+id/grid_images"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/llTotals"
-        android:gravity="center"
-        android:background="@drawable/bg_main"
-        android:visibility="gone">
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/txb_page"
-        android:background="#333333"
-        android:textColor="#FFFFFF"
-        android:text=""
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
-        android:gravity="center" />
+        android:numColumns="3"
+        android:rowCount="3"
+        android:verticalSpacing="4dp"
+        android:horizontalSpacing="4dp"
+        android:stretchMode="columnWidth"/>
 
 </RelativeLayout>

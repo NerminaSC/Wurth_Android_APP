@@ -2,22 +2,10 @@ package ba.wurth.mb.DataLayer.Routes;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import io.requery.android.database.sqlite.SQLiteDatabase;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-import ba.wurth.mb.Classes.CustomHttpClient;
 import ba.wurth.mb.Classes.Objects.Route;
 import ba.wurth.mb.Classes.wurthMB;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class DL_Routes {
 	private static String methodName = "";

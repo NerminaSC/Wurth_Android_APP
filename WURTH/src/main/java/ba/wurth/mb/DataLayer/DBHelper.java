@@ -18,8 +18,6 @@ import ba.wurth.mb.Classes.Common;
 import ba.wurth.mb.Classes.CustomHttpClient;
 import ba.wurth.mb.Classes.SqliteAsset.SQLiteAssetHelper;
 import ba.wurth.mb.Classes.wurthMB;
-import ba.wurth.mb.DataLayer.Custom.DL_Wurth;
-import ba.wurth.mb.R;
 import io.requery.android.database.sqlite.SQLiteDatabase;
 import io.requery.android.database.sqlite.SQLiteStatement;
 

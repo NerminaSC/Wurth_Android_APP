@@ -1,25 +1,12 @@
 package ba.wurth.mb.DataLayer.Products;
 
-import android.content.ContentValues;
 import android.database.Cursor;
-import io.requery.android.database.sqlite.SQLiteDatabase;
-import io.requery.android.database.sqlite.SQLiteStatement;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
-import java.util.ArrayList;
-
-import ba.wurth.mb.Classes.CustomHttpClient;
 import ba.wurth.mb.Classes.Objects.Document;
 import ba.wurth.mb.Classes.Objects.Product;
 import ba.wurth.mb.Classes.wurthMB;
-import ba.wurth.mb.DataLayer.Custom.DL_Wurth;
 import ba.wurth.mb.DataLayer.Documents.DL_Documents;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class DL_Products {
     private static String methodName = "";

@@ -1,32 +1,19 @@
 package ba.wurth.mb.DataLayer.Custom;
 
 import android.database.Cursor;
-
-import io.requery.android.database.sqlite.SQLiteDatabase;
-
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 import ba.wurth.mb.Classes.Common;
-import ba.wurth.mb.Classes.CustomHttpClient;
 import ba.wurth.mb.Classes.Objects.Client;
 import ba.wurth.mb.Classes.Objects.PaymentDate;
 import ba.wurth.mb.Classes.Objects.PaymentMethod;
 import ba.wurth.mb.Classes.Objects.PricelistItem;
 import ba.wurth.mb.Classes.wurthMB;
-import io.requery.android.database.sqlite.SQLiteStatement;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class DL_Wurth {
     private static String methodName = "";
@@ -862,7 +849,8 @@ public class DL_Wurth {
                     boolean exists = false;
 
                     for (int x = 0; x < items.size(); x++) {
-                        if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && ((items.get(x).KolicinaDo == 0 && items.get(x).PopustOD > PopustOD) || (items.get(x).KolicinaDo >= KolicinaDo && KolicinaDo != 0))) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
+                        // if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && ((items.get(x).KolicinaDo == 0 && items.get(x).PopustOD > PopustOD) || (items.get(x).KolicinaDo >= KolicinaDo && KolicinaDo != 0))) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
+                        if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && items.get(x).KolicinaDo >= KolicinaDo && items.get(x).PopustOD >= PopustOD && items.get(x).PopustDO >= PopustDO) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
                             exists = true;
                             break;
                         }
@@ -897,7 +885,8 @@ public class DL_Wurth {
                             boolean exists = false;
 
                             for (int x = 0; x < items.size(); x++) {
-                                if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && ((items.get(x).KolicinaDo == 0 && items.get(x).PopustOD > PopustOD) || (items.get(x).KolicinaDo >= KolicinaDo && KolicinaDo != 0))) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
+                                // if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && ((items.get(x).KolicinaDo == 0 && items.get(x).PopustOD > PopustOD) || (items.get(x).KolicinaDo >= KolicinaDo && KolicinaDo != 0))) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
+                                if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && items.get(x).KolicinaDo >= KolicinaDo && items.get(x).PopustOD >= PopustOD && items.get(x).PopustDO >= PopustDO) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
                                     exists = true;
                                     break;
                                 }

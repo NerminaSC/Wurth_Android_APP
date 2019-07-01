@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_main">
 
-    <androidx.core.widget.SwipeRefreshLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_container"
         android:layout_width="match_parent"
         android:layout_weight="1"
@@ -22,7 +22,7 @@
             android:cacheColorHint="#E7E7E7"
             android:fastScrollEnabled="true" />
 
-    </androidx.core.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
     <LinearLayout

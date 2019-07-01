@@ -2,11 +2,9 @@ package ba.wurth.mb.DataLayer.Reports;
 
 import android.content.Context;
 import android.database.Cursor;
-import io.requery.android.database.sqlite.SQLiteDatabase;
-
-import java.util.Date;
 
 import ba.wurth.mb.Classes.wurthMB;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class DL_Reports {
 	//private Context ctx;

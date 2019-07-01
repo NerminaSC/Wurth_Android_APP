@@ -2,23 +2,12 @@ package ba.wurth.mb.DataLayer.Clients;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import io.requery.android.database.sqlite.SQLiteDatabase;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
-import java.util.ArrayList;
-
-import ba.wurth.mb.Classes.CustomHttpClient;
 import ba.wurth.mb.Classes.Objects.Client;
-import ba.wurth.mb.Classes.Objects.DeliveryPlace;
 import ba.wurth.mb.Classes.Objects.PaymentDate;
 import ba.wurth.mb.Classes.Objects.PaymentMethod;
 import ba.wurth.mb.Classes.wurthMB;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class DL_Clients {
 	//private Context ctx;

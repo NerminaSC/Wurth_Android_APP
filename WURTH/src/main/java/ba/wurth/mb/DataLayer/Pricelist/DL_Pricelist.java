@@ -2,24 +2,13 @@ package ba.wurth.mb.DataLayer.Pricelist;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import io.requery.android.database.sqlite.SQLiteDatabase;
-import io.requery.android.database.sqlite.SQLiteStatement;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
-import java.util.ArrayList;
 import java.util.Date;
 
-import ba.wurth.mb.Classes.CustomHttpClient;
 import ba.wurth.mb.Classes.Objects.Client;
 import ba.wurth.mb.Classes.Objects.Pricelist;
 import ba.wurth.mb.Classes.wurthMB;
-import ba.wurth.mb.DataLayer.Custom.DL_Wurth;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class DL_Pricelist {
 	private static 	String methodName = "";

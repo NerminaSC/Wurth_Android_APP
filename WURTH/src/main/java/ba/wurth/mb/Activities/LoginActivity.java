@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import io.requery.android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -38,6 +37,7 @@ import ba.wurth.mb.Classes.CustomHttpClient;
 import ba.wurth.mb.Classes.Notifications;
 import ba.wurth.mb.Classes.wurthMB;
 import ba.wurth.mb.R;
+import io.requery.android.database.sqlite.SQLiteDatabase;
 
 public class LoginActivity extends Activity {
     private SQLiteDatabase db = wurthMB.dbHelper.getDB();
@@ -78,7 +78,9 @@ public class LoginActivity extends Activity {
                 NetworkTask asyncHttpPost = new NetworkTask(data);
                 asyncHttpPost.execute("http://wurth.api.optimus.ba/services/wurth.asmx/Authenticate");
             }
-            catch(Exception ex) {}
+            catch(Exception ex) {
+                String s = ex.getMessage();
+            }
             }
         });
 

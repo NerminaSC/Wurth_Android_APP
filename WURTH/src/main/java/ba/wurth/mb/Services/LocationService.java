@@ -8,6 +8,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.common.ConnectionResult;
