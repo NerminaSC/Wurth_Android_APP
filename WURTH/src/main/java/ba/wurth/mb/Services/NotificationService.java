@@ -4,7 +4,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 
@@ -26,6 +28,9 @@ public class NotificationService extends Service {
 
     private Handler handler = new Handler();
 
+    String channelId = "wurth_channel_01";
+    CharSequence channelName = "WURTH Channel";
+
     @Override
 	public IBinder onBind(Intent arg0) {
 		return mBinder;
@@ -37,8 +42,19 @@ public class NotificationService extends Service {
 		
 		mNoticationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		mBuilder = new NotificationCompat.Builder(this);
-		
-		Intent resultIntent = new Intent(this, HomeActivity.class);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            int importance = NotificationManager.IMPORTANCE_LOW;
+            android.app.NotificationChannel notificationChannel = new android.app.NotificationChannel(channelId, channelName, importance);
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+            mNoticationManager.createNotificationChannel(notificationChannel);
+        }
+
+        Intent resultIntent = new Intent(this, HomeActivity.class);
 		PendingIntent resultPendingIntent =
 		    PendingIntent.getActivity(
 		    this,

@@ -64,7 +64,7 @@ public class CustomHttpClient {
             return sb.toString();
         } 
         catch (Exception e) {
-        	
+        	String temp = e.getMessage();
 		}
         return "";
     }
