@@ -1546,7 +1546,7 @@ public class DL_Sync {
             if (_cursor.moveToFirst()) _DOE_Product_Categories = _cursor.getLong(0);
             _cursor.close();
 
-            /*if (wurthMB.loadComplete) {
+            /* if (wurthMB.loadComplete) {
                 _DOE_Product_Categories = 0;
                 _DOE_Products = 0;
             }*/
