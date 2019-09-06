@@ -144,7 +144,9 @@ public class Order {
                 {
                     PriceItem _item = new PriceItem();
                     _item.priceKey = item.KljucCijene;
-                    _item.discount = item.PopustOD;
+                 //   _item.discount = item.PopustOD;
+                    _item.discount_from = item.PopustOD;
+                    _item.discount_to = item.PopustDO;
                     _item.price = item.OsnovnaCijena;
                     Prices.add(_item);
                 }
@@ -156,7 +158,7 @@ public class Order {
                     PriceItem _item = new PriceItem();
                     _item.priceKey = item.KljucCijene;
                     //_item.discount = item.PopustOD;
-                    _item.discount = 0D;
+                     _item.discount_from = 0D;
                     _item.price = item.OsnovnaCijena;
                     Prices.add(_item);
                     element.UserDiscountPercentage = 0;
@@ -167,7 +169,7 @@ public class Order {
                         PriceItem _item = new PriceItem();
                         _item.priceKey = cur.getInt(cur.getColumnIndex("KljucCijene"));
                         //_item.discount = cur.getDouble(cur.getColumnIndex("PopustOD"));
-                        _item.discount = 0D;
+                        _item.discount_from = 0D;
                         _item.price = cur.getDouble(cur.getColumnIndex("OsnovnaCijena"));
                         Prices.add(_item);
                         element.UserDiscountPercentage = 0;
@@ -177,10 +179,11 @@ public class Order {
             }
 
             for (int i = 0; i < Prices.size(); i++) {
-                if ((client_discount + user_discount) <= Prices.get(i).discount) {
+
+                if ((client_discount + user_discount) <= Prices.get(i).discount_from || ((client_discount + user_discount) > Prices.get(i).discount_to && Prices.get(i).discount_to > 0)) {
                     price = Prices.get(i).price;
                     priceKey = Prices.get(i).priceKey;
-                    client_discount = Prices.get(i).discount;
+                    client_discount = Prices.get(i).discount_from;
                     user_discount = 0D;
                     element.KljucCijeneObracunat = false;
                 }
@@ -205,7 +208,9 @@ public class Order {
 
     private class PriceItem {
         double price = 0;
-        double discount = 0;
+       // double discount = 0;
+        double discount_from = 0;
+        double discount_to = 0;
         int priceKey = 0;
     }
 }
