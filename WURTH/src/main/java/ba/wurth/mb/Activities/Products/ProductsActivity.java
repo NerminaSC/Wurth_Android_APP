@@ -196,7 +196,7 @@ public class ProductsActivity extends AppCompatActivity implements  ActionBar.Ta
     @Override
     public void onPageSelected(int position) { getSupportActionBar().setSelectedNavigationItem(position); }
 
-    public void setProductListTab(Long CategoryID, Long ProductID, String searchWord, boolean reload) {
+    public void setProductListTab(Long CategoryID, Long ProductID, String searchWord, boolean reload, boolean set_tab) {
         try {
             if (mAdapter.getItem(1) instanceof ProductsListFragment) {
                 ((ProductsListFragment) mAdapter.getItem(1)).CategoryID = CategoryID;
@@ -204,7 +204,7 @@ public class ProductsActivity extends AppCompatActivity implements  ActionBar.Ta
                 ((ProductsListFragment) mAdapter.getItem(1)).searchWord = searchWord;
                 if(reload) ((ProductsListFragment) mAdapter.getItem(1)).bindList();
             }
-            mViewPager.setCurrentItem(1);
+            if(set_tab) mViewPager.setCurrentItem(1);
         }
         catch (Exception ex) {
 

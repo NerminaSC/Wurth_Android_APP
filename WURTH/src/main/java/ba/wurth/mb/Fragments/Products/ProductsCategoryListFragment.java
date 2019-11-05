@@ -157,7 +157,7 @@ public class ProductsCategoryListFragment extends Fragment {
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                             Long CategoryID = cursor.getLong(cursor.getColumnIndex("CategoryID"));
                             if (getActivity() instanceof ProductsActivity) {
-                                ((ProductsActivity) getActivity()).setProductListTab(CategoryID, 0L, txbSearch.getText().toString(), true);
+                                ((ProductsActivity) getActivity()).setProductListTab(CategoryID, 0L, txbSearch.getText().toString(), true, true);
                             }
                         }
                     });
