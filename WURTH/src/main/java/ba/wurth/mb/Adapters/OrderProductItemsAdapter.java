@@ -280,7 +280,7 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
 
                             Double partnerKolicinaOD = 0D;
 
-                            for (int x = 0; x < items.size(); x++) {
+                            for (int x = 0; x < items.size(); x++)  {
 
                                 PricelistItem item = items.get(x);
 

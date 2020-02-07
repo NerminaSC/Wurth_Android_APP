@@ -885,7 +885,7 @@ public class DL_Sync {
                                                                             if (0 == fieldname.compareToIgnoreCase("Konkurent"))
                                                                                 _cv.put("Konkurent", jsonParser.getValueAsInt(0));
                                                                             if (0 == fieldname.compareToIgnoreCase("KanalDistribucije"))
-                                                                                _cv.put("KanalDistribucije", jsonParser.getValueAsInt(0));
+                                                                                _cv.put("KanalDistribucije", jsonParser.getValueAsString(""));
                                                                             if (0 == fieldname.compareToIgnoreCase("Bonitet"))
                                                                                 _cv.put("Bonitet", jsonParser.getValueAsString(""));
                                                                             if (0 == fieldname.compareToIgnoreCase("OnlineShop"))

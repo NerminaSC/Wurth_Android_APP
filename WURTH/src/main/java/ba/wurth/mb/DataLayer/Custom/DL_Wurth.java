@@ -850,7 +850,7 @@ public class DL_Wurth {
 
                     for (int x = 0; x < items.size(); x++) {
                         // if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && ((items.get(x).KolicinaDo == 0 && items.get(x).PopustOD > PopustOD) || (items.get(x).KolicinaDo >= KolicinaDo && KolicinaDo != 0))) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
-                        if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && items.get(x).KolicinaDo >= KolicinaDo && items.get(x).PopustOD >= PopustOD && items.get(x).PopustDO >= PopustDO) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
+                        if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && items.get( x).KolicinaDo >= KolicinaDo && items.get(x).PopustOD >= PopustOD && items.get(x).PopustDO >= PopustDO) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
                             exists = true;
                             break;
                         }

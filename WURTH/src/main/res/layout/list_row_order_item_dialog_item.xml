@@ -28,7 +28,8 @@
             android:textColor="#333333"
             android:textSize="@dimen/TextSizeMicro"
             android:gravity="center"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.1"
             android:layout_height="wrap_content" />
 
         <ba.wurth.mb.Classes.TypefacedTextView
@@ -39,13 +40,15 @@
             android:textColor="#333333"
             android:textSize="@dimen/TextSizeMicro"
             android:gravity="center"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.1"
             android:layout_height="wrap_content" />
 
         <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
             android:orientation="horizontal">
 
             <ba.wurth.mb.Classes.TypefacedEditText
@@ -57,7 +60,7 @@
                 android:selectAllOnFocus="true"
                 android:textSize="@dimen/TextSizeMicro"
                 android:gravity="center"
-                android:layout_width="55dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
@@ -70,14 +73,16 @@
             android:textColor="#333333"
             android:textSize="@dimen/TextSizeMicro"
             android:gravity="center"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
             android:layout_height="wrap_content" />
 
         <ba.wurth.mb.Classes.TypefacedButton
             app:typeface="Roboto-BoldCondensed.ttf"
             android:id="@+id/btnPricelist"
             android:background="@drawable/btn_red"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -95,7 +100,8 @@
             android:textColor="#333333"
             android:textSize="@dimen/TextSizeMicro"
             android:gravity="center"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.1"
             android:layout_height="wrap_content" />
 
         <ba.wurth.mb.Classes.TypefacedTextView
@@ -108,7 +114,8 @@
             android:gravity="center"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.1"
             android:layout_height="wrap_content" />
 
         <ba.wurth.mb.Classes.TypefacedTextView
@@ -121,7 +128,8 @@
             android:gravity="center"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:layout_width="60dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
             android:layout_height="wrap_content" />
 
     </TableRow>

@@ -53,15 +53,29 @@ public class CatalogFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 try {
-                    Cursor cur = DL_Wurth.GET_Categories(data.get(i).getCategoryID(), "");
+
+                    Cursor cur_product =  DL_Wurth.GET_Products("", data.get(i).getCategoryID(), 0L);
+                    Cursor cur_category = DL_Wurth.GET_Categories(data.get(i).getCategoryID(), "");
+
+                    if (cur_product.getCount() > 0) {
+                        ((ProductsActivity) getActivity()).setProductListTab(data.get(i).getCategoryID(), 0L, "", true, true);
+                    }
+
+                    if(cur_category.getCount() > 0){
+                        CategoryArray.add((data.get(i)));
+                        new LongTask().execute();
+                    }
+
+                  /*  Cursor cur = DL_Wurth.GET_Categories(data.get(i).getCategoryID(), "");
 
                     if (cur.getCount() == 0) {
                         ((ProductsActivity) getActivity()).setProductListTab(data.get(i).getCategoryID(), 0L, "", true, true);
                     } else {
                         CategoryArray.add((data.get(i)));
-                        ((ProductsActivity) getActivity()).setProductListTab(data.get(i).getCategoryID(), 0L, "", true, false);
+                       // ((ProductsActivity) getActivity()).setProductListTab(data.get(i).getCategoryID(), 0L, "", true, false);
                         new LongTask().execute();
                     }
+*/
                 }catch (Exception e){
 
                 }
