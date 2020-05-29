@@ -327,6 +327,7 @@ public class OrderPropertiesFragment extends Fragment implements DatePickerDialo
                             wurthMB.getOrder().ClientID = wurthMB.getOrder().client.ClientID;
                             wurthMB.getOrder().DeliveryPlaceID = cur.getLong(cur.getColumnIndex("DeliveryPlaceID"));
                             wurthMB.getOrder().PaymentMethodID = 0;
+                            wurthMB.getOrder().PartnerID = cur.getLong(cur.getColumnIndex("_id"));
                             wurthMB.getOrder().items = new ArrayList<OrderItem>();
 
                             txbDeliveryPlaces.setContentDescription(cur.getString(cur.getColumnIndex("DeliveryPlaceID")));
@@ -457,11 +458,12 @@ public class OrderPropertiesFragment extends Fragment implements DatePickerDialo
                 //if (wurthMB.getOrder()._VisitID > 0L) getView().findViewById(R.id.llVisit).setVisibility(View.GONE);
 
                 if (wurthMB.getOrder().ClientID > 0L) {
-                    Client c  = DL_Wurth.GET_Client(wurthMB.getOrder().ClientID);
-                    if (c != null) {
-                        wurthMB.getOrder().client = c;
-                        txbClients.setText(c.Name);
-                        txbClients.setContentDescription(Long.toString(c._id));
+                  //  Client c  = DL_Wurth.GET_Client(wurthMB.getOrder().ClientID);
+                    Cursor cur = DL_Wurth.GET_Partner(wurthMB.getOrder().PartnerID);
+                    if (cur != null && cur.moveToFirst()) {
+                        wurthMB.getOrder().client = DL_Wurth.GET_Client(wurthMB.getOrder().ClientID);
+                        txbClients.setText(cur.getString(cur.getColumnIndex("Name")));
+                        txbClients.setContentDescription(Long.toString(wurthMB.getOrder().PartnerID));
                         if (wurthMB.getOrder().DeliveryPlaceID == 0L) txbDeliveryPlaces.requestFocus();
                         bindPaymentMethods();
                         bindDeliveryType();
