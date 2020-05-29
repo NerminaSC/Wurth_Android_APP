@@ -16,6 +16,7 @@ import ba.wurth.mb.DataLayer.Additional.DL_Additional;
 import ba.wurth.mb.DataLayer.Documents.DL_Documents;
 import ba.wurth.mb.DataLayer.GPS.DL_GPS;
 import ba.wurth.mb.DataLayer.Orders.DL_Orders;
+import ba.wurth.mb.DataLayer.Routes.DL_Routes;
 import ba.wurth.mb.DataLayer.Sync.DL_Sync;
 import ba.wurth.mb.DataLayer.Temp.DL_Temp;
 import ba.wurth.mb.DataLayer.Visits.DL_Visits;
@@ -137,6 +138,9 @@ public class SyncService extends Service {
 
                     int OrderCount = DL_Orders.Sync();
                     if (mBound && OrderCount > 0) mService.setTicker(getString(R.string.Notification_OrderSynced) + ": " + Integer.toString(OrderCount));
+
+                    int RouteCount = DL_Routes.Sync();
+                    if (mBound && VisitCount > 0) mService.setTicker(getString(R.string.Notification_VisitSynced) + ": " + Integer.toString(RouteCount));
 
                     if (wurthMB.USE_3G_DOCUMENTS || (!wurthMB.USE_3G_DOCUMENTS && !wurthMB.MOBILE_DATA)) {
                         int DocumentCount = DL_Documents.Sync();

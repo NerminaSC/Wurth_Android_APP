@@ -180,7 +180,7 @@ public class Order {
 
             for (int i = 0; i < Prices.size(); i++) {
 
-                if ((client_discount + user_discount) <= Prices.get(i).discount_from || ((client_discount + user_discount) > Prices.get(i).discount_to && Prices.get(i).discount_to > 0)) {
+                if ((client_discount + user_discount) <= Prices.get(i).discount_from || ((client_discount + user_discount) > Prices.get(i).discount_to)) {
                     price = Prices.get(i).price;
                     priceKey = Prices.get(i).priceKey;
                     client_discount = Prices.get(i).discount_from;

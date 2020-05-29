@@ -53,15 +53,6 @@
             <ba.wurth.mb.Classes.TypefacedTextView
                 app:typeface="Roboto-Condensed.ttf"
                 style="@style/label"
-                android:text="@string/Type" />
-
-            <Spinner
-                android:id="@+id/spType"
-                style="@style/Spinner_01" />
-
-            <ba.wurth.mb.Classes.TypefacedTextView
-                app:typeface="Roboto-Condensed.ttf"
-                style="@style/label"
                 android:text="@string/Route_Type" />
 
             <Spinner
@@ -82,6 +73,15 @@
 
                 <Spinner
                     android:id="@+id/spDays"
+                    style="@style/Spinner_01" />
+
+                <ba.wurth.mb.Classes.TypefacedTextView
+                    app:typeface="Roboto-Condensed.ttf"
+                    style="@style/label"
+                    android:text="Sedmica" />
+
+                <Spinner
+                    android:id="@+id/spWeekNumber"
                     style="@style/Spinner_01" />
 
             </LinearLayout>

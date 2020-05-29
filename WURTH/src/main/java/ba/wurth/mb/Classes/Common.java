@@ -94,6 +94,23 @@ public class Common {
         return ja;
     }
 
+    public static JSONArray addItem(final int idx, JSONArray array, JSONObject item){
+        final JSONArray ja = new JSONArray();
+
+        try{
+            final List<JSONObject> objs = asList(array);
+            objs.add(0, item);
+
+            for (final JSONObject obj : objs) {
+                ja.put(obj);
+            }
+
+        }catch (Exception e){
+
+        }
+	    return ja;
+    }
+
     public static List<JSONObject> asList(final JSONArray ja) {
         final int len = ja.length();
         final ArrayList<JSONObject> result = new ArrayList<JSONObject>(len);

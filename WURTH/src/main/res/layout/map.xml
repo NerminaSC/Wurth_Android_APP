@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,15 +9,56 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/llActions"/>
+        android:layout_above="@+id/llActions" />
+
+    <LinearLayout
+        android:id="@+id/ll_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="25dp"
+        android:background="@color/transparent_black"
+        android:paddingLeft="15dp"
+        android:paddingTop="1dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="1dp">
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            android:id="@+id/lit_total_distance"
+            style="@style/list_title"
+            android:text="0 km"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_distance"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:background="@color/transparent_black"
+        android:paddingLeft="15dp"
+        android:paddingTop="1dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="1dp">
+
+        <ba.wurth.mb.Classes.TypefacedTextView
+            android:id="@+id/lit_total_time"
+            style="@style/list_title"
+            android:text="00:00:00"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/progressContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:background="#66000000"
+        android:gravity="center"
         android:visibility="gone">
+
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -32,38 +72,40 @@
         android:background="#333333">
 
         <ba.wurth.mb.Classes.TypefacedButton
-            app:typeface="Roboto-Condensed.ttf"
             android:id="@+id/btnRoute"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="0.5"
             android:background="#00000000"
-            android:padding="5dp"
             android:drawablePadding="5dp"
+            android:padding="5dp"
+            android:text="@string/GetRoute"
             android:textAllCaps="true"
             android:textColor="#ffffff"
             android:textSize="@dimen/textSizeSmall"
-            android:text="@string/GetRoute"
-            android:visibility="visible"/>
+            android:visibility="visible"
+            app:typeface="Roboto-Condensed.ttf" />
 
-        <View style="@style/separator" android:layout_margin="5dp" />
+        <View
+            style="@style/separator"
+            android:layout_margin="5dp" />
 
         <ba.wurth.mb.Classes.TypefacedButton
-            app:typeface="Roboto-Condensed.ttf"
             android:id="@+id/btnOptimized"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="0.5"
             android:background="#00000000"
-            android:padding="5dp"
             android:drawablePadding="5dp"
+            android:padding="5dp"
+            android:text="@string/GetRouteOptimized"
             android:textAllCaps="true"
             android:textColor="#ffffff"
             android:textSize="@dimen/textSizeSmall"
-            android:text="@string/GetRouteOptimized"
-            android:visibility="visible"/>
+            android:visibility="visible"
+            app:typeface="Roboto-Condensed.ttf" />
 
     </LinearLayout>
 

@@ -38,7 +38,7 @@ public class SyncFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.synchronization, container, false);
 
-        String[] array_spinner = new String[12];
+        String[] array_spinner = new String[13];
         array_spinner[0]=getString(R.string.AllSections).toUpperCase();
         array_spinner[1]=getString(R.string.Clients).toUpperCase();
         array_spinner[2]=getString(R.string.Products).toUpperCase();
@@ -51,6 +51,7 @@ public class SyncFragment extends Fragment {
         array_spinner[9]=getString(R.string.Users).toUpperCase();
         array_spinner[10]=getString(R.string.Actions).toUpperCase();
         array_spinner[11]=getString(R.string.Branches).toUpperCase();
+        array_spinner[12]=getString(R.string.Routes).toUpperCase();
 
         spSections = (Spinner) v.findViewById(R.id.spSections);
         ArrayAdapter<?> adapter = new ArrayAdapter<Object>(getActivity(), android.R.layout.simple_spinner_item, array_spinner);
@@ -142,6 +143,10 @@ public class SyncFragment extends Fragment {
 
                         retString = getString(R.string.VisitsSynchronized);
                         currentRet = DL_Sync.Load_Visits(wurthMB.getUser().UserID);
+                        ret += currentRet;
+
+                        retString = "Sinhronizovano ruta";
+                        currentRet = DL_Sync.Load_Routes(wurthMB.getUser().UserID);
                         ret += currentRet;
 
                         retString = getString(R.string.Activities);
@@ -239,6 +244,13 @@ public class SyncFragment extends Fragment {
                     case 11:
                         retString = getString(R.string.Branches);
                         currentRet = DL_Sync.Load_Branches();
+                        ret += currentRet;
+                        break;
+
+
+                    case 12:
+                        retString = getString(R.string.Routes);
+                        currentRet = DL_Sync.Load_Routes(wurthMB.getUser().UserID);
                         ret += currentRet;
                         break;
 

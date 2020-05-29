@@ -58,6 +58,7 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
     private Spinner spDays;
     private Spinner spDaily;
     private Spinner spType;
+    private Spinner spWeekNumber;
 
     private LinearLayout llDaily;
     private LinearLayout llDate;
@@ -79,10 +80,12 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
     private SpinnerItem[] daily_items;
     private SpinnerItem[] days_items;
     private SpinnerItem[] type_items;
+    private SpinnerItem[] week_number_items;
 
     private SpinnerAdapter adapter_daily;
     private SpinnerAdapter adapter_days;
     private SpinnerAdapter adapter_type;
+    private SpinnerAdapter adapter_week_number;
 
     private Calendar calendar;
 
@@ -123,9 +126,12 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
         llDaily = (LinearLayout) getView().findViewById(R.id.llDaily);
         llDate = (LinearLayout) getView().findViewById(R.id.llDate);
         llLocations = (LinearLayout) getView().findViewById(R.id.llLocations);
+
         spDays = (Spinner) getView().findViewById(R.id.spDays);
         spDaily = (Spinner) getView().findViewById(R.id.spDaily);
         spType = (Spinner) getView().findViewById(R.id.spType);
+        spWeekNumber = (Spinner) getView().findViewById(R.id.spWeekNumber);
+
         btnAddClient = (Button) getView().findViewById(R.id.btnAddClient);
         btnUpdate = (Button) getView().findViewById(R.id.btnUpdate);
         btnCancel = (Button) getView().findViewById(R.id.btnCancel);
@@ -141,10 +147,10 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
         daily_items = new SpinnerItem[2];
         daily_items[0] = new SpinnerItem(1L, getString(R.string.Route_Daily), "", "");
         daily_items[1] = new SpinnerItem(2L, getString(R.string.Route_Date), "", "");
-        adapter_daily= new SpinnerAdapter(getActivity(), R.layout.simple_dropdown_item_1line, daily_items);
+        adapter_daily = new SpinnerAdapter(getActivity(), R.layout.simple_dropdown_item_1line, daily_items);
         spDaily.setAdapter(adapter_daily);
-        spDaily.setSelection(1);
-        spDaily.setEnabled(false);
+        // spDaily.setSelection(1);
+        // spDaily.setEnabled(false);
 
         days_items = new SpinnerItem[7];
         days_items[0] = new SpinnerItem(1L, getString(R.string.Monday), "", "");
@@ -153,22 +159,19 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
         days_items[3] = new SpinnerItem(4L, getString(R.string.Thursday), "", "");
         days_items[4] = new SpinnerItem(5L, getString(R.string.Friday), "", "");
         days_items[5] = new SpinnerItem(6L, getString(R.string.Saturday), "", "");
-        days_items[6] = new SpinnerItem(7L, getString(R.string.Sunday), "", "");
+        days_items[6] = new SpinnerItem(0L, getString(R.string.Sunday), "", "");
 
         adapter_days = new SpinnerAdapter(getActivity(), R.layout.simple_dropdown_item_1line, days_items);
         spDays.setAdapter(adapter_days);
 
-
-        type_items = new SpinnerItem[6];
-        type_items[0] = new SpinnerItem(1L, getString(R.string.NormalDay), "", "");
-        type_items[1] = new SpinnerItem(2L, getString(R.string.ShortDay), "", "");
-        type_items[2] = new SpinnerItem(3L, getString(R.string.Leave), "", "");
-        type_items[3] = new SpinnerItem(4L, getString(R.string.Vacation), "", "");
-        type_items[4] = new SpinnerItem(5L, getString(R.string.Awol), "", "");
-        type_items[5] = new SpinnerItem(6L, getString(R.string.Other), "", "");
-
-        adapter_type = new SpinnerAdapter(getActivity(), R.layout.simple_dropdown_item_1line, type_items);
-        spType.setAdapter(adapter_type);
+        week_number_items = new SpinnerItem[5];
+        week_number_items[0] = new SpinnerItem(0L, "0", "", "");
+        week_number_items[1] = new SpinnerItem(1L, "1", "", "");
+        week_number_items[2] = new SpinnerItem(2L, "2", "", "");
+        week_number_items[3] = new SpinnerItem(3L, "3", "", "");
+        week_number_items[4] = new SpinnerItem(4L, "4", "", "");
+        adapter_week_number = new SpinnerAdapter(getActivity(), R.layout.simple_dropdown_item_1line, week_number_items);
+        spWeekNumber.setAdapter(adapter_week_number);
 
         bindListeners();
     }
@@ -176,6 +179,7 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
     @Override
     public void onResume() {
         super.onResume();
+        mRoute = ((RouteActivity) getActivity()).mRoute;
         bindData();
     }
 
@@ -207,8 +211,8 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                     try {
                         Cursor cur = DL_Clients.Get(txbClients.getText().toString());
                         return cur;
+                    } catch (Exception ex) {
                     }
-                    catch (Exception ex) { }
                     return null;
                 }
             });
@@ -218,13 +222,13 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                     try {
                         int index = cur.getColumnIndex("Name");
                         return cur.getString(index);
+                    } catch (Exception ex) {
                     }
-                    catch (Exception ex) {}
                     return "";
                 }
             });
 
-            mAdapterDeliveryPlaces = new SimpleCursorAdapter(getActivity(), R.layout.simple_dropdown_item_1line, null, new String[] { "Name" }, new int[] {android.R.id.text1}, 0);
+            mAdapterDeliveryPlaces = new SimpleCursorAdapter(getActivity(), R.layout.simple_dropdown_item_1line, null, new String[]{"Name"}, new int[]{android.R.id.text1}, 0);
 
             mAdapterDeliveryPlaces.setFilterQueryProvider(new FilterQueryProvider() {
                 public Cursor runQuery(CharSequence str) {
@@ -233,8 +237,8 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                             Cursor cur = DL_Clients.Get_DeliveryPlacesByClientLongID(Long.parseLong(txbClients.getContentDescription().toString()), txbDeliveryPlaces.getText().toString().replaceAll("^\\s+", ""));
                             return cur;
                         }
+                    } catch (Exception ex) {
                     }
-                    catch (Exception ex) { }
                     return null;
                 }
             });
@@ -244,8 +248,8 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                     try {
                         int index = cur.getColumnIndex("Name");
                         return cur.getString(index);
+                    } catch (Exception ex) {
                     }
-                    catch (Exception ex) {}
                     return "";
                 }
             });
@@ -258,7 +262,8 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     txbClients.setContentDescription(Long.toString(l));
 
-                    if (Long.parseLong(txbDeliveryPlaces.getContentDescription().toString()) > 0) txbDeliveryPlaces.setText("");
+                    if (Long.parseLong(txbDeliveryPlaces.getContentDescription().toString()) > 0)
+                        txbDeliveryPlaces.setText("");
                     txbDeliveryPlaces.setContentDescription("0");
 
                     Cursor cur = DL_Wurth.GET_Partner(l);
@@ -329,28 +334,27 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                             if (cur != null) {
                                 if (cur.moveToFirst()) {
                                     JSONObject jsonObj = new JSONObject();
-                                    jsonObj.put("ID", cur.getLong(cur.getColumnIndex(("ClientID"))));
-                                    jsonObj.put("tempID", cur.getLong(cur.getColumnIndex(("ClientID"))));
-                                    jsonObj.put("Name", cur.getString(cur.getColumnIndex(("Name"))));
-                                    jsonObj.put("Address", cur.getString(cur.getColumnIndex(("Address"))));
-                                    jsonObj.put("Longitude", cur.getDouble(cur.getColumnIndex("Longitude")) / 10000000D);
-                                    jsonObj.put("Latitude", cur.getDouble(cur.getColumnIndex("Latitude")) / 10000000D);
-                                    jsonObj.put("Note", "");
-                                    jsonObj.put("stopTime", 1800);
-                                    jsonObj.put("start", 0);
-                                    jsonObj.put("end", 0);
+                                    jsonObj.put("client_id", cur.getLong(cur.getColumnIndex(("ClientID"))));
+                                    jsonObj.put("delivery_place_id", cur.getLong(cur.getColumnIndex(("DeliveryPlaceID"))));
+                                    jsonObj.put("latitude", cur.getLong(cur.getColumnIndex(("Latitude"))));
+                                    jsonObj.put("longitude", cur.getLong(cur.getColumnIndex(("Longitude"))));
+                                    jsonObj.put("name", cur.getString(cur.getColumnIndex(("Name"))));
+                                    jsonObj.put("start_time", Calendar.getInstance().getTimeInMillis());
+                                    jsonObj.put("note", "");
+                                    jsonObj.put("duration", 1800);
+                                    jsonObj.put("activity_id", 0);
+                                    jsonObj.put("target", 0);
+                                    jsonObj.put("last_visit_time", 0);
 
-                                    jsonObj.put("prefereduser", wurthMB.getUser().UserID);
-                                    jsonObj.put("Visit_Type", 1);
-
-                                    if (jsonObj.getDouble("Latitude") == 0D || jsonObj.getDouble("Longitude") == 0D) {
+                                    if (jsonObj.getDouble("latitude") == 0D || jsonObj.getDouble("longitude") == 0D) {
                                         Notifications.showNotification(getActivity(), "", getString(R.string.Notification_MissingGeoLocation), 2);
                                     }
 
                                     if (mRoute != null) {
                                         JSONObject raw = new JSONObject(mRoute.raw);
-                                        if (raw.isNull("clients")) raw.put("clients", new JSONArray());
-                                        raw.getJSONArray("clients").put(jsonObj);
+                                        if (raw.isNull("nodes"))
+                                            raw.put("nodes", new JSONArray());
+                                        raw.getJSONArray("nodes").put(jsonObj);
                                         mRoute.raw = raw.toString();
                                     }
 
@@ -363,8 +367,7 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
 
                         txbClients.setText("");
                         txbClients.setContentDescription("0");
-                    }
-                    catch (Exception ex) {
+                    } catch (Exception ex) {
                         wurthMB.AddError("RouteInfoFragment", ex.getMessage(), ex);
                     }
                 }
@@ -378,41 +381,22 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                         if (mRoute != null) {
 
                             JSONObject raw = new JSONObject(mRoute.raw);
-                            raw.put("daily", 1);
-                            raw.put("type", type_items[spType.getSelectedItemPosition()].getId());
-                            raw.put("StatusID", 1);
-                            raw.put("RouteID", mRoute.RouteID);
-                            raw.put("route_type", 6);
-                            raw.put("active", true);
-                            raw.put("name", mRoute.Name);
-                            raw.put("description", mRoute.Description);
-                            raw.put("start", 0);
-                            raw.put("end", 0);
-                            raw.put("ResourceID", wurthMB.getUser().UserID);
-                            raw.put("date", txbDate.getText().toString());
-                            raw.put("orders", new JSONArray());
 
-                            JSONArray nodes = new JSONArray();
+                            raw.put("route_type", 2);
+                            raw.put("type", ((SpinnerItem) spDaily.getSelectedItem()).getId());
+                            raw.put("day", ((SpinnerItem) spDays.getSelectedItem()).getId());
+                            raw.put("week_number", ((SpinnerItem) spWeekNumber.getSelectedItem()).getId());
+                            raw.put("date", txbDate.getContentDescription());
+                            raw.put("locked", false);
+                            raw.put("approved", new JSONObject());
+                            raw.put("hosts", new JSONArray());
 
-                            for (int i = 0; i < raw.getJSONArray("clients").length(); i++) {
-                                JSONObject jsonObject = raw.getJSONArray("clients").getJSONObject(i);
-
-                                JSONObject node = new JSONObject();
-
-                                node.put("RouteID", mRoute.RouteID);
-                                node.put("NodeID", jsonObject.getLong("ID"));
-                                node.put("SequenceNumber", i);
-                                node.put("visitDuration", jsonObject.getLong("stopTime"));
-                                node.put("start", jsonObject.getLong("start"));
-                                node.put("end", jsonObject.getLong("end"));
-                                node.put("load", "[0]");
-                                node.put("latitude", jsonObject.getLong("Latitude"));
-                                node.put("longitude", jsonObject.getLong("Longitude"));
-
-                                nodes.put(node);
-                            }
-
-                            raw.put("nodes", nodes);
+                            JSONArray users = new JSONArray();
+                            JSONObject user = new JSONObject();
+                            user.put("user_id", wurthMB.getUser().UserID);
+                            user.put("name", wurthMB.getUser().Firstname + wurthMB.getUser().Lastname);
+                            users.put(user);
+                            raw.put("users", users);
 
                             /*if (mRoute.Date == 0D && mRoute.Day == -1) {
                                 Notifications.showNotification(getActivity(), "", getString(R.string.Notification_Date), 2);
@@ -424,8 +408,8 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                                 return;
                             }
 
-                            if (mRoute.raw.equals("")) {
-                                //Notifications.showNotification(getActivity(), "", getString(R.string.Notification_MissingClients), 2);
+                            if (!raw.has("nodes") || ((JSONArray) raw.get("nodes")).length() == 0) {
+                                Notifications.showNotification(getActivity(), "", getString(R.string.Notification_MissingClients), 2);
                                 return;
                             }
 
@@ -436,12 +420,11 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                             mRoute.UserID = wurthMB.getUser().UserID;
                             mRoute.AccountID = wurthMB.getUser().AccountID;
 
-                            if (DL_Routes.AddOrUpdate(mRoute) > 0 ) {
+                            if (DL_Routes.AddOrUpdate(mRoute) > 0) {
                                 Notifications.hideLoading(getActivity());
                                 Notifications.showNotification(getActivity(), "", getString(R.string.Notification_RouteSaved), 0);
                                 getActivity().finish();
-                            }
-                            else {
+                            } else {
                                 Notifications.hideLoading(getActivity());
                                 Notifications.showNotification(getActivity(), "", getString(R.string.SystemError), 1);
                             }
@@ -459,12 +442,10 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                 }
             });
 
-           /*if (mRoute.Sync == 1)  {
-                getView().findViewById(R.id.llActions).setVisibility(View.GONE);
-            }*/
-        }
-        catch (Exception ex) {
+            getView().findViewById(R.id.llActions).setVisibility(View.VISIBLE);
 
+        } catch (Exception ex) {
+            String temp = ex.getMessage();
         }
     }
 
@@ -507,6 +488,34 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                 bindList();
                 txbName.setText(mRoute.Name);
                 txbDesc.setText(mRoute.Description);
+
+                if (adapter_days != null) {
+                    JSONObject jsonObject = new JSONObject(mRoute.raw);
+                    if (jsonObject.has("day")) {
+                        int i = 0;
+                        for (SpinnerItem item : days_items) {
+                            if (item.getId() == jsonObject.getInt("day")) {
+                                break;
+                            }
+                            i++;
+                        }
+                        if (i < days_items.length) spDays.setSelection(i);
+                    }
+                }
+
+                if (adapter_week_number != null) {
+                    JSONObject jsonObject = new JSONObject(mRoute.raw);
+                    if (jsonObject.has("week_number")) {
+                        int i = 0;
+                        for (SpinnerItem item : week_number_items) {
+                            if (item.getId() == jsonObject.getInt("week_number")) {
+                                break;
+                            }
+                            i++;
+                        }
+                        if (i < week_number_items.length) spWeekNumber.setSelection(i);
+                    }
+                }
 
                 if (adapter_type != null) {
                     JSONObject jsonObject = new JSONObject(mRoute.raw);
@@ -561,9 +570,7 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                     if (i == 0) {
                         llDaily.setVisibility(View.VISIBLE);
                         llDate.setVisibility(View.GONE);
-                        spDaily.setSelection(0);
-                    }
-                    else {
+                    } else {
                         llDaily.setVisibility(View.GONE);
                         llDate.setVisibility(View.VISIBLE);
                     }
@@ -587,9 +594,8 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                 }
             });
 
-        }
-        catch (Exception ex) {
-
+        } catch (Exception ex) {
+            String temp = ex.getMessage();
         }
     }
 
@@ -601,165 +607,178 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
 
                 llLocations.removeAllViews();
 
-                for (int i = 0; i < raw.getJSONArray("clients").length(); i++) {
+                for (int i = 0; i < raw.getJSONArray("nodes").length(); i++) {
 
-                    JSONObject jsonObj = raw.getJSONArray("clients").getJSONObject(i);
+                    JSONObject jsonObj = raw.getJSONArray("nodes").getJSONObject(i);
 
                     View v = mInflater.inflate(R.layout.list_row, llLocations, false);
-                    ((TextView) v.findViewById(R.id.litTitle)).setText(jsonObj.getString("Name"));
-                    ((TextView) v.findViewById(R.id.litTotal)).setText(Integer.toString(jsonObj.getInt("stopTime") / 60) + " min.");
-                    ((TextView) v.findViewById(R.id.litSupTitle)).setText(tf.format(new Date(jsonObj.getLong("start"))) + " - " + tf.format(new Date(jsonObj.getLong("end"))));
-                    ((TextView) v.findViewById(R.id.litSubTitle)).setText(jsonObj.getString("Note"));
-                    ((TextView) v.findViewById(R.id.litStatus)).setText(Integer.toString(i+1));
+                    ((TextView) v.findViewById(R.id.litTitle)).setText(jsonObj.getString("name"));
+                    ((TextView) v.findViewById(R.id.litTotal)).setText(Integer.toString(jsonObj.getInt("duration") / 60) + " min.");
+                    ((TextView) v.findViewById(R.id.litSupTitle)).setText(tf.format(new Date(jsonObj.getLong("start_time"))) + " - " + tf.format(new Date(jsonObj.getLong("start_time") + jsonObj.getLong("duration") * 1000)));
+                    ((TextView) v.findViewById(R.id.litSubTitle)).setText(jsonObj.getString("note"));
+                    ((TextView) v.findViewById(R.id.litStatus)).setText(Integer.toString(i + 1));
+                    v.setTag(jsonObj.toString());
 
                     final int j = i;
 
                     v.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            final Dialog ItemDialog = new Dialog(getActivity());
-                            ItemDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                            try {
 
-                            ItemDialog.setContentView(R.layout.route_item_dialog);
-                            ItemDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                                final Dialog ItemDialog = new Dialog(getActivity());
+                                ItemDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-                            final Spinner spType = (Spinner) ItemDialog.findViewById(R.id.spType);
-                            final EditText txbDuration = (EditText) ItemDialog.findViewById(R.id.txbDuration);
-                            final EditText txbNote = (EditText) ItemDialog.findViewById(R.id.txbNote);
+                                ItemDialog.setContentView(R.layout.route_item_dialog);
+                                ItemDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-                            final TextView lit_StartTime = (TextView) ItemDialog.findViewById(R.id.lit_StartTime);
-                            final TextView lit_EndTime = (TextView) ItemDialog.findViewById(R.id.lit_EndTime);
+                                final Spinner spType = (Spinner) ItemDialog.findViewById(R.id.spType);
+                                final EditText txbDuration = (EditText) ItemDialog.findViewById(R.id.txbDuration);
+                                final EditText txbNote = (EditText) ItemDialog.findViewById(R.id.txbNote);
 
-                            calendar.setTimeInMillis(Long.parseLong(txbDate.getContentDescription().toString()));
+                                final TextView lit_StartTime = (TextView) ItemDialog.findViewById(R.id.lit_StartTime);
+                                final TextView lit_EndTime = (TextView) ItemDialog.findViewById(R.id.lit_EndTime);
 
-                            calendar.set(Calendar.HOUR_OF_DAY, 9);
-                            calendar.set(Calendar.MINUTE, 30);
-                            lit_StartTime.setContentDescription(Long.toString(calendar.getTimeInMillis()));
+                                JSONObject item = new JSONObject(view.getTag().toString());
 
-                            calendar.set(Calendar.HOUR_OF_DAY, 10);
-                            calendar.set(Calendar.MINUTE, 0);
-                            lit_EndTime.setContentDescription(Long.toString(calendar.getTimeInMillis()));
+                                calendar.setTimeInMillis(Long.parseLong(txbDate.getContentDescription().toString()));
 
-                            final TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(null, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true, false);
+                                calendar.set(Calendar.HOUR_OF_DAY, 9);
+                                calendar.set(Calendar.MINUTE, 30);
+                                lit_StartTime.setContentDescription(Long.toString(calendar.getTimeInMillis()));
 
-                            timePickerDialog.setOnTimeSetListener(new TimePickerDialog.OnTimeSetListener() {
-                                @Override
-                                public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int minute) {
-                                    try {
-                                        Calendar c = Calendar.getInstance();
-                                        c.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                                        c.set(Calendar.MINUTE, minute);
-                                        c.set(Calendar.SECOND, 0);
+                                calendar.set(Calendar.HOUR_OF_DAY, 10);
+                                calendar.set(Calendar.MINUTE, 0);
+                                lit_EndTime.setContentDescription(Long.toString(calendar.getTimeInMillis()));
 
-                                        switch (Integer.parseInt(CURRENT_TAG)) {
-                                            case 1:
-                                                if (c.getTimeInMillis() > Long.parseLong(lit_EndTime.getContentDescription().toString())) return;
-                                                lit_StartTime.setContentDescription(Long.toString(c.getTimeInMillis()));
-                                                lit_StartTime.setText(tf.format(new Date(c.getTimeInMillis())));
-                                                break;
-                                            case 2:
-                                                if (c.getTimeInMillis() < Long.parseLong(lit_StartTime.getContentDescription().toString())) return;
-                                                lit_EndTime.setContentDescription(Long.toString(c.getTimeInMillis()));
-                                                lit_EndTime.setText(tf.format(new Date(c.getTimeInMillis())));
-                                                break;
+                                if(item.has("start_time") && item.has("duration")){
+                                    lit_StartTime.setText(tf.format(new Date(item.getLong("start_time"))));
+                                    lit_StartTime.setContentDescription(String.valueOf(item.getLong("start_time")));
 
-                                            default:break;
+                                    lit_EndTime.setText(tf.format(new Date(item.getLong("start_time") + item.getLong("duration") * 1000)));
+                                    lit_EndTime.setContentDescription(String.valueOf(item.getLong("start_time") + item.getLong("duration") * 1000));
+                                }
+
+
+                                final TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(null, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true, false);
+
+                                timePickerDialog.setOnTimeSetListener(new TimePickerDialog.OnTimeSetListener() {
+                                    @Override
+                                    public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int minute) {
+                                        try {
+                                            Calendar c = Calendar.getInstance();
+                                            c.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                                            c.set(Calendar.MINUTE, minute);
+                                            c.set(Calendar.SECOND, 0);
+
+                                            switch (Integer.parseInt(CURRENT_TAG)) {
+                                                case 1:
+                                                    // if (c.getTimeInMillis() > Long.parseLong(lit_EndTime.getContentDescription().toString())) return;
+                                                    lit_StartTime.setContentDescription(Long.toString(c.getTimeInMillis()));
+                                                    lit_StartTime.setText(tf.format(new Date(c.getTimeInMillis())));
+                                                    break;
+                                                case 2:
+                                                    // if (c.getTimeInMillis() < Long.parseLong(lit_StartTime.getContentDescription().toString())) return;
+                                                    lit_EndTime.setContentDescription(Long.toString(c.getTimeInMillis()));
+                                                    lit_EndTime.setText(tf.format(new Date(c.getTimeInMillis())));
+                                                    break;
+
+                                                default:
+                                                    break;
+                                            }
+
+                                        } catch (Exception e) {
+
                                         }
-
-                                    } catch (Exception e) {
-
                                     }
-                                }
-                            });
+                                });
 
-                            ItemDialog.findViewById(R.id.lit_StartTime).setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    CURRENT_TAG = STARTTIME_TAG;
-                                    Calendar c = Calendar.getInstance();
-                                    c.setTimeInMillis(Long.parseLong(lit_StartTime.getContentDescription().toString()));
-                                    timePickerDialog.setStartTime(c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE));
-                                    timePickerDialog.show(getFragmentManager(), STARTTIME_TAG);
-                                }
-                            });
+                                ItemDialog.findViewById(R.id.lit_StartTime).setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        CURRENT_TAG = STARTTIME_TAG;
+                                        Calendar c = Calendar.getInstance();
+                                        c.setTimeInMillis(Long.parseLong(lit_StartTime.getContentDescription().toString()));
+                                        timePickerDialog.setStartTime(c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE));
+                                        timePickerDialog.show(getFragmentManager(), STARTTIME_TAG);
+                                    }
+                                });
 
-                            ItemDialog.findViewById(R.id.lit_EndTime).setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    CURRENT_TAG = ENDTIME_TAG;
-                                    Calendar c = Calendar.getInstance();
-                                    c.setTimeInMillis(Long.parseLong(lit_EndTime.getContentDescription().toString()));
-                                    timePickerDialog.setStartTime(c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE));
-                                    timePickerDialog.show(getFragmentManager(), ENDTIME_TAG);
-                                }
-                            });
+                                ItemDialog.findViewById(R.id.lit_EndTime).setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        CURRENT_TAG = ENDTIME_TAG;
+                                        Calendar c = Calendar.getInstance();
+                                        c.setTimeInMillis(Long.parseLong(lit_EndTime.getContentDescription().toString()));
+                                        timePickerDialog.setStartTime(c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE));
+                                        timePickerDialog.show(getFragmentManager(), ENDTIME_TAG);
+                                    }
+                                });
 
-                            ItemDialog.findViewById(R.id.btnCloseDialog).setOnClickListener(new View.OnClickListener() {
-                                public void onClick(View v) {
-                                    ItemDialog.dismiss();
-                                }
-                            });
+                                ItemDialog.findViewById(R.id.btnCloseDialog).setOnClickListener(new View.OnClickListener() {
+                                    public void onClick(View v) {
+                                        ItemDialog.dismiss();
+                                    }
+                                });
 
-                            ItemDialog.findViewById(R.id.btnDelete).setOnClickListener(new View.OnClickListener() {
-                                public void onClick(View v) {
-                                    try {
-                                        JSONArray clients = raw.getJSONArray("clients");
-                                        clients = Common.remove(j, clients);
-                                        raw.put("clients", clients);
-                                        mRoute.raw = raw.toString();
+                                ItemDialog.findViewById(R.id.btnDelete).setOnClickListener(new View.OnClickListener() {
+                                    public void onClick(View v) {
+                                        try {
+                                            JSONArray clients = raw.getJSONArray("nodes");
+                                            clients = Common.remove(j, clients);
+                                            raw.put("nodes", clients);
+                                            mRoute.raw = raw.toString();
+                                            bindList();
+                                            ItemDialog.dismiss();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+
+                                ItemDialog.findViewById(R.id.btnUpdateOrder).setOnClickListener(new View.OnClickListener() {
+                                    public void onClick(View v) {
+                                        try {
+
+                                            boolean overlap = false;
+
+                                            Long start = Long.parseLong(lit_StartTime.getContentDescription().toString());
+                                            Long end = Long.parseLong(lit_EndTime.getContentDescription().toString());
+
+                                            for (int i = 0; i < raw.getJSONArray("nodes").length(); i++) {
+
+                                                if (i == j) continue;
+
+                                                Long _start = raw.getJSONArray("nodes").getJSONObject(i).getLong("start_time");
+                                                Long _end = raw.getJSONArray("nodes").getJSONObject(i).getLong("start_time") + raw.getJSONArray("nodes").getJSONObject(i).getLong("duration");
+                                                if (start >= _start && start < _end) {
+                                                    overlap = true;
+                                                    break;
+                                                }
+                                                if (end >= _start && end < _end) {
+                                                    overlap = true;
+                                                    break;
+                                                }
+                                            }
+
+                                            if (overlap) {
+                                                Notifications.showNotification(getActivity(), "", getString(R.string.Notification_VisitOverlap), 2);
+                                                return;
+                                            }
+
+                                            raw.getJSONArray("nodes").getJSONObject(j).put("note", txbNote.getText());
+                                            raw.getJSONArray("nodes").getJSONObject(j).put("start_time", Long.parseLong(lit_StartTime.getContentDescription().toString()));
+                                            raw.getJSONArray("nodes").getJSONObject(j).put("duration", (Long.parseLong(lit_EndTime.getContentDescription().toString()) - Long.parseLong(lit_StartTime.getContentDescription().toString())) / 1000);
+
+                                            mRoute.raw = raw.toString();
+                                        } catch (JSONException exx) {
+                                        }
                                         bindList();
                                         ItemDialog.dismiss();
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
                                     }
-                                }
-                            });
+                                });
 
-                            ItemDialog.findViewById(R.id.btnUpdateOrder).setOnClickListener(new View.OnClickListener() {
-                                public void onClick(View v) {
-                                    try {
-
-                                        boolean overlap = false;
-
-                                        Long start = Long.parseLong(lit_StartTime.getContentDescription().toString());
-                                        Long end = Long.parseLong(lit_EndTime.getContentDescription().toString());
-
-                                        for (int i = 0; i < raw.getJSONArray("clients").length(); i++) {
-
-                                            if (i == j) continue;
-
-                                            Long _start = raw.getJSONArray("clients").getJSONObject(i).getLong("start");
-                                            Long _end= raw.getJSONArray("clients").getJSONObject(i).getLong("end");
-                                            if ( start >= _start && start < _end ) {
-                                                overlap = true;
-                                                break;
-                                            }
-                                            if ( end >= _start && end < _end) {
-                                                overlap = true;
-                                                break;
-                                            }
-                                        }
-
-                                        if (overlap) {
-                                            Notifications.showNotification(getActivity(), "", getString(R.string.Notification_VisitOverlap), 2);
-                                            return;
-                                        }
-
-                                        raw.getJSONArray("clients").getJSONObject(j).put("Note", txbNote.getText());
-                                        raw.getJSONArray("clients").getJSONObject(j).put("start", Long.parseLong(lit_StartTime.getContentDescription().toString()));
-                                        raw.getJSONArray("clients").getJSONObject(j).put("end", Long.parseLong(lit_EndTime.getContentDescription().toString()));
-                                        raw.getJSONArray("clients").getJSONObject(j).put("stopTime", (Long.parseLong(lit_EndTime.getContentDescription().toString()) - Long.parseLong(lit_StartTime.getContentDescription().toString())) / 1000);
-                                        raw.getJSONArray("clients").getJSONObject(j).put("Visit_Type", spType.getSelectedItemPosition());
-
-                                        mRoute.raw = raw.toString();
-                                    }
-                                    catch (JSONException exx) {}
-                                    bindList();
-                                    ItemDialog.dismiss();
-                                }
-                            });
-
-                            SpinnerItem[] visitype_items = new SpinnerItem[3];
+                           /* SpinnerItem[] visitype_items = new SpinnerItem[3];
                             visitype_items[0] = new SpinnerItem(1L, getString(R.string.Visit_Reason_1), "", "");
                             visitype_items[1] = new SpinnerItem(2L, getString(R.string.Visit_Reason_2), "", "");
                             visitype_items[2] = new SpinnerItem(3L, getString(R.string.Visit_Reason_3), "", "");
@@ -782,18 +801,21 @@ public class RouteInfoFragment extends Fragment implements DatePickerDialog.OnDa
                                     lit_EndTime.setText(tf.format(new Date(raw.getJSONArray("clients").getJSONObject(j).getLong("end"))));
                                 }
 
-                            }
-                            catch (JSONException exx) {}
+                            } catch (JSONException exx) {
+                            }*/
 
-                            ItemDialog.show();
+                                ItemDialog.show();
+                            } catch (Exception e) {
+
+                            }
                         }
                     });
+
                     llLocations.addView(v);
                     ((MapRouteFragment) ((RouteActivity) getActivity()).mAdapter.getItem(1)).showPins();
                 }
             }
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }

@@ -29,6 +29,7 @@ public class RouteActivity extends AppCompatActivity implements  ActionBar.TabLi
 
     public Route mRoute;
 
+    Long route_id = 0L;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +67,8 @@ public class RouteActivity extends AppCompatActivity implements  ActionBar.TabLi
 
             if (getIntent().hasExtra("_id")) {
                 b.putLong("_id", getIntent().getLongExtra("_id", 0L));
-                Long RouteID =  getIntent().getLongExtra("_id", 0L);
-                mRoute = DL_Routes.GetByID(RouteID);
+                route_id =  getIntent().getLongExtra("_id", 0L);
+                mRoute = DL_Routes.GetByID(route_id);
             }
             else {
                 mRoute = new Route();
@@ -85,6 +86,14 @@ public class RouteActivity extends AppCompatActivity implements  ActionBar.TabLi
         }
         catch (Exception ex) {
             wurthMB.AddError("Order", ex.getMessage(), ex);
+        }
+    }
+
+    public void refreshMyData(){
+        try {
+            mRoute = DL_Routes.GetByID(route_id);
+        }catch (Exception e){
+
         }
     }
 

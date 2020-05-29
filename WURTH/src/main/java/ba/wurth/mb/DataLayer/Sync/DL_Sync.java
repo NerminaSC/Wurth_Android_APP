@@ -2494,6 +2494,113 @@ public class DL_Sync {
         return ret;
     }
 
+    public static int Load_Routes(long userID) {
+        int ret = 0;
+
+        try {
+
+            methodName = "Load_Routes";
+
+            long dt = 0;
+            Cursor _cursor = db_readonly.rawQuery("SELECT MAX(doe) FROM Routes WHERE AccountID = ?", new String[]{Long.toString(wurthMB.getUser().AccountID)});
+            if (_cursor.moveToFirst()) dt  = _cursor.getLong(0);
+            _cursor.close();
+
+            if (wurthMB.loadComplete){
+                dt = 0; //(long) System.currentTimeMillis() - (long) (30L * 24L * 60L * 60L * 1000L);
+            }
+
+            try {
+
+                db.beginTransactionNonExclusive();
+
+                ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+                postParameters.add(new BasicNameValuePair("UserID", Long.toString(userID)));
+                postParameters.add(new BasicNameValuePair("DOE", Long.toString(dt + 1000)));
+
+                    JsonFactory jfactory = new JsonFactory();
+                    JsonParser jsonParser = jfactory.createParser(CustomHttpClient.executeHttpPostStream("http://wurth.api.optimus.ba/services/wurth.asmx/GET_Routes", postParameters));
+                    JsonToken token = jsonParser.nextToken();
+
+                    if (token == JsonToken.START_ARRAY) {
+
+                        while (token != JsonToken.END_ARRAY) {
+
+                            token = jsonParser.nextToken();
+
+                            if (token == JsonToken.START_OBJECT) {
+
+                                ContentValues cv = new ContentValues();
+
+                                while (token != JsonToken.END_OBJECT) {
+
+                                    token = jsonParser.nextToken();
+
+                                    if (token == JsonToken.FIELD_NAME) {
+
+                                        String objectName = jsonParser.getCurrentName();
+
+                                        jsonParser.nextToken();
+
+                                        if (0 == objectName.compareToIgnoreCase("RouteID"))
+                                            cv.put("RouteID", jsonParser.getValueAsLong(0L));
+                                        if (0 == objectName.compareToIgnoreCase("AccountID"))
+                                            cv.put("AccountID", jsonParser.getValueAsLong(0L));
+                                        if (0 == objectName.compareToIgnoreCase("UserID"))
+                                            cv.put("UserID", jsonParser.getValueAsLong(0L));
+                                        if (0 == objectName.compareToIgnoreCase("Name"))
+                                            cv.put("Name", jsonParser.getValueAsString(""));
+                                        if (0 == objectName.compareToIgnoreCase("code"))
+                                            cv.put("code", jsonParser.getValueAsString(""));
+                                        if (0 == objectName.compareToIgnoreCase("Description"))
+                                            cv.put("Description", jsonParser.getValueAsString(""));
+                                        if (0 == objectName.compareToIgnoreCase("raw"))
+                                            cv.put("raw", jsonParser.getValueAsString(""));
+                                        if (0 == objectName.compareToIgnoreCase("DOE"))
+                                            cv.put("DOE", jsonParser.getValueAsLong(0));
+                                        if (0 == objectName.compareToIgnoreCase("Active"))
+                                            cv.put("Active", jsonParser.getValueAsInt(0));
+                                    }
+                                }
+
+                                cv.put("Sync", 1);
+
+                                if (db.update("Routes", cv, "RouteID=?", new String[]{cv.getAsString("RouteID")}) == 0)
+                                    db.insert("Routes", null, cv);
+                                if (mThreadReference != null && ret % 250 == 0)
+                                    mThreadReference.doProgress(Integer.toString(ret));
+
+                                ret++;
+
+                            }
+                        }
+                    }
+
+                db.setTransactionSuccessful();
+                db.endTransaction();
+
+            }
+            catch (Exception e) {
+                wurthMB.AddError(className + " " + methodName, e.getMessage(), e);
+                ret = -1;
+            }
+
+            if (mThreadReference != null) mThreadReference.doProgress(Integer.toString(ret));
+
+        }
+        catch (Exception e) {
+            wurthMB.AddError(className + " " + methodName, e.getMessage(), e);
+            ret = -1;
+        }
+        finally {
+
+        }
+
+        if (db.inTransaction()) db.endTransaction();
+
+        return ret;
+    }
+
     public static int LOAD_Activites() {
         int ret = 0;
         try {

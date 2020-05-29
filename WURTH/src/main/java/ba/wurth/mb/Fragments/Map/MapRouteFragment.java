@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -35,9 +36,12 @@ import java.util.HashMap;
 import java.util.List;
 
 import ba.wurth.mb.Activities.Routes.RouteActivity;
+import ba.wurth.mb.Classes.Common;
+import ba.wurth.mb.Classes.CustomNumberFormat;
 import ba.wurth.mb.Classes.GPS.DirectionsJSONParser;
 import ba.wurth.mb.Classes.Objects.Route;
 import ba.wurth.mb.Classes.wurthMB;
+import ba.wurth.mb.DataLayer.Routes.DL_Routes;
 import ba.wurth.mb.Fragments.Routes.RouteInfoFragment;
 import ba.wurth.mb.R;
 
@@ -47,6 +51,9 @@ public class MapRouteFragment extends Fragment  {
     private GoogleMap map;
     private Button btnRoute;
     private Button btnOptimized;
+
+    private TextView lit_total_distance;
+    private TextView lit_total_time;
 
     ArrayList<LatLng> markerPoints;
 
@@ -74,7 +81,10 @@ public class MapRouteFragment extends Fragment  {
         btnOptimized = (Button) getView().findViewById(R.id.btnOptimized);
         btnRoute = (Button) getView().findViewById(R.id.btnRoute);
 
-        getView().findViewById(R.id.llActions).setVisibility(View.GONE);
+        lit_total_distance = getView().findViewById(R.id.lit_total_distance);
+        lit_total_time = getView().findViewById(R.id.lit_total_time);
+
+        getView().findViewById(R.id.llActions).setVisibility(View.VISIBLE);
 
         bindListeners();
     }
@@ -105,6 +115,8 @@ public class MapRouteFragment extends Fragment  {
         super.onResume();
 
         try {
+            mRoute = ((RouteActivity) getActivity()).mRoute;
+
             if (map == null) {
                 fragment.getMapAsync(new OnMapReadyCallback() {
                     @Override
@@ -129,15 +141,20 @@ public class MapRouteFragment extends Fragment  {
 
            if (mRoute != null) {
 
-               clients = new JSONObject(mRoute.raw).getJSONArray("clients");
+               JSONObject data = new JSONObject(mRoute.raw);
+
+               if(data.has("total_distance")) lit_total_distance.setText(CustomNumberFormat.GenerateFormat(data.getDouble("total_distance")) + " km");
+               if(data.has("total_time")) lit_total_time.setText(data.getString("total_time"));
+
+               clients = data.getJSONArray("nodes");
 
                for (int i = 0; i < clients.length(); i++) {
                    JSONObject jsonObject = clients.getJSONObject(i);
 
-                   if (jsonObject.getDouble("Latitude") == 0 || jsonObject.getDouble("Longitude") == 0) continue;
+                   if (jsonObject.getDouble("latitude") == 0 || jsonObject.getDouble("longitude") == 0) continue;
 
                     // Adding new item to the ArrayList
-                   LatLng point = new LatLng(jsonObject.getDouble("Latitude"), jsonObject.getDouble("Longitude"));
+                   LatLng point = new LatLng(jsonObject.getDouble("latitude") / 10000000, jsonObject.getDouble("longitude") / 10000000);
                    markerPoints.add(point);
 
                    // Creating MarkerOptions
@@ -148,6 +165,8 @@ public class MapRouteFragment extends Fragment  {
 
                    int resID = getResources().getIdentifier("icon" + Integer.toString(i + 1), "drawable", "ba.wurth.mb");
                    options.icon(BitmapDescriptorFactory.fromResource(resID));
+
+                    options.title(jsonObject.getString("name"));
 
                    // Add new marker to the Google Map Android API V2
                    map.addMarker(options);
@@ -189,7 +208,8 @@ public class MapRouteFragment extends Fragment  {
                 public void onClick(View view) {
                     if(markerPoints.size() >= 2){
 
-                        optimized = false;
+                        bindData();
+                       /* optimized = false;
                         bounds = null;
                         waypoint_order = null;
 
@@ -202,7 +222,7 @@ public class MapRouteFragment extends Fragment  {
                         DownloadTask downloadTask = new DownloadTask();
 
                         // Start downloading json data from Google Directions API
-                        downloadTask.execute(url);
+                        downloadTask.execute(url);*/
                     }
                 }
             });
@@ -212,7 +232,10 @@ public class MapRouteFragment extends Fragment  {
                 public void onClick(View view) {
                     if(markerPoints.size() >= 2){
 
-                        optimized = true;
+                        OptimizeTask optimizeTask = new OptimizeTask();
+                        optimizeTask.execute("");
+
+                      /*  optimized = true;
                         bounds = null;
                         waypoint_order = null;
 
@@ -225,7 +248,7 @@ public class MapRouteFragment extends Fragment  {
                         DownloadTask downloadTask = new DownloadTask();
 
                         // Start downloading json data from Google Directions API
-                        downloadTask.execute(url);
+                        downloadTask.execute("");*/
                     }
                 }
             });
@@ -234,6 +257,53 @@ public class MapRouteFragment extends Fragment  {
 
         }
     }
+
+    private class OptimizeTask extends AsyncTask<String, Void, String>{
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            if (getView() != null) getView().findViewById(R.id.progressContainer).setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected String doInBackground(String... url) {
+
+            // For storing data from web service
+
+            String data = "";
+
+            try {
+                DL_Routes.OptimizeRoute(mRoute._id);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            return data;
+        }
+
+        // Executes in UI thread, after the execution of
+        // doInBackground()
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            try {
+                if (getView() != null)  getView().findViewById(R.id.progressContainer).setVisibility(View.GONE);
+
+                mRoute = DL_Routes.GetByID(mRoute._id);
+
+                ((RouteActivity)getActivity()).refreshMyData();
+
+                bindData();
+
+            }catch (Exception e){
+
+            }
+        }
+    }
+
+
 
     private String getDirectionsUrl(LatLng origin,LatLng dest){
 
