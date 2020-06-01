@@ -467,6 +467,7 @@ public class OrderPropertiesFragment extends Fragment implements DatePickerDialo
                         if (wurthMB.getOrder().DeliveryPlaceID == 0L) txbDeliveryPlaces.requestFocus();
                         bindPaymentMethods();
                         bindDeliveryType();
+                        cur.close();
                     }
                 }
                 else if (wurthMB.getOrder().Sync == 0) {

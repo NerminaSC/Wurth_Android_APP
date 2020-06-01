@@ -141,6 +141,7 @@
     <string name="Notification_OrderSynced">Narudžbi sihronizovano</string>
     <string name="Notification_VisitSynced">Posjeta sihronizovano</string>
     <string name="Notification_ClientSynced">Klijenta sinhronizovano</string>
+    <string name="Notification_StartLocation">Izaberite početnu lokaciju rute</string>
 
     <string name="Notification_TaskSynced">Zadataka sihronizovano</string>
     <string name="Notification_Pricelist_StartSync">Početak sihornizacije cjenovnika</string>
@@ -242,6 +243,7 @@
     <string name="QuantityNotAvailable">Artikal nije dostupan odmah</string>
     <string name="Country">Država</string>
     <string name="PostalCode">Poštanski broj</string>
+    <string name="UserLocation">Lokacija korisnika</string>
 
 
     <string name="ApplicationMissing">Aplikacija nije instalirana</string>

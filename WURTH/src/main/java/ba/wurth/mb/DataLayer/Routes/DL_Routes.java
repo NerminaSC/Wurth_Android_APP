@@ -103,19 +103,33 @@ public class DL_Routes {
         }
     }
 
-    public static int OptimizeRoute(long id){
+    public static int OptimizeRoute(long id, int location_type){
 
         try{
             Cursor c = db_readonly.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE _id = " + id + " LIMIT 1", null);
 
             if(c != null && c.moveToFirst()){
 
+                Double start_latitude = 0D;
+                Double start_longitude = 0D;
+
+                switch (location_type){
+                    case 1: // current location
+                        start_latitude = wurthMB.currentBestLocation.getLatitude() * 10000000D;
+                        start_longitude = wurthMB.currentBestLocation.getLongitude() * 10000000D;
+                        break;
+                    case 2: // user location
+                        start_latitude = wurthMB.getUser().data.has("start_location") ? wurthMB.getUser().data.getJSONObject("start_location").getDouble("latitude") * 10000000D : 0;
+                        start_longitude = wurthMB.getUser().data.has("start_location") ? wurthMB.getUser().data.getJSONObject("start_location").getDouble("longitude") * 10000000D : 0;
+                        break;
+                }
+
                 JSONObject data = new JSONObject(c.getString(c.getColumnIndex("raw")));
                 JSONArray nodes = (JSONArray) data.get("nodes");
 
                 JSONObject node = new JSONObject();
-                node.put("latitude", wurthMB.currentBestLocation.getLatitude() * 10000000D);
-                node.put("longitude", wurthMB.currentBestLocation.getLongitude() * 10000000D);
+                node.put("latitude", start_latitude);
+                node.put("longitude", start_longitude);
 
                 nodes = Common.addItem(0, nodes, node);
                 nodes.put(node);

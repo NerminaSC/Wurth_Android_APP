@@ -1,11 +1,13 @@
 package ba.wurth.mb.Fragments.Map;
 
+import android.app.Dialog;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -23,6 +25,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -36,7 +39,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import ba.wurth.mb.Activities.Routes.RouteActivity;
-import ba.wurth.mb.Classes.Common;
 import ba.wurth.mb.Classes.CustomNumberFormat;
 import ba.wurth.mb.Classes.GPS.DirectionsJSONParser;
 import ba.wurth.mb.Classes.Objects.Route;
@@ -66,6 +68,7 @@ public class MapRouteFragment extends Fragment  {
     private JSONObject bounds;
 
     private Route mRoute;
+    private Integer location_type = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -207,22 +210,7 @@ public class MapRouteFragment extends Fragment  {
                 @Override
                 public void onClick(View view) {
                     if(markerPoints.size() >= 2){
-
-                        bindData();
-                       /* optimized = false;
-                        bounds = null;
-                        waypoint_order = null;
-
-                        LatLng origin = markerPoints.get(0);
-                        LatLng dest = markerPoints.get(markerPoints.size() - 1);
-
-                        // Getting URL to the Google Directions API
-                        String url = getDirectionsUrl(origin, dest);
-
-                        DownloadTask downloadTask = new DownloadTask();
-
-                        // Start downloading json data from Google Directions API
-                        downloadTask.execute(url);*/
+                        setPolyline();
                     }
                 }
             });
@@ -232,23 +220,45 @@ public class MapRouteFragment extends Fragment  {
                 public void onClick(View view) {
                     if(markerPoints.size() >= 2){
 
-                        OptimizeTask optimizeTask = new OptimizeTask();
-                        optimizeTask.execute("");
+                        try{
+                            final Dialog dialog = new Dialog(getContext(), R.style.CustomDialog);
+                            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                            dialog.setContentView(R.layout.alert_options);
+                            dialog.setCancelable(false);
 
-                      /*  optimized = true;
-                        bounds = null;
-                        waypoint_order = null;
+                            ((TextView) dialog.findViewById(R.id.Title)).setText(R.string.Notification_AttentionNeeded);
+                            ((TextView) dialog.findViewById(R.id.text)).setText(R.string.Notification_StartLocation);
 
-                        LatLng origin = markerPoints.get(0);
-                        LatLng dest = markerPoints.get(markerPoints.size() - 1);
+                            ((Button) dialog.findViewById(R.id.dialogButtonOK)).setText(R.string.UserLocation);
+                            ((Button) dialog.findViewById(R.id.dialogButtonCANCEL)).setText(R.string.CurrentLocation);
 
-                        // Getting URL to the Google Directions API
-                        String url = getDirectionsUrl(origin, dest);
+                            dialog.findViewById(R.id.dialogButtonOK).setOnClickListener(new View.OnClickListener() {
+                                public void onClick(View v) {
 
-                        DownloadTask downloadTask = new DownloadTask();
+                                    location_type = 2;
+                                    OptimizeTask optimizeTask = new OptimizeTask();
+                                    optimizeTask.execute("");
 
-                        // Start downloading json data from Google Directions API
-                        downloadTask.execute("");*/
+                                    dialog.dismiss();
+                                }
+                            });
+
+                            dialog.findViewById(R.id.dialogButtonCANCEL).setOnClickListener(new View.OnClickListener() {
+                                public void onClick(View v) {
+
+                                    location_type = 1;
+                                    OptimizeTask optimizeTask = new OptimizeTask();
+                                    optimizeTask.execute("");
+
+                                    dialog.dismiss();
+                                }
+                            });
+
+                            dialog.show();
+
+                        }catch (Exception e){
+
+                        }
                     }
                 }
             });
@@ -274,7 +284,7 @@ public class MapRouteFragment extends Fragment  {
             String data = "";
 
             try {
-                DL_Routes.OptimizeRoute(mRoute._id);
+                DL_Routes.OptimizeRoute(mRoute._id, location_type);
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -296,6 +306,10 @@ public class MapRouteFragment extends Fragment  {
                 ((RouteActivity)getActivity()).refreshMyData();
 
                 bindData();
+
+                ParserTask parserTask = new ParserTask();
+
+                // Invokes the thread for parsing the JSON data
 
             }catch (Exception e){
 
@@ -573,4 +587,34 @@ public class MapRouteFragment extends Fragment  {
             if (getView() != null) getView().findViewById(R.id.progressContainer).setVisibility(View.GONE);
         }
     }
+
+
+    private void setPolyline() {
+        List<LatLng> coordinates = new ArrayList<>();
+
+        if (mRoute != null) {
+
+            try {
+                JSONObject data = new JSONObject(mRoute.raw);
+
+                if(data.has("polyline")){
+
+                    for (int i = 0; i < data.getJSONArray("polyline").length(); i++) {
+                        coordinates.add(new LatLng(data.getJSONArray("polyline").getJSONObject(i).getDouble("lat"), data.getJSONArray("polyline").getJSONObject(i).getDouble("lng")));
+                    }
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        PolylineOptions polyline = new PolylineOptions();
+        polyline.addAll(coordinates);
+        polyline.width(3);
+        polyline.color(Color.BLUE);
+        map.addPolyline(polyline);
+    }
+
 }

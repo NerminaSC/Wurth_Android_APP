@@ -201,6 +201,13 @@ public class wurthMB extends Application {
 
                 } catch (JSONException e) { }
 
+                try{
+                    currentUser.data = new JSONObject(cur.getString(cur.getColumnIndex("data")));
+
+                }catch (Exception e){
+
+                }
+
                 if (!cur.getString(cur.getColumnIndex("Language")).equals("")){
                     currentLocale = new Locale(cur.getString(cur.getColumnIndex("Language")));
                     currentUser.locale = new Locale(cur.getString(cur.getColumnIndex("Language")));
@@ -226,8 +233,7 @@ public class wurthMB extends Application {
         }
         return currentUser;
     }
-    public static Order getOrder()
-    {
+    public static Order getOrder() {
         if (currentOrder == null) {
             try {
                 currentOrder = DL_Temp.GET_Order();

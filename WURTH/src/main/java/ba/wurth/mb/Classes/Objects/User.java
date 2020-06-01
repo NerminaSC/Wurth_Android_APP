@@ -37,6 +37,7 @@ public class User {
 
     public String Region = "";
     public JSONObject Parameters = new JSONObject();
+    public JSONObject data = new JSONObject();
 
     public long ApplicationUserID_EMS = 0;
     public long ApplicationAccountID_EMS = 0;

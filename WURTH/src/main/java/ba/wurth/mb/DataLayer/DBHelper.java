@@ -101,7 +101,7 @@ public class DBHelper extends SQLiteAssetHelper {
             + " AccountSettings text, UserSettings text, UserID integer, _userid integer, AccountID integer, AccountName text, AccessLevelID integer, Firstname text , "
             + " Lastname text , EmailAddress text , Password text , "
             + " LoginDate integer , SignOutDate integer, Latitude integer, "
-            + " Longitude integer, DiscountPercentage real, PaymentDelay integer, hasDeliveryPlaces integer, DeliveryDelay integer, Language text, URL text, Parameters text );";
+            + " Longitude integer, DiscountPercentage real, PaymentDelay integer, hasDeliveryPlaces integer, DeliveryDelay integer, Language text, URL text, Parameters text, data text);";
 
     private static final String DOCUMENTS_CREATE = "create table "
             + TABLE_DOCUMENTS + " (_id integer primary key autoincrement , "

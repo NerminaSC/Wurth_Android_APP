@@ -231,6 +231,7 @@ public class LoginActivity extends Activity {
                     cv.put("hasDeliveryPlaces", json.getInt("hasDeliveryPlaces"));
                     cv.put("URL", json.getString("URL"));
                     cv.put("Parameters", json.getString("Parameters"));
+                    cv.put("data", json.getString("data"));
                     cv.put("AccessLevelID", json.getInt("AccessLevelID"));
 
                     if (wurthMB.getLocale() != null) cv.put("Language", wurthMB.getLocale().getLanguage());
