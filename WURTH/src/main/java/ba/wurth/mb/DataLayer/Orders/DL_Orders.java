@@ -179,12 +179,13 @@ public class DL_Orders {
 
             final Cursor cur, c;
 
-            cur = db_readonly.rawQuery("Select Orders.*, PaymentMethods.Name As PaymentMethodName, OrderStatus.Name As OrderStatusName, Clients.Name AS ClientName, DeliveryPlaces.Name AS DeliveryPlaceName "
+            cur = db_readonly.rawQuery("Select Orders.*, PaymentMethods.Name As PaymentMethodName, OrderStatus.Name As OrderStatusName, Clients.Name AS ClientName, DeliveryPlaces.Name AS DeliveryPlaceName, PARTNER.ID AS PartnerID "
                     + " From " + DATABASE_TABLE_ORDERS
                     + " Left Join PaymentMethods On Orders.PaymentMethodID = PaymentMethods.PaymentMethodID "
                     + " Left Join OrderStatus On Orders.OrderStatusID = OrderStatus.OrderStatusID "
                     + " Left Join Clients On Orders.ClientID = Clients.ClientID "
                     + " Left Join DeliveryPlaces On Orders.DeliveryPlaceID = DeliveryPlaces.DeliveryPlaceID "
+					+ " LEFT JOIN PARTNER ON Clients._clientid = PARTNER.ID "
                     + " Where Orders._id = ?", new String[]{ Double.toString(_id) });
 
 	        if (cur.moveToFirst()){
@@ -194,6 +195,7 @@ public class DL_Orders {
 		        	OrderID = cur.getLong(cur.getColumnIndex("OrderID"));
 		        	ClientID = cur.getLong(cur.getColumnIndex("ClientID"));
                     ClientName = cur.getString(cur.getColumnIndex("ClientName"));
+                    PartnerID = cur.getLong(cur.getColumnIndex("PartnerID"));
                     DeliveryPlaceName = cur.getString(cur.getColumnIndex("DeliveryPlaceName"));
 		        	UserID = cur.getLong(cur.getColumnIndex("UserID"));
 		        	OrderDate = cur.getLong(cur.getColumnIndex("OrderDate"));
