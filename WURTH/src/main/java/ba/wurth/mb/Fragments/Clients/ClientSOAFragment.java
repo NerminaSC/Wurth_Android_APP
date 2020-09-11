@@ -91,8 +91,8 @@ public class ClientSOAFragment extends Fragment {
                 postParameters.add(new BasicNameValuePair("externalKey", "fd0ac005-6e2d-4ff4-8a2c-7da5070e24f5"));
 
                 JsonFactory jfactory = new JsonFactory();
-                JsonParser jsonParser = jfactory.createParser(CustomHttpClient.executeHttpPostStream("http://www.wurth.ba/WS/External.asmx/GetIOSJson", postParameters));
-             //   JsonParser jsonParser = jfactory.createParser(CustomHttpClient.executeHttpsPost("https://eshop.wurth.ba/ws/external.asmx/GetIOSJson", postParameters));
+                //JsonParser jsonParser = jfactory.createParser(CustomHttpClient.executeHttpPostStream("http://www.wurth.ba/WS/External.asmx/GetIOSJson", postParameters));
+                JsonParser jsonParser = jfactory.createParser(CustomHttpClient.executeHttpsPost("https://eshop.wurth.ba/ws/external.asmx/GetIOSJson", postParameters));
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode actualObj = mapper.readTree(jsonParser);
                 return actualObj;

@@ -4,6 +4,10 @@ buildscript {
     ext.objectboxVersion = '2.3.3'
 
     repositories {
+        mavenCentral()
+        google()
+        jcenter()
+
         jcenter {
             url "http://jcenter.bintray.com/"
         }
@@ -19,6 +23,8 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenCentral()
+        google()
         jcenter()
         jcenter {
             url "http://jcenter.bintray.com/"
@@ -27,7 +33,8 @@ allprojects {
         maven {
             url 'https://maven.google.com'
         }
-        mavenCentral()
-        google()
+        maven {
+            url 'https://dl.bintray.com/kotlin/kotlin-dev/'
+        }
     }
 }

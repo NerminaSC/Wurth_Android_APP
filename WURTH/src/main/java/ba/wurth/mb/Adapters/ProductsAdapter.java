@@ -1035,8 +1035,8 @@ public class ProductsAdapter extends CursorAdapter {
                 postParameters.add(new BasicNameValuePair("userID", Long.toString(wurthMB.getUser()._userid)));
                 postParameters.add(new BasicNameValuePair("externalKey", "fd0ac005-6e2d-4ff4-8a2c-7da5070e24f5"));
 
-               // String response = CustomHttpClient.executeHttpsPost("https://eshop.wurth.ba/ws/external.asmx/GetLiveStatus", postParameters).toString();
-                String response = CustomHttpClient.executeHttpPost("http://www.wurth.ba/WS/External.asmx/GetLiveStatus", postParameters).toString();
+                String response = CustomHttpClient.executeHttpsPost("https://eshop.wurth.ba/ws/external.asmx/GetLiveStatus", postParameters).toString();
+                //String response = CustomHttpClient.executeHttpPost("http://www.wurth.ba/WS/External.asmx/GetLiveStatus", postParameters).toString();
 
                 return response.replaceAll("\n","").replaceAll("\r", "");
             }
