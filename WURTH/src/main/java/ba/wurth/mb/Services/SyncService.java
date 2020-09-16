@@ -208,10 +208,13 @@ public class SyncService extends Service {
             try {
                 if (!wurthMB.dbHelper.getDB().inTransaction()) {
 
+                    DL_Sync.Load_Stocks();
+
                     int count;
 
                     count = DL_Sync.Load_Clients(wurthMB.getUser().UserID, false);
                     if (mBound && count > 0) mService.setTicker(getString(R.string.Notification_ClientSynced) + ": " + Integer.toString(count));
+
                 }
             }
             catch (Exception e) {

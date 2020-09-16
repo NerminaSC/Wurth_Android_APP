@@ -18,8 +18,8 @@ android {
         applicationId "ba.wurth.mb"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 28
-        versionName "3.1.9"
+        versionCode 29
+        versionName "3.1.10"
     }
 
     buildTypes {

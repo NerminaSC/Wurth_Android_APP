@@ -154,7 +154,7 @@ public class DL_Wurth {
         Cursor cur;
         cur = db_readonly.rawQuery("SELECT Products._id, ARTIKLI.*, ARTIKAL_SLIKE.Velika, " +
                         " ARTIKLI.MjernaJedinica, ARTIKAL_PAKOVANJA.Pakovanje, ARTIKAL_PAKOVANJA.KodPakovanja, " +
-                        " Products.ProductID, CJENIK.OsnovnaCijena, CJENIK.KljucCijene " +
+                        " Products.ProductID, Products.UnitsInStock, CJENIK.OsnovnaCijena, CJENIK.KljucCijene " +
 
                         " FROM ARTIKLI " +
 

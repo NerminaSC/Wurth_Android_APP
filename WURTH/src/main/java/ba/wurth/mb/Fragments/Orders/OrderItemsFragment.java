@@ -156,13 +156,15 @@ public class OrderItemsFragment extends Fragment {
                                 p.Status_Artikla = _cur.getInt(_cur.getColumnIndex("Status_Artikla"));
                                 p.Status_Prezentacije_Artikla = _cur.getInt(_cur.getColumnIndex("Status_Prezentacije_Artikla"));
                                 p.Kod_Zbirne_Cjen_Razrade = _cur.getString(_cur.getColumnIndex("Kod_Zbirne_Cjen_Razrade"));
+                                p.Zamjenski_Artikal = _cur.getInt(_cur.getColumnIndex("Zamjenski_Artikal"));
+                                p.UnitsInStock = _cur.getInt(_cur.getColumnIndex("UnitsInStock"));
 
                                 txbProducts.setText(p.Code);
                             }
                             _cur.close();
                         }
 
-                        if (p.Status_Artikla != 0 && p.Status_Artikla != 1) {
+                        if (p.Status_Artikla != 0 && p.Status_Artikla != 1 && p.Status_Artikla != 5) {
                             Notifications.showNotification(getActivity(), "", getActivity().getString(R.string.Notification_ProductCanNotBeAdded), 2);
                         }
                         else {
@@ -220,6 +222,7 @@ public class OrderItemsFragment extends Fragment {
                         return;
                     }
 
+
                     if (spPackage.getContentDescription() == null || Double.parseDouble(spPackage.getContentDescription().toString()) == 0) {
                         Notifications.showNotification(getActivity(), "", getActivity().getString(R.string.Notification_PackageMissing), 2);
                         return;
@@ -231,6 +234,44 @@ public class OrderItemsFragment extends Fragment {
                         if (e.ProductID == p.ProductID /*&& e.Pakovanje == Double.parseDouble(spPackage.getContentDescription().toString())*/) {
                             Notifications.showNotification(getActivity(), "", getActivity().getString(R.string.Notification_ProductCanNotBeAdded), 2);
                             return;
+                        }
+                    }
+
+
+                    /*** STATUS = 5 ***/
+                    if (p.Status_Artikla == 5 && Double.parseDouble(txbQuantity.getText().toString()) > p.UnitsInStock) {
+
+                        if (p.Zamjenski_Artikal > 0) {
+
+                            p.ArtikalID = p.Zamjenski_Artikal;
+                            p.Zamjenski_Artikal = 0;
+
+                            Cursor _cur = DL_Wurth.GET_Product(p.ArtikalID);
+
+                            if (_cur != null) {
+
+                                if (_cur.moveToFirst()) {
+
+                                    p.Grupa_Artikla = _cur.getLong(_cur.getColumnIndex("Grupa_Artikla"));
+                                    p.ProductID = _cur.getLong(_cur.getColumnIndex("ProductID"));
+                                    p.Name = _cur.getString(_cur.getColumnIndex("Naziv"));
+                                    p.Naziv = _cur.getString(_cur.getColumnIndex("Naziv"));
+                                    p.Code = _cur.getString(_cur.getColumnIndex("sifra"));
+                                    p.MjernaJedinica = _cur.getString(_cur.getColumnIndex("MjernaJedinica"));
+                                    p.Status_Artikla = _cur.getInt(_cur.getColumnIndex("Status_Artikla"));
+                                    p.Status_Prezentacije_Artikla = _cur.getInt(_cur.getColumnIndex("Status_Prezentacije_Artikla"));
+                                    p.Kod_Zbirne_Cjen_Razrade = _cur.getString(_cur.getColumnIndex("Kod_Zbirne_Cjen_Razrade"));
+                                    p.Zamjenski_Artikal = _cur.getInt(_cur.getColumnIndex("Zamjenski_Artikal"));
+                                    p.UnitsInStock = _cur.getInt(_cur.getColumnIndex("UnitsInStock"));
+
+                                    txbProducts.setText(p.Code);
+                                }
+                                _cur.close();
+                            }
+
+                            if (p.Status_Artikla != 0 && p.Status_Artikla != 1 && p.Status_Artikla != 5) {
+                                Notifications.showNotification(getActivity(), "", getActivity().getString(R.string.Notification_ProductCanNotBeAdded), 2);
+                            }
                         }
                     }
 

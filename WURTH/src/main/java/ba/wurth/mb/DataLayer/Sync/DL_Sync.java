@@ -3386,4 +3386,68 @@ public class DL_Sync {
 
         return ret;
     }
+
+    public static int Load_Stocks() {
+        int ret = 0;
+        try {
+
+            methodName = "Load_Stocks";
+
+            ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+            postParameters.add(new BasicNameValuePair("offset", "0"));
+            postParameters.add(new BasicNameValuePair("limit", "1000000"));
+
+            db.beginTransactionNonExclusive();
+
+            JsonFactory jfactory = new JsonFactory();
+            JsonParser jsonParser = jfactory.createParser(CustomHttpClient.executeHttpPostStream(wurthMB.getUser().URL + "GET_Stocks", postParameters));
+            JsonToken token = jsonParser.nextToken();
+
+            db.execSQL("UPDATE products SET UnitsInStock = 0");
+
+            if (token == JsonToken.START_ARRAY) {
+
+                while (token != JsonToken.END_ARRAY) {
+
+                    token = jsonParser.nextToken();
+
+                    if (token == JsonToken.START_OBJECT) {
+
+                        ContentValues cv = new ContentValues();
+
+                        while (token != JsonToken.END_OBJECT) {
+
+                            token = jsonParser.nextToken();
+
+                            if (token == JsonToken.FIELD_NAME) {
+
+                                String objectName = jsonParser.getCurrentName();
+
+                                jsonParser.nextToken();
+
+                                if (0 == objectName.compareToIgnoreCase("c0")) cv.put("_productid", jsonParser.getValueAsLong(0L));
+                                if (0 == objectName.compareToIgnoreCase("c1")) cv.put("UnitsInStock", jsonParser.getValueAsLong(0L));
+                            }
+                        }
+
+                        db.update("Products", cv, "_productid=?", new String[]{ cv.getAsString("_productid") });
+
+                        ret++;
+                        if (mThreadReference != null && ret % 250 == 0) mThreadReference.doProgress(Integer.toString(ret));
+                    }
+                }
+                db.setTransactionSuccessful();
+                db.endTransaction();
+                if (mThreadReference != null) mThreadReference.doProgress(Integer.toString(ret));
+
+            }
+        }
+        catch (Exception e) {
+            ret = -1;
+        }
+
+        if (db.inTransaction()) db.endTransaction();
+
+        return ret;
+    }
 }

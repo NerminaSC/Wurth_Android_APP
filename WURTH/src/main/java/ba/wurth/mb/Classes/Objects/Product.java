@@ -29,4 +29,5 @@ public class Product {
     public String Kod_Zbirne_Cjen_Razrade = "";
     public int Status_Artikla = -1;
     public int Status_Prezentacije_Artikla = -1;
+    public int Zamjenski_Artikal = -1;
 }

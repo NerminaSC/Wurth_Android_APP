@@ -817,6 +817,7 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
             catch (Exception e) {
                 Notifications.showNotification(mContext, "", mContext.getString(R.string.ServiceNotAvailable),1);
                 return "";
+
             }
         }
 
