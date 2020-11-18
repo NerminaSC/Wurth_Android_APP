@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
@@ -370,7 +371,7 @@ public class ActionsFragment extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent)
         {
             ImageView view = new ImageView(getContext());
-            view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            view.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             view.setAdjustViewBounds(true);
             view.setScaleType(ImageView.ScaleType.FIT_XY);
             view.setTag(ArtikalID_Array.get(position));
