@@ -131,9 +131,10 @@ public class SearchSuggestionsAdapter extends SimpleCursorAdapter
                                 section += ", preporuka " + cur.getString(cur.getColumnIndex("Zamjenski_Sifra"));
                             }
 
+
                             SuggstionItem item = new SuggstionItem();
                             item._id = cur.getLong(cur.getColumnIndex("_id"));
-                            item.ID = cur.isNull(cur.getColumnIndex("Zamjenski_Artikal")) || cur.getLong(cur.getColumnIndex("Zamjenski_Artikal")) == 0 ? cur.getLong(cur.getColumnIndex("ID")) : cur.getLong(cur.getColumnIndex("Zamjenski_Artikal"));
+                            item.ID = !cur.isNull(cur.getColumnIndex("Zamjenski_Artikal")) && cur.getLong(cur.getColumnIndex("Zamjenski_Artikal")) > 0 ? (!cur.isNull(cur.getColumnIndex("Status_Artikla")) && cur.getInt(cur.getColumnIndex("Status_Artikla")) == 5 && cur.getInt(cur.getColumnIndex("UnitsInStock")) > 0 ? cur.getLong(cur.getColumnIndex("ID")) : cur.getLong(cur.getColumnIndex("Zamjenski_Artikal"))) : cur.getLong(cur.getColumnIndex("ID"));
                             item.SectionID = cur.getLong(cur.getColumnIndex("SectionID"));
                             item.Name = cur.isNull(cur.getColumnIndex("Zbirni_Naziv")) ? cur.getString(cur.getColumnIndex("Name")) : (cur.getString(cur.getColumnIndex("Zbirni_Naziv")).equals("") ? cur.getString(cur.getColumnIndex("Name")) : cur.getString(cur.getColumnIndex("Zbirni_Naziv")));
                             item.Code = cur.getString(cur.getColumnIndex("Code"));

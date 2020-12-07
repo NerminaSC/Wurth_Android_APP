@@ -237,7 +237,6 @@ public class OrderItemsFragment extends Fragment {
                         }
                     }
 
-
                     /*** STATUS = 5 ***/
                     if (p.Status_Artikla == 5 && Double.parseDouble(txbQuantity.getText().toString()) > p.UnitsInStock) {
 
@@ -273,6 +272,11 @@ public class OrderItemsFragment extends Fragment {
                                 Notifications.showNotification(getActivity(), "", getActivity().getString(R.string.Notification_ProductCanNotBeAdded), 2);
                             }
                         }
+                        else {
+                            Notifications.showNotification(getActivity(), "", getActivity().getString(R.string.Notification_ProductCanNotBeAdded), 2);
+                            return;
+                        }
+
                     }
 
                     OrderItem tempOrderItem =  new OrderItem(){{

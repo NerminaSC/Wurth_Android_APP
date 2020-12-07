@@ -320,11 +320,12 @@ public class DL_Wurth {
         Cursor cur = null;
 
         try {
-            cur = db_readonly.rawQuery("SELECT 0 AS _id, PRODUCTS_FTS.ArtikalID AS ID, 0 AS SectionID, PRODUCTS_FTS.Name, PRODUCTS_FTS.Code AS Code, 'Artikli' AS Section, 1 AS SectionType, PRODUCTS_FTS.Name AS Zbirni_Naziv, ARTIKLI.Status_Artikla, ARTIKLI.Status_Prezentacije_Artikla, ARTIKLI.Zamjenski_Artikal, B.sifra AS Zamjenski_Sifra " +
+            cur = db_readonly.rawQuery("SELECT 0 AS _id, PRODUCTS_FTS.ArtikalID AS ID, 0 AS SectionID, PRODUCTS_FTS.Name, PRODUCTS_FTS.Code AS Code, 'Artikli' AS Section, 1 AS SectionType, PRODUCTS_FTS.Name AS Zbirni_Naziv, ARTIKLI.Status_Artikla, ARTIKLI.Status_Prezentacije_Artikla, ARTIKLI.Zamjenski_Artikal, B.sifra AS Zamjenski_Sifra, Products.UnitsInStock " +
                             " FROM PRODUCTS_FTS " +
                             " INNER JOIN ARTIKLI ON PRODUCTS_FTS.ArtikalID = ARTIKLI.ID " +
+                            " INNER JOIN Products ON ARTIKLI.ID = Products._productid " +
                             " LEFT JOIN ARTIKLI B ON ARTIKLI.Zamjenski_Artikal = B.ID " +
-                            " WHERE PRODUCTS_FTS MATCH 'Keyword:" + searchTextCompact + "* OR Keyword1:" + searchTextCompact + "* OR Name:" + searchText + "*' AND ARTIKLI.Status_Artikla <> 0 AND ARTIKLI.Status_Artikla <> 2 " +
+                            " WHERE PRODUCTS_FTS MATCH 'Keyword:" + searchTextCompact + "* OR Keyword1:" + searchTextCompact + "* OR PRODUCTS_FTS.Name:" + searchText + "*' AND ARTIKLI.Status_Artikla <> 0 AND ARTIKLI.Status_Artikla <> 2 " +
                             //" WHERE Keyword LIKE '%" + searchText + "%' OR Name LIKE '%" + searchText + "%' AND ARTIKLI.Status_Artikla <> 0 " +
 
                     /*
@@ -334,7 +335,7 @@ public class DL_Wurth {
                     " FROM Clients " +
                     " WHERE (Code LIKE '" + searchText + "%' OR Name LIKE '%" + searchText + "%') AND Active = 1 AND AccountID = " + wurthMB.getUser().AccountID +
                     */
-                            " ORDER BY Code, Name "
+                            " ORDER BY PRODUCTS_FTS.Code, PRODUCTS_FTS.Name "
                     , null);
         } catch (Exception ex) {
             wurthMB.AddError("GET_Search", ex.getMessage(), ex);

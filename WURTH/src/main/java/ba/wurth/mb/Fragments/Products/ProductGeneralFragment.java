@@ -50,6 +50,8 @@ import ba.wurth.mb.DataLayer.Custom.DL_Wurth;
 import ba.wurth.mb.Interfaces.SpinnerItem;
 import ba.wurth.mb.R;
 
+import static com.fasterxml.jackson.databind.cfg.CoercionInputShape.Array;
+
 public class ProductGeneralFragment extends Fragment {
 
     private TextView litTitle;
@@ -435,7 +437,7 @@ public class ProductGeneralFragment extends Fragment {
 
                     if (!cur.isNull(cur.getColumnIndex("Naziv"))) Naziv = cur.getString(cur.getColumnIndex("Naziv"));
 
-                    if (cur.getInt(cur.getColumnIndex("Status_Artikla")) > 1) {
+                    if (cur.getInt(cur.getColumnIndex("Status_Artikla")) > 1 && cur.getInt(cur.getColumnIndex("Status_Artikla")) != 5 ) {
                         txbQuantity.setVisibility(View.GONE);
                         btnPricelist.setVisibility(View.GONE);
                         spPackage.setVisibility(View.GONE);
@@ -469,7 +471,7 @@ public class ProductGeneralFragment extends Fragment {
                         spPackage.setVisibility(View.GONE);
                     }
 
-                    if (cur.getInt(cur.getColumnIndex("Status_Artikla")) > 1) {
+                    if (cur.getInt(cur.getColumnIndex("Status_Artikla")) > 1 && cur.getInt(cur.getColumnIndex("Status_Artikla")) != 5 ) {
                         txbQuantity.setVisibility(View.GONE);
                         spPackage.setVisibility(View.GONE);
                         btnPricelist.setVisibility(View.GONE);
