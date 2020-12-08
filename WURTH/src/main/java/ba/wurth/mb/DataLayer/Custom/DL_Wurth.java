@@ -360,18 +360,20 @@ public class DL_Wurth {
         try {
             cur = db_readonly.rawQuery("SELECT PRODUCTS_FTS.ArtikalID AS _id, PRODUCTS_FTS.Name, PRODUCTS_FTS.Code, " +
                             " PRODUCTS_FTS.Description, PRODUCTS_FTS.Barcode,  ARTIKLI.Status_Artikla, " +
-                            " ARTIKLI.Status_Prezentacije_Artikla, ARTIKLI.Zamjenski_Artikal, B.sifra AS Zamjenski_Sifra " +
+                            " ARTIKLI.Status_Prezentacije_Artikla, ARTIKLI.Zamjenski_Artikal, B.sifra AS Zamjenski_Sifra, " +
+                            " P.UnitsInStock " +
 
                             " FROM PRODUCTS_FTS " +
 
                             " INNER JOIN ARTIKLI ON PRODUCTS_FTS.ArtikalID = ARTIKLI.ID " +
                             " LEFT JOIN ARTIKLI B ON ARTIKLI.Zamjenski_Artikal = B.ID " +
+                            " LEFT JOIN Products P ON ARTIKLI.ID = P._productid " +
 
                             " WHERE PRODUCTS_FTS MATCH 'Keyword:" + searchTextCompact + "* OR Keyword1:" + searchTextCompact + "* OR Name:" + searchText + "*' " +
                             //" AND ARTIKLI.Status_Artikla <> 0 " +
                             " AND ARTIKLI.Status_Artikla <> 2 " +
 
-                            " ORDER BY Code, Name "
+                            " ORDER BY PRODUCTS_FTS.Code, PRODUCTS_FTS.Name "
                     , null);
         } catch (Exception ex) {
             wurthMB.AddError("GET_ProductsSearch", ex.getMessage(), ex);

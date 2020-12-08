@@ -131,6 +131,13 @@ public class SearchSuggestionsAdapter extends SimpleCursorAdapter
                                 section += ", preporuka " + cur.getString(cur.getColumnIndex("Zamjenski_Sifra"));
                             }
 
+                            if(!cur.isNull(cur.getColumnIndex("Zamjenski_Artikal")) && cur.getLong(cur.getColumnIndex("Zamjenski_Artikal")) > 0L && !cur.isNull(cur.getColumnIndex("Status_Artikla")) && cur.getInt(cur.getColumnIndex("Status_Artikla")) == 5 && cur.getInt(cur.getColumnIndex("UnitsInStock")) > 0){
+                                section = "";
+                            }
+
+                            if(!cur.isNull(cur.getColumnIndex("Zamjenski_Artikal")) && cur.getLong(cur.getColumnIndex("Zamjenski_Artikal")) == 0L && !cur.isNull(cur.getColumnIndex("Status_Artikla")) && cur.getInt(cur.getColumnIndex("Status_Artikla")) == 5 && cur.getInt(cur.getColumnIndex("UnitsInStock")) == 0){
+                                section = "<font color='#ff0000'>IZBAČEN</font>";
+                            }
 
                             SuggstionItem item = new SuggstionItem();
                             item._id = cur.getLong(cur.getColumnIndex("_id"));

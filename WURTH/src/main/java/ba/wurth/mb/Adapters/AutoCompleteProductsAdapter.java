@@ -44,6 +44,14 @@ public class AutoCompleteProductsAdapter extends SimpleCursorAdapter
             section += ", preporuka " + cursor.getString(cursor.getColumnIndex("Zamjenski_Sifra"));
         }
 
+        if (!cursor.isNull(cursor.getColumnIndex("Zamjenski_Artikal")) && cursor.getLong(cursor.getColumnIndex("Zamjenski_Artikal")) > 0L && cursor.getInt(cursor.getColumnIndex("Status_Artikla")) == 5 && cursor.getInt(cursor.getColumnIndex("UnitsInStock")) > 0) {
+            section = "";
+        }
+
+        if(!cursor.isNull(cursor.getColumnIndex("Zamjenski_Artikal")) && cursor.getLong(cursor.getColumnIndex("Zamjenski_Artikal")) == 0L && !cursor.isNull(cursor.getColumnIndex("Status_Artikla")) && cursor.getInt(cursor.getColumnIndex("Status_Artikla")) == 5 && cursor.getInt(cursor.getColumnIndex("UnitsInStock")) == 0){
+            section = "<font color='#ff0000'>IZBAČEN</font>";
+        }
+
         ((TextView) view.findViewById(R.id.litTitle)).setText(cursor.getString(1));
         view.findViewById(R.id.litTitle).setContentDescription(cursor.getInt(cursor.getColumnIndex("Status_Artikla")) == 3 && !cursor.isNull(cursor.getColumnIndex("Zamjenski_Artikal")) && cursor.getLong(cursor.getColumnIndex("Zamjenski_Artikal")) > 0 ? cursor.getString(cursor.getColumnIndex("Zamjenski_Artikal")) : cursor.getString(cursor.getColumnIndex("_id")));
         ((TextView) view.findViewById(R.id.litCode)).setText(cursor.getString(2));

@@ -273,7 +273,7 @@ public class OrderItemsFragment extends Fragment {
                             }
                         }
                         else {
-                            Notifications.showNotification(getActivity(), "", getActivity().getString(R.string.Notification_ProductCanNotBeAdded), 2);
+                            Notifications.showNotification(getActivity(), "", "Artikal je izbačen", 2);
                             return;
                         }
 
