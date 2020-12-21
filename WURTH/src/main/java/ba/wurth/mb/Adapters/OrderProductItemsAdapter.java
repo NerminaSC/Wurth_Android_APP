@@ -33,6 +33,7 @@ import androidx.fragment.app.Fragment;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import ba.wurth.mb.Activities.Products.ProductsActivity;
@@ -311,7 +312,7 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
                                 litDiscountStart.setText(Integer.toString(KolicinaOD.intValue()));
                                 if (KolicinaDO > 0D) litDiscountEnd.setText(Integer.toString(KolicinaDO.intValue()));
 
-                                txbDiscount.setText(Double.toString(mOrderItem.UserDiscountPercentage + mOrderItem.ClientDiscountPercentage));
+                                txbDiscount.setText(CustomNumberFormat.GenerateFormat(mOrderItem.UserDiscountPercentage + mOrderItem.ClientDiscountPercentage));
 
                                 Double PopustDO = item.PopustDO;
                                 Double PopustOD = item.PopustOD;
@@ -335,13 +336,13 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
                                 litDiscountStart.setTag(PopustOD);
                                 litDiscountEnd.setTag(PopustDO);
 
-                                txbDiscount.setText(Double.toString(PopustOD.intValue()));
+                                txbDiscount.setText(CustomNumberFormat.GenerateFormat(PopustOD));
 
                                 price = price - (price * PopustOD / 100);
 
                                 litPrice.setText(CustomNumberFormat.GenerateFormatCurrency(price) + "/" + KljucCijene);
 
-                                percentage = Double.toString((PopustDO - PopustOD));
+                                percentage = CustomNumberFormat.GenerateFormat((PopustDO - PopustOD));
 
                                 PriceItem mPriceItem = new PriceItem();
                                 mPriceItem.discount = PopustOD;
