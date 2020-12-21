@@ -311,7 +311,7 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
                                 litDiscountStart.setText(Integer.toString(KolicinaOD.intValue()));
                                 if (KolicinaDO > 0D) litDiscountEnd.setText(Integer.toString(KolicinaDO.intValue()));
 
-                                txbDiscount.setText(Integer.toString((int) (mOrderItem.UserDiscountPercentage + mOrderItem.ClientDiscountPercentage)));
+                                txbDiscount.setText(Double.toString(mOrderItem.UserDiscountPercentage + mOrderItem.ClientDiscountPercentage));
 
                                 Double PopustDO = item.PopustDO;
                                 Double PopustOD = item.PopustOD;
@@ -335,13 +335,13 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
                                 litDiscountStart.setTag(PopustOD);
                                 litDiscountEnd.setTag(PopustDO);
 
-                                txbDiscount.setText(Integer.toString(PopustOD.intValue()));
+                                txbDiscount.setText(Double.toString(PopustOD.intValue()));
 
                                 price = price - (price * PopustOD / 100);
 
                                 litPrice.setText(CustomNumberFormat.GenerateFormatCurrency(price) + "/" + KljucCijene);
 
-                                percentage = Integer.toString(((int) (PopustDO - PopustOD)));
+                                percentage = Double.toString((PopustDO - PopustOD));
 
                                 PriceItem mPriceItem = new PriceItem();
                                 mPriceItem.discount = PopustOD;
@@ -366,10 +366,9 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
                                                 return;
                                             }
 
-
                                             Double _PopustOD = (Double) litDiscountStart.getTag();
                                             Double _PopustDO = (Double) litDiscountEnd.getTag();
-                                            Double _Discount = Double.parseDouble(txbDiscount.getText().toString().replaceAll("[^0-9]", ""));
+                                            Double _Discount = Double.parseDouble(txbDiscount.getText().toString().replaceAll("[^0-9],", ""));
 
                                             if (_Discount >= _PopustOD && _Discount <= _PopustDO) {
 
@@ -398,9 +397,9 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
 
                                         PriceItem mPriceItem = (PriceItem) view.getTag();
 
-                                        Double _Discount = Double.parseDouble(txbDiscount.getText().toString().replaceAll("[^0-9]", ""));
-                                        Double start = Double.parseDouble(litDiscountStart.getText().toString().replaceAll("[^0-9]", ""));
-                                        Double end = Common.isNumeric(litDiscountEnd.getText().toString()) ? Double.parseDouble(litDiscountEnd.getText().toString().replaceAll("[^0-9]", "")) : 0D;
+                                        Double _Discount = Double.parseDouble(txbDiscount.getText().toString().replaceAll("[^0-9],", ""));
+                                        Double start = Double.parseDouble(litDiscountStart.getText().toString().replaceAll("[^0-9],", ""));
+                                        Double end = Common.isNumeric(litDiscountEnd.getText().toString()) ? Double.parseDouble(litDiscountEnd.getText().toString().replaceAll("[^0-9],", "")) : 0D;
 
                                         if (!(mOrderItem.Quantity * mOrderItem.Pakovanje >= start && (mOrderItem.Quantity * mOrderItem.Pakovanje <= end || end == 0))) {
 

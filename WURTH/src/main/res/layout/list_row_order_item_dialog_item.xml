@@ -54,7 +54,7 @@
             <ba.wurth.mb.Classes.TypefacedEditText
                 app:typeface="Roboto-Condensed.ttf"
                 android:id="@+id/txbDiscount"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:text=""
                 android:textColor="#333333"
                 android:selectAllOnFocus="true"
