@@ -398,9 +398,9 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
 
                                         PriceItem mPriceItem = (PriceItem) view.getTag();
 
-                                        Double _Discount = Double.parseDouble(txbDiscount.getText().toString().replaceAll("[^0-9],", ""));
-                                        Double start = Double.parseDouble(litDiscountStart.getText().toString().replaceAll("[^0-9],", ""));
-                                        Double end = Common.isNumeric(litDiscountEnd.getText().toString()) ? Double.parseDouble(litDiscountEnd.getText().toString().replaceAll("[^0-9],", "")) : 0D;
+                                        Double _Discount = Double.parseDouble(txbDiscount.getText().toString().replaceAll("[^0-9],", "").replace(',', '.'));
+                                        Double start = Double.parseDouble(litDiscountStart.getText().toString().replaceAll("[^0-9],", "").replace(',', '.'));
+                                        Double end = Common.isNumeric(litDiscountEnd.getText().toString()) ? Double.parseDouble(litDiscountEnd.getText().toString().replaceAll("[^0-9],", "").replace(',', '.')) : 0D;
 
                                         if (!(mOrderItem.Quantity * mOrderItem.Pakovanje >= start && (mOrderItem.Quantity * mOrderItem.Pakovanje <= end || end == 0))) {
 
