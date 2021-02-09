@@ -106,7 +106,7 @@ public class OrderItemsFragment extends Fragment {
         mAdapterProducts.setFilterQueryProvider(new FilterQueryProvider() {
             public Cursor runQuery(CharSequence str) {
                 try {
-                    if (txbProducts.getText().toString().length() < 2) return null;
+                    if (txbProducts.getText().toString().length() < 4) return null;
                     Cursor cur = DL_Wurth.GET_ProductsSearch(txbProducts.getText().toString().replace(" ",""));
                     return cur;
                 }
@@ -164,7 +164,9 @@ public class OrderItemsFragment extends Fragment {
                             _cur.close();
                         }
 
-                        if (p.Status_Artikla != 0 && p.Status_Artikla != 1 && p.Status_Artikla != 5) {
+                        if(p.Status_Artikla == 2){
+                            Notifications.showNotification(getActivity(), "", "Artikal je izbačen", 2);
+                        }else if (p.Status_Artikla != 0 && p.Status_Artikla != 1 && p.Status_Artikla != 5) {
                             Notifications.showNotification(getActivity(), "", getActivity().getString(R.string.Notification_ProductCanNotBeAdded), 2);
                         }
                         else {
@@ -238,45 +240,43 @@ public class OrderItemsFragment extends Fragment {
                     }
 
                     /*** STATUS = 5 ***/
-                    if (p.Status_Artikla == 5 && Double.parseDouble(txbQuantity.getText().toString()) > p.UnitsInStock) {
+                    if (p.Status_Artikla == 5) {
 
-                        if (p.Zamjenski_Artikal > 0) {
+                        Integer unit_in_stock = Integer.parseInt(new wurthMB.GET_LiveStatus(p.ArtikalID).execute().get());
 
-                            p.ArtikalID = p.Zamjenski_Artikal;
-                            p.Zamjenski_Artikal = 0;
+                        if(Double.parseDouble(txbQuantity.getText().toString()) > unit_in_stock){
 
-                            Cursor _cur = DL_Wurth.GET_Product(p.ArtikalID);
+                            if(p.Zamjenski_Artikal > 0){
+                                p.ArtikalID = p.Zamjenski_Artikal;
+                                p.Zamjenski_Artikal = 0;
 
-                            if (_cur != null) {
+                                Cursor _cur = DL_Wurth.GET_Product(p.ArtikalID);
 
-                                if (_cur.moveToFirst()) {
+                                if (_cur != null) {
 
-                                    p.Grupa_Artikla = _cur.getLong(_cur.getColumnIndex("Grupa_Artikla"));
-                                    p.ProductID = _cur.getLong(_cur.getColumnIndex("ProductID"));
-                                    p.Name = _cur.getString(_cur.getColumnIndex("Naziv"));
-                                    p.Naziv = _cur.getString(_cur.getColumnIndex("Naziv"));
-                                    p.Code = _cur.getString(_cur.getColumnIndex("sifra"));
-                                    p.MjernaJedinica = _cur.getString(_cur.getColumnIndex("MjernaJedinica"));
-                                    p.Status_Artikla = _cur.getInt(_cur.getColumnIndex("Status_Artikla"));
-                                    p.Status_Prezentacije_Artikla = _cur.getInt(_cur.getColumnIndex("Status_Prezentacije_Artikla"));
-                                    p.Kod_Zbirne_Cjen_Razrade = _cur.getString(_cur.getColumnIndex("Kod_Zbirne_Cjen_Razrade"));
-                                    p.Zamjenski_Artikal = _cur.getInt(_cur.getColumnIndex("Zamjenski_Artikal"));
-                                    p.UnitsInStock = _cur.getInt(_cur.getColumnIndex("UnitsInStock"));
+                                    if (_cur.moveToFirst()) {
 
-                                    txbProducts.setText(p.Code);
+                                         p.Grupa_Artikla = _cur.getLong(_cur.getColumnIndex("Grupa_Artikla"));
+                                        p.ProductID = _cur.getLong(_cur.getColumnIndex("ProductID"));
+                                        p.Name = _cur.getString(_cur.getColumnIndex("Naziv"));
+                                        p.Naziv = _cur.getString(_cur.getColumnIndex("Naziv"));
+                                        p.Code = _cur.getString(_cur.getColumnIndex("sifra"));
+                                        p.MjernaJedinica = _cur.getString(_cur.getColumnIndex("MjernaJedinica"));
+                                        p.Status_Artikla = _cur.getInt(_cur.getColumnIndex("Status_Artikla"));
+                                        p.Status_Prezentacije_Artikla = _cur.getInt(_cur.getColumnIndex("Status_Prezentacije_Artikla"));
+                                        p.Kod_Zbirne_Cjen_Razrade = _cur.getString(_cur.getColumnIndex("Kod_Zbirne_Cjen_Razrade"));
+                                        p.Zamjenski_Artikal = _cur.getInt(_cur.getColumnIndex("Zamjenski_Artikal"));
+                                        p.UnitsInStock = _cur.getInt(_cur.getColumnIndex("UnitsInStock"));
+
+                                        txbProducts.setText(p.Code);
+                                    }
+                                    _cur.close();
                                 }
-                                _cur.close();
-                            }
-
-                            if (p.Status_Artikla != 0 && p.Status_Artikla != 1 && p.Status_Artikla != 5) {
-                                Notifications.showNotification(getActivity(), "", getActivity().getString(R.string.Notification_ProductCanNotBeAdded), 2);
+                            }else {
+                                Notifications.showNotification(getActivity(), "", "Artikal je izbačen", 2);
+                                return;
                             }
                         }
-                        else {
-                            Notifications.showNotification(getActivity(), "", "Artikal je izbačen", 2);
-                            return;
-                        }
-
                     }
 
                     OrderItem tempOrderItem =  new OrderItem(){{
@@ -294,7 +294,7 @@ public class OrderItemsFragment extends Fragment {
 
                     tempOrderItem = wurthMB.getOrder().setDiscount(tempOrderItem);
 
-                    if (tempOrderItem.Price_WS == 0) {
+                     if (tempOrderItem.Price_WS == 0) {
                         Notifications.showNotification(getActivity(), "", getActivity().getString(R.string.Notification_ProductNoPrioe), 2);
                         return;
                     }

@@ -17,25 +17,23 @@ import java.util.ArrayList;
 import ba.wurth.mb.Activities.Clients.ClientActivity;
 import ba.wurth.mb.Activities.Products.ProductsActivity;
 import ba.wurth.mb.Classes.Notifications;
+import ba.wurth.mb.Classes.wurthMB;
 import ba.wurth.mb.DataLayer.Custom.DL_Wurth;
 import ba.wurth.mb.R;
 
-public class SearchSuggestionsAdapter extends SimpleCursorAdapter
-{
-    private static final String[] mFields = { "_id", "result" };
-    private static final String[] mVisible = { "result" };
-    private static final int[] mViewIds = { android.R.id.text1 };
+public class SearchSuggestionsAdapter extends SimpleCursorAdapter {
+    private static final String[] mFields = {"_id", "result"};
+    private static final String[] mVisible = {"result"};
+    private static final int[] mViewIds = {android.R.id.text1};
     private Context mContext;
 
-    public SearchSuggestionsAdapter(Context context)
-    {
+    public SearchSuggestionsAdapter(Context context) {
         super(context, R.layout.search_list_item, null, mVisible, mViewIds, 0);
         mContext = context;
     }
 
     @Override
-    public Cursor runQueryOnBackgroundThread(CharSequence constraint)
-    {
+    public Cursor runQueryOnBackgroundThread(CharSequence constraint) {
         return new SuggestionsCursor(constraint);
     }
 
@@ -71,7 +69,8 @@ public class SearchSuggestionsAdapter extends SimpleCursorAdapter
                         k.putExtra("ArtikalID", Long.parseLong(v.findViewById(R.id.litCode).getContentDescription().toString()));
                         k.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
-                        if (mContext instanceof ProductsActivity) ((ProductsActivity) mContext).finish();
+                        if (mContext instanceof ProductsActivity)
+                            ((ProductsActivity) mContext).finish();
 
                         mContext.startActivity(k);
                         break;
@@ -90,58 +89,82 @@ public class SearchSuggestionsAdapter extends SimpleCursorAdapter
         });
     }
 
-    private static class SuggestionsCursor extends AbstractCursor
-    {
+    private static class SuggestionsCursor extends AbstractCursor {
         private ArrayList<SuggstionItem> mResults;
 
-        public SuggestionsCursor(CharSequence constraint)
-        {
+        public SuggestionsCursor(CharSequence constraint) {
             mResults = new ArrayList<SuggstionItem>();
 
             try {
 
-                if(!TextUtils.isEmpty(constraint)) {
+                if (!TextUtils.isEmpty(constraint)) {
 
-                    if (constraint.length() < 3) return;
+                    if (constraint.length() < 5) return;
 
-                    Cursor cur = DL_Wurth.GET_Search(constraint.toString().replace(" ",""));
+                    Cursor cur = DL_Wurth.GET_Search(constraint.toString().replace(" ", ""));
 
                     if (cur != null) {
                         while (cur.moveToNext()) {
 
                             String section = "";
+                            Long ID = cur.getLong(cur.getColumnIndex("ID"));
 
+                            // STATUS 1
                             if (!cur.isNull(cur.getColumnIndex("Status_Artikla")) && cur.getInt(cur.getColumnIndex("Status_Artikla")) == 0 || cur.getInt(cur.getColumnIndex("Status_Artikla")) == 1) {
                                 section = cur.getString(cur.getColumnIndex("Section"));
                             }
 
+                            // STATUS 2
                             if (!cur.isNull(cur.getColumnIndex("Status_Artikla")) && cur.getInt(cur.getColumnIndex("Status_Artikla")) == 2) {
-                                section = "<font color='#ff0000'>IZBAČEN</font>";
+                                section = "<font color='#ff0000'>Artikal je izbačen</font>";
                             }
 
+                            // STATUS 3
                             if (!cur.isNull(cur.getColumnIndex("Status_Artikla")) && cur.getInt(cur.getColumnIndex("Status_Artikla")) == 3) {
                                 section = "ZAMJENJEN";
+
+                                if (!cur.isNull(cur.getColumnIndex("Zamjenski_Artikal")) && cur.getLong(cur.getColumnIndex("Zamjenski_Artikal")) > 0L) {
+                                    section = "Artikal je zamjenjen sa " + cur.getString(cur.getColumnIndex("Zamjenski_Sifra"));
+                                    ID = cur.getLong(cur.getColumnIndex("Zamjenski_Artikal"));
+                                }
                             }
 
+                            // STATUS 4
                             if (!cur.isNull(cur.getColumnIndex("Status_Artikla")) && cur.getInt(cur.getColumnIndex("Status_Artikla")) == 4) {
-                                section = "<font color='#ff0000'>IZBAČEN SA PREPORUKOM</font>";
+                                section = "<font color='#ff0000'>Artikal je izbačen</font>";
+
+                                if (!cur.isNull(cur.getColumnIndex("Zamjenski_Artikal")) && cur.getLong(cur.getColumnIndex("Zamjenski_Artikal")) > 0L) {
+                                    section += ", preporuka " + cur.getString(cur.getColumnIndex("Zamjenski_Sifra"));
+                                    ID = cur.getLong(cur.getColumnIndex("Zamjenski_Artikal"));
+                                }
                             }
 
-                            if (!cur.isNull(cur.getColumnIndex("Zamjenski_Artikal")) && cur.getLong(cur.getColumnIndex("Zamjenski_Artikal")) > 0L) {
-                                section += ", preporuka " + cur.getString(cur.getColumnIndex("Zamjenski_Sifra"));
-                            }
+                            // STATUS 5
+                            if (!cur.isNull(cur.getColumnIndex("Status_Artikla")) && cur.getInt(cur.getColumnIndex("Status_Artikla")) == 5 && cur.getCount() < 10) {
+                                Integer unit_in_stock = Integer.parseInt(new wurthMB.GET_LiveStatus(cur.getLong(cur.getColumnIndex("ID"))).execute().get());
 
-                            if(!cur.isNull(cur.getColumnIndex("Zamjenski_Artikal")) && cur.getLong(cur.getColumnIndex("Zamjenski_Artikal")) > 0L && !cur.isNull(cur.getColumnIndex("Status_Artikla")) && cur.getInt(cur.getColumnIndex("Status_Artikla")) == 5 && cur.getInt(cur.getColumnIndex("UnitsInStock")) > 0){
-                                section = "";
-                            }
+                                // količina na stanju je veća od tražene količine
+                                if (unit_in_stock > 0) {
+                                    section = "";
+                                }
 
-                            if(!cur.isNull(cur.getColumnIndex("Zamjenski_Artikal")) && cur.getLong(cur.getColumnIndex("Zamjenski_Artikal")) == 0L && !cur.isNull(cur.getColumnIndex("Status_Artikla")) && cur.getInt(cur.getColumnIndex("Status_Artikla")) == 5 && cur.getInt(cur.getColumnIndex("UnitsInStock")) == 0){
-                                section = "<font color='#ff0000'>IZBAČEN</font>";
+                                // količina na stanju je manja od tražene količine
+                                if (unit_in_stock == 0) {
+
+                                    //postoji zamjenski artikal
+                                    if (!cur.isNull(cur.getColumnIndex("Zamjenski_Artikal")) && cur.getLong(cur.getColumnIndex("Zamjenski_Artikal")) > 0L) {
+                                        section = "Preporuka " + cur.getString(cur.getColumnIndex("Zamjenski_Sifra"));
+                                        ID = cur.getLong(cur.getColumnIndex("Zamjenski_Artikal"));
+                                    }
+                                    // ne postoji zamjenski artikal
+                                    if (!cur.isNull(cur.getColumnIndex("Zamjenski_Artikal")) && cur.getLong(cur.getColumnIndex("Zamjenski_Artikal")) == 0L)
+                                        section = "<font color='#ff0000'>IZBAČEN</font>";
+                                }
                             }
 
                             SuggstionItem item = new SuggstionItem();
                             item._id = cur.getLong(cur.getColumnIndex("_id"));
-                            item.ID = !cur.isNull(cur.getColumnIndex("Zamjenski_Artikal")) && cur.getLong(cur.getColumnIndex("Zamjenski_Artikal")) > 0 ? (!cur.isNull(cur.getColumnIndex("Status_Artikla")) && cur.getInt(cur.getColumnIndex("Status_Artikla")) == 5 && cur.getInt(cur.getColumnIndex("UnitsInStock")) > 0 ? cur.getLong(cur.getColumnIndex("ID")) : cur.getLong(cur.getColumnIndex("Zamjenski_Artikal"))) : cur.getLong(cur.getColumnIndex("ID"));
+                            item.ID = ID;
                             item.SectionID = cur.getLong(cur.getColumnIndex("SectionID"));
                             item.Name = cur.isNull(cur.getColumnIndex("Zbirni_Naziv")) ? cur.getString(cur.getColumnIndex("Name")) : (cur.getString(cur.getColumnIndex("Zbirni_Naziv")).equals("") ? cur.getString(cur.getColumnIndex("Name")) : cur.getString(cur.getColumnIndex("Zbirni_Naziv")));
                             item.Code = cur.getString(cur.getColumnIndex("Code"));
@@ -154,34 +177,32 @@ public class SearchSuggestionsAdapter extends SimpleCursorAdapter
                         cur.close();
                     }
                 }
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 Log.d(ex.getMessage(), "");
             }
 
         }
+
         @Override
-        public int getCount()
-        {
+        public int getCount() {
             return mResults.size();
         }
+
         @Override
-        public String[] getColumnNames()
-        {
+        public String[] getColumnNames() {
             return mFields;
         }
+
         @Override
-        public long getLong(int column)
-        {
-            if(column == 0){
+        public long getLong(int column) {
+            if (column == 0) {
                 return mPos;
             }
             throw new UnsupportedOperationException("unimplemented");
         }
 
         @Override
-        public String getString(int column)
-        {
+        public String getString(int column) {
             if (column == 0) return Long.toString(mResults.get(mPos)._id);
             if (column == 1) return Long.toString(mResults.get(mPos).ID);
             if (column == 2) return Long.toString(mResults.get(mPos).SectionID);
@@ -196,28 +217,27 @@ public class SearchSuggestionsAdapter extends SimpleCursorAdapter
         }
 
         @Override
-        public short getShort(int column)
-        {
+        public short getShort(int column) {
             throw new UnsupportedOperationException("unimplemented");
         }
+
         @Override
-        public int getInt(int column)
-        {
+        public int getInt(int column) {
             throw new UnsupportedOperationException("unimplemented");
         }
+
         @Override
-        public float getFloat(int column)
-        {
+        public float getFloat(int column) {
             throw new UnsupportedOperationException("unimplemented");
         }
+
         @Override
-        public double getDouble(int column)
-        {
+        public double getDouble(int column) {
             throw new UnsupportedOperationException("unimplemented");
         }
+
         @Override
-        public boolean isNull(int column)
-        {
+        public boolean isNull(int column) {
             return false;
         }
     }

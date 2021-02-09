@@ -11,6 +11,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.text.Html;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -37,10 +41,12 @@ import java.util.Locale;
 
 import ba.wurth.mb.Classes.Objects.Client;
 import ba.wurth.mb.Classes.Objects.Order;
+import ba.wurth.mb.Classes.Objects.OrderItem;
 import ba.wurth.mb.Classes.Objects.Temp;
 import ba.wurth.mb.Classes.Objects.User;
 import ba.wurth.mb.DataLayer.DBHelper;
 import ba.wurth.mb.DataLayer.Temp.DL_Temp;
+import ba.wurth.mb.R;
 
 //@ReportsCrashes(formKey = "dE9Xak5zdXg4UElhakhBclFfeGttaEE6MA")
 @ReportsCrashes(formKey = "")
@@ -358,6 +364,45 @@ public class wurthMB extends Application {
         @Override
         protected void onPostExecute(Void arg) {
 
+        }
+    }
+
+    public static class GET_LiveStatus extends AsyncTask<Long, String, String> {
+
+        private Long ArtikalID;
+
+        public GET_LiveStatus(Long _ArtikalID) {
+            ArtikalID = _ArtikalID;
+        }
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected String doInBackground(Long... params) {
+            try {
+                ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+                postParameters.add(new BasicNameValuePair("productId", Long.toString(ArtikalID)));
+                postParameters.add(new BasicNameValuePair("packaging", "1"));
+                postParameters.add(new BasicNameValuePair("userID", Long.toString(wurthMB.getUser()._userid)));
+                postParameters.add(new BasicNameValuePair("externalKey", "fd0ac005-6e2d-4ff4-8a2c-7da5070e24f5"));
+
+                String response = CustomHttpClient.executeHttpsPost("https://eshop.wurth.ba/ws/external.asmx/GetLiveStatus", postParameters).toString();
+
+                return Html.fromHtml(response).toString().split("\\.")[0].split(":")[1].trim();
+            }
+            catch (Exception e) {
+                return "";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String params) {
+            try {
+            }
+            catch (Exception e) {
+            }
         }
     }
 

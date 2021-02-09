@@ -15,11 +15,21 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.Collections;
 import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.X509TrustManager;
 
 import ba.wurth.mb.R;
 
@@ -56,6 +66,8 @@ public class ImageLoader {
     public Bitmap getBitmap(String url) {
         File f = fileCache.getFile(url);
 
+        trustEveryone();
+
         //from SD cache
         Bitmap b = decodeFile(f);
 
@@ -64,8 +76,8 @@ public class ImageLoader {
         //from web
         try {
             Bitmap bitmap = null;
-            URL imageUrl = new URL(url);
-            HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
+            URL imageUrl = new URL(url.replaceAll(" ", "%20"));
+            HttpsURLConnection conn = (HttpsURLConnection) imageUrl.openConnection();
             conn.setConnectTimeout(30000);
             conn.setReadTimeout(30000);
             conn.setInstanceFollowRedirects(true);
@@ -78,6 +90,7 @@ public class ImageLoader {
             return bitmap;
         } catch (Throwable ex) {
             ex.printStackTrace();
+
             if (ex instanceof OutOfMemoryError)
                 memoryCache.clear();
             return null;
@@ -180,4 +193,25 @@ public class ImageLoader {
         fileCache.clear();
     }
 
+    private void trustEveryone() {
+        try {
+            HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier(){
+                public boolean verify(String hostname, SSLSession session) {
+                    return true;
+                }});
+            SSLContext context = SSLContext.getInstance("TLS");
+            context.init(null, new X509TrustManager[]{new X509TrustManager(){
+                public void checkClientTrusted(X509Certificate[] chain,
+                                               String authType) throws CertificateException {}
+                public void checkServerTrusted(X509Certificate[] chain,
+                                               String authType) throws CertificateException {}
+                public X509Certificate[] getAcceptedIssuers() {
+                    return new X509Certificate[0];
+                }}}, new SecureRandom());
+            HttpsURLConnection.setDefaultSSLSocketFactory(
+                    context.getSocketFactory());
+        } catch (Exception e) { // should never happen
+            e.printStackTrace();
+        }
+    }
 }

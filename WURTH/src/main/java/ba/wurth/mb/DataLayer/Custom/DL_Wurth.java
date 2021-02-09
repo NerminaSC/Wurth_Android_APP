@@ -371,7 +371,7 @@ public class DL_Wurth {
 
                             " WHERE PRODUCTS_FTS MATCH 'Keyword:" + searchTextCompact + "* OR Keyword1:" + searchTextCompact + "* OR Name:" + searchText + "*' " +
                             //" AND ARTIKLI.Status_Artikla <> 0 " +
-                            " AND ARTIKLI.Status_Artikla <> 2 " +
+                            //" AND ARTIKLI.Status_Artikla <> 2 " +
 
                             " ORDER BY PRODUCTS_FTS.Code, PRODUCTS_FTS.Name "
                     , null);
@@ -645,7 +645,7 @@ public class DL_Wurth {
                 int KljucCijene = !cur.isNull(cur.getColumnIndex("KljucCijene")) ? cur.getInt(cur.getColumnIndex("KljucCijene")) : 0;
                 int CijenaPonude = !cur.isNull(cur.getColumnIndex("CijenaPonude")) ? cur.getInt(cur.getColumnIndex("CijenaPonude")) : 0;
                 int Pakovanje = !cur.isNull(cur.getColumnIndex("Pakovanje")) ? cur.getInt(cur.getColumnIndex("Pakovanje")) : 0;
-                double KolicinaDo = !cur.isNull(cur.getColumnIndex("KolicinaDO")) ? cur.getDouble(cur.getColumnIndex("KolicinaDO")) : 0;
+              //  double KolicinaDo = !cur.isNull(cur.getColumnIndex("KolicinaDO")) ? cur.getDouble(cur.getColumnIndex("KolicinaDO")) : 0;
                 double KolicinaOD = !cur.isNull(cur.getColumnIndex("KolicinaOD")) ? cur.getDouble(cur.getColumnIndex("KolicinaOD")) : 0;
                 double PopustOD = !cur.isNull(cur.getColumnIndex("PopustOD")) ? cur.getDouble(cur.getColumnIndex("PopustOD")) : 0;
                 double PopustDO = !cur.isNull(cur.getColumnIndex("PopustDO")) ? cur.getDouble(cur.getColumnIndex("PopustDO")) : 0;
@@ -668,7 +668,7 @@ public class DL_Wurth {
                     pricelistItem.PopustOD = PopustOD;
                     pricelistItem.PopustDO = PopustDO;
                     pricelistItem.KolicinaOD = KolicinaOD;
-                    pricelistItem.KolicinaDo = KolicinaDo;
+                 //   pricelistItem.KolicinaDo = KolicinaDo;
                     pricelistItem.DodatniPopust = DodatniPopust;
                     pricelistItem.DatumOd = DatumOd;
                     pricelistItem.DatumDo = DatumDo;
@@ -676,7 +676,7 @@ public class DL_Wurth {
                     pricelistItem.AkcijskaCijena = AkcijskaCijena;
                     pricelistItem.Pakovanje = Pakovanje;
                     items.add(pricelistItem);
-                    if (KolicinaDo == 0) priceDefinedForAllByClient = true;
+                   // if (KolicinaDo == 0) priceDefinedForAllByClient = true;
                 }
             }
 
@@ -695,7 +695,7 @@ public class DL_Wurth {
                 int KljucCijene = !cur.isNull(cur.getColumnIndex("KljucCijene")) ? cur.getInt(cur.getColumnIndex("KljucCijene")) : 0;
                 int CijenaPonude = !cur.isNull(cur.getColumnIndex("CijenaPonude")) ? cur.getInt(cur.getColumnIndex("CijenaPonude")) : 0;
                 int Pakovanje = !cur.isNull(cur.getColumnIndex("Pakovanje")) ? cur.getInt(cur.getColumnIndex("Pakovanje")) : 0;
-                double KolicinaDo = !cur.isNull(cur.getColumnIndex("KolicinaDO")) ? cur.getDouble(cur.getColumnIndex("KolicinaDO")) : 0;
+               // double KolicinaDo = !cur.isNull(cur.getColumnIndex("KolicinaDO")) ? cur.getDouble(cur.getColumnIndex("KolicinaDO")) : 0;
                 double KolicinaOD = !cur.isNull(cur.getColumnIndex("KolicinaOD")) ? cur.getDouble(cur.getColumnIndex("KolicinaOD")) : 0;
                 double PopustOD = !cur.isNull(cur.getColumnIndex("PopustOD")) ? cur.getDouble(cur.getColumnIndex("PopustOD")) : 0;
                 double PopustDO = !cur.isNull(cur.getColumnIndex("PopustDO")) ? cur.getDouble(cur.getColumnIndex("PopustDO")) : 0;
@@ -724,7 +724,7 @@ public class DL_Wurth {
                         // CHECK IF MAIN BRANCHE IS ALREADY ADDED
                         for (int x = 0; x < items.size(); x++) {
 
-                            if (items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && (items.get(x).KolicinaDo == 0 || (items.get(x).KolicinaDo >= KolicinaDo && KolicinaDo != 0))) {
+                            if (items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD) {
 
                                 if (items.get(x).Bransa.length() < Bransa.length()) { //CHILD BRANCHES HAVE TO ADD
                                     items.get(x).ArtikalID = ArtikalID;
@@ -737,7 +737,7 @@ public class DL_Wurth {
                                     items.get(x).PopustOD = PopustOD;
                                     items.get(x).PopustDO = PopustDO;
                                     items.get(x).KolicinaOD = KolicinaOD;
-                                    items.get(x).KolicinaDo = KolicinaDo;
+                                    //items.get(x).KolicinaDo = KolicinaDo;
                                     items.get(x).DodatniPopust = DodatniPopust;
                                     items.get(x).DatumOd = DatumOd;
                                     items.get(x).DatumDo = DatumDo;
@@ -755,7 +755,7 @@ public class DL_Wurth {
                                     items.get(x).PopustOD = PopustOD;
                                     items.get(x).PopustDO = PopustDO;
                                     items.get(x).KolicinaOD = KolicinaOD;
-                                    items.get(x).KolicinaDo = KolicinaDo;
+                                    //items.get(x).KolicinaDo = KolicinaDo;
                                     items.get(x).DodatniPopust = DodatniPopust;
                                     items.get(x).DatumOd = DatumOd;
                                     items.get(x).DatumDo = DatumDo;
@@ -790,7 +790,7 @@ public class DL_Wurth {
 
                         if (Bransa.length() == 0) {
                             for (int x = 0; x < items.size(); x++) {
-                                if (items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && (items.get(x).KolicinaDo == 0 || (items.get(x).KolicinaDo >= KolicinaDo && KolicinaDo != 0))) {
+                                if (items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD) {
                                     exists = true;
                                     break;
                                 }
@@ -809,7 +809,7 @@ public class DL_Wurth {
                         pricelistItem.PopustOD = PopustOD;
                         pricelistItem.PopustDO = PopustDO;
                         pricelistItem.KolicinaOD = KolicinaOD;
-                        pricelistItem.KolicinaDo = KolicinaDo;
+                       // pricelistItem.KolicinaDo = KolicinaDo;
                         pricelistItem.DodatniPopust = DodatniPopust;
                         pricelistItem.DatumOd = DatumOd;
                         pricelistItem.DatumDo = DatumDo;
@@ -837,7 +837,7 @@ public class DL_Wurth {
                 int KljucCijene = !cur.isNull(cur.getColumnIndex("KljucCijene")) ? cur.getInt(cur.getColumnIndex("KljucCijene")) : 0;
                 int CijenaPonude = !cur.isNull(cur.getColumnIndex("CijenaPonude")) ? cur.getInt(cur.getColumnIndex("CijenaPonude")) : 0;
                 int Pakovanje = !cur.isNull(cur.getColumnIndex("Pakovanje")) ? cur.getInt(cur.getColumnIndex("Pakovanje")) : 0;
-                double KolicinaDo = !cur.isNull(cur.getColumnIndex("KolicinaDO")) ? cur.getDouble(cur.getColumnIndex("KolicinaDO")) : 0;
+               // double KolicinaDo = !cur.isNull(cur.getColumnIndex("KolicinaDO")) ? cur.getDouble(cur.getColumnIndex("KolicinaDO")) : 0;
                 double KolicinaOD = !cur.isNull(cur.getColumnIndex("KolicinaOD")) ? cur.getDouble(cur.getColumnIndex("KolicinaOD")) : 0;
                 double PopustOD = !cur.isNull(cur.getColumnIndex("PopustOD")) ? cur.getDouble(cur.getColumnIndex("PopustOD")) : 0;
                 double PopustDO = !cur.isNull(cur.getColumnIndex("PopustDO")) ? cur.getDouble(cur.getColumnIndex("PopustDO")) : 0;
@@ -853,7 +853,7 @@ public class DL_Wurth {
 
                     for (int x = 0; x < items.size(); x++) {
                         // if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && ((items.get(x).KolicinaDo == 0 && items.get(x).PopustOD > PopustOD) || (items.get(x).KolicinaDo >= KolicinaDo && KolicinaDo != 0))) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
-                        if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && items.get( x).KolicinaDo >= KolicinaDo && items.get(x).PopustOD >= PopustOD && items.get(x).PopustDO >= PopustDO) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
+                        if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && items.get(x).PopustOD >= PopustOD && items.get(x).PopustDO >= PopustDO) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
                             exists = true;
                             break;
                         }
@@ -870,7 +870,7 @@ public class DL_Wurth {
                         pricelistItem.PopustOD = PopustOD;
                         pricelistItem.PopustDO = PopustDO;
                         pricelistItem.KolicinaOD = KolicinaOD;
-                        pricelistItem.KolicinaDo = KolicinaDo;
+                        //pricelistItem.KolicinaDo = KolicinaDo;
                         pricelistItem.DodatniPopust = DodatniPopust;
                         pricelistItem.DatumOd = DatumOd;
                         pricelistItem.DatumDo = DatumDo;
@@ -889,7 +889,7 @@ public class DL_Wurth {
 
                             for (int x = 0; x < items.size(); x++) {
                                 // if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && ((items.get(x).KolicinaDo == 0 && items.get(x).PopustOD > PopustOD) || (items.get(x).KolicinaDo >= KolicinaDo && KolicinaDo != 0))) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
-                                if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD && items.get(x).KolicinaDo >= KolicinaDo && items.get(x).PopustOD >= PopustOD && items.get(x).PopustDO >= PopustDO) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
+                                if ((items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD  && items.get(x).PopustOD >= PopustOD && items.get(x).PopustDO >= PopustDO) || (items.get(x).PartnerID > 0 && items.get(x).KolicinaOD == KolicinaOD)) {
                                     exists = true;
                                     break;
                                 }
@@ -907,7 +907,7 @@ public class DL_Wurth {
                             pricelistItem.PopustOD = PopustOD;
                             pricelistItem.PopustDO = PopustDO;
                             pricelistItem.KolicinaOD = KolicinaOD;
-                            pricelistItem.KolicinaDo = KolicinaDo;
+                            //pricelistItem.KolicinaDo = KolicinaDo;
                             pricelistItem.DodatniPopust = DodatniPopust;
                             pricelistItem.DatumOd = DatumOd;
                             pricelistItem.DatumDo = DatumDo;
@@ -930,7 +930,7 @@ public class DL_Wurth {
                             if (!exists) continue;
 
                             for (int x = 0; x < items.size(); x++) {
-                                if (items.get(x).PopustOD < PopustOD && items.get(x).PartnerID == 0 && items.get(x).KolicinaOD >= KolicinaOD && (items.get(x).KolicinaDo == 0 || (items.get(x).KolicinaDo >= KolicinaDo && KolicinaDo != 0))) {
+                                if (items.get(x).PopustOD < PopustOD && items.get(x).PartnerID == 0 && items.get(x).KolicinaOD >= KolicinaOD) {
                                     items.get(x).ArtikalID = ArtikalID;
                                     items.get(x).PartnerID = PartnerID;
                                     items.get(x).PotencijalOD = PotencijalOD;
@@ -941,7 +941,7 @@ public class DL_Wurth {
                                     items.get(x).PopustOD = PopustOD;
                                     items.get(x).PopustDO = PopustDO;
                                     items.get(x).KolicinaOD = KolicinaOD;
-                                    items.get(x).KolicinaDo = KolicinaDo;
+                                    //items.get(x).KolicinaDo = KolicinaDo;
                                     items.get(x).DodatniPopust = DodatniPopust;
                                     items.get(x).DatumOd = DatumOd;
                                     items.get(x).DatumDo = DatumDo;
@@ -964,7 +964,7 @@ public class DL_Wurth {
                             pricelistItem.PopustOD = PopustOD;
                             pricelistItem.PopustDO = PopustDO;
                             pricelistItem.KolicinaOD = KolicinaOD;
-                            pricelistItem.KolicinaDo = KolicinaDo;
+                           // pricelistItem.KolicinaDo = KolicinaDo;
                             pricelistItem.DodatniPopust = DodatniPopust;
                             pricelistItem.DatumOd = DatumOd;
                             pricelistItem.DatumDo = DatumDo;
