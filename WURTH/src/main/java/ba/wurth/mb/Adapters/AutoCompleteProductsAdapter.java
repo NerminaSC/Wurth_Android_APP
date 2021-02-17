@@ -53,7 +53,7 @@ public class AutoCompleteProductsAdapter extends SimpleCursorAdapter
                 }
             }
 
-            if (cursor.getInt(cursor.getColumnIndex("Status_Artikla")) == 5 && cursor.getCount() < 10) {
+            /*if (cursor.getInt(cursor.getColumnIndex("Status_Artikla")) == 5 && cursor.getCount() < 10) {
 
                 // ovako nece moci predugo traje
                 Integer unit_in_stock = Integer.parseInt(new wurthMB.GET_LiveStatus(cursor.getLong(cursor.getColumnIndex("_id"))).execute().get());
@@ -72,7 +72,7 @@ public class AutoCompleteProductsAdapter extends SimpleCursorAdapter
                         section = "<font color='#ff0000'>IZBAČEN</font>";
                     }
                 }
-            }
+            }*/
 
             ((TextView) view.findViewById(R.id.litTitle)).setText(cursor.getString(1));
             view.findViewById(R.id.litTitle).setContentDescription(id);

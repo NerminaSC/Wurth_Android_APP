@@ -682,7 +682,7 @@ public class OrderProductItemsAdapter extends ArrayAdapter<OrderItem>
                         }
                     }
 
-                    if (!exists && qty > 0 && mOrderItem.ProductID > 0L) {
+                    if (!exists && qty > 0  && mOrderItem.ProductID > 0L) {
                         OrderItem tempOrderItem = new OrderItem(){{
                             ArtikalID = mOrderItem.ArtikalID;
                             ProductID = mOrderItem.ProductID;

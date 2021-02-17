@@ -140,7 +140,7 @@ public class SearchSuggestionsAdapter extends SimpleCursorAdapter {
                             }
 
                             // STATUS 5
-                            if (!cur.isNull(cur.getColumnIndex("Status_Artikla")) && cur.getInt(cur.getColumnIndex("Status_Artikla")) == 5 && cur.getCount() < 10) {
+                           /* if (!cur.isNull(cur.getColumnIndex("Status_Artikla")) && cur.getInt(cur.getColumnIndex("Status_Artikla")) == 5 && cur.getCount() < 10) {
                                 Integer unit_in_stock = Integer.parseInt(new wurthMB.GET_LiveStatus(cur.getLong(cur.getColumnIndex("ID"))).execute().get());
 
                                 // količina na stanju je veća od tražene količine
@@ -160,7 +160,7 @@ public class SearchSuggestionsAdapter extends SimpleCursorAdapter {
                                     if (!cur.isNull(cur.getColumnIndex("Zamjenski_Artikal")) && cur.getLong(cur.getColumnIndex("Zamjenski_Artikal")) == 0L)
                                         section = "<font color='#ff0000'>IZBAČEN</font>";
                                 }
-                            }
+                            }*/
 
                             SuggstionItem item = new SuggstionItem();
                             item._id = cur.getLong(cur.getColumnIndex("_id"));

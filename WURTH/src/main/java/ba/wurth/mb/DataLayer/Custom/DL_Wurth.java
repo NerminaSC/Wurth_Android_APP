@@ -724,7 +724,7 @@ public class DL_Wurth {
                         // CHECK IF MAIN BRANCHE IS ALREADY ADDED
                         for (int x = 0; x < items.size(); x++) {
 
-                            if (items.get(x).PartnerID == 0 && items.get(x).KolicinaOD <= KolicinaOD) {
+                            if (items.get(x).PartnerID == 0 && items.get(x).KolicinaOD >= KolicinaOD && items.get(x).PopustDO <= PopustDO ) {
 
                                 if (items.get(x).Bransa.length() < Bransa.length()) { //CHILD BRANCHES HAVE TO ADD
                                     items.get(x).ArtikalID = ArtikalID;
@@ -744,7 +744,7 @@ public class DL_Wurth {
                                     items.get(x).CijenaPonude = CijenaPonude;
                                     items.get(x).AkcijskaCijena = AkcijskaCijena;
                                     items.get(x).Pakovanje = Pakovanje;
-                                } else if (items.get(x).PopustDO < PopustDO && items.get(x).Bransa.length() == Bransa.length()) {
+                                } else if (items.get(x).Bransa.length() == Bransa.length() ) {
                                     items.get(x).ArtikalID = ArtikalID;
                                     items.get(x).PartnerID = PartnerID;
                                     items.get(x).PotencijalOD = PotencijalOD;
