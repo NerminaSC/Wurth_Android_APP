@@ -1558,7 +1558,7 @@ public class DL_Sync {
             JSONObject resp = new JSONObject(new CustomHttpClient().executeHttpPost("http://wurth.api.optimus.ba/services/wurth.asmx/GET_Products_Count", postParameters));
 
             Integer total_count_to_transfer = resp.getInt("ProductCount");
-            Integer records_page_size = 5000;
+            Integer records_page_size = 2000;
             Integer records_page_count = 1;
 
             records_page_count = (total_count_to_transfer + records_page_size - 1) / records_page_size;

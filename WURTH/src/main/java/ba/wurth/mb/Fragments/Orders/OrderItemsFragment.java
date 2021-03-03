@@ -18,6 +18,7 @@ import android.widget.FilterQueryProvider;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 import androidx.fragment.app.Fragment;
@@ -244,9 +245,12 @@ public class OrderItemsFragment extends Fragment {
 
                         Integer unit_in_stock = Integer.parseInt(new wurthMB.GET_LiveStatus(p.ArtikalID).execute().get());
 
-                        if(Double.parseDouble(txbQuantity.getText().toString()) > unit_in_stock){
+                        if(Double.parseDouble(txbQuantity.getText().toString()) * Double.parseDouble(spPackage.getContentDescription().toString()) > unit_in_stock){
 
                             if(p.Zamjenski_Artikal > 0){
+
+                                Notifications.showNotification(getActivity(), "", "Artikal je zamijenjen", 2);
+
                                 p.ArtikalID = p.Zamjenski_Artikal;
                                 p.Zamjenski_Artikal = 0;
 
@@ -256,7 +260,7 @@ public class OrderItemsFragment extends Fragment {
 
                                     if (_cur.moveToFirst()) {
 
-                                         p.Grupa_Artikla = _cur.getLong(_cur.getColumnIndex("Grupa_Artikla"));
+                                        p.Grupa_Artikla = _cur.getLong(_cur.getColumnIndex("Grupa_Artikla"));
                                         p.ProductID = _cur.getLong(_cur.getColumnIndex("ProductID"));
                                         p.Name = _cur.getString(_cur.getColumnIndex("Naziv"));
                                         p.Naziv = _cur.getString(_cur.getColumnIndex("Naziv"));
