@@ -521,6 +521,7 @@ public class ActionsFragment extends Fragment {
                 });
 
             } catch (Exception e) {
+                String temp = e.getMessage();
             }
 
             return view;

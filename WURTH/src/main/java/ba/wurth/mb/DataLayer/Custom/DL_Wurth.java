@@ -930,7 +930,7 @@ public class DL_Wurth {
                             if (!exists) continue;
 
                             for (int x = 0; x < items.size(); x++) {
-                                if (items.get(x).PopustOD < PopustOD && items.get(x).PartnerID == 0 && items.get(x).KolicinaOD >= KolicinaOD) {
+                                if (items.get(x).PopustOD <= PopustOD && items.get(x).PartnerID == 0 && items.get(x).KolicinaOD >= KolicinaOD) {
                                     items.get(x).ArtikalID = ArtikalID;
                                     items.get(x).PartnerID = PartnerID;
                                     items.get(x).PotencijalOD = PotencijalOD;
@@ -990,7 +990,7 @@ public class DL_Wurth {
         try {
 
             final Cursor cur;
-            cur = db_readonly.rawQuery("select Clients._id, Clients.ClientID, Clients._clientid, Clients.Latitude, Clients.Longitude, Clients.AccountID, PARTNER.* "
+            cur = db_readonly.rawQuery("select Clients._id, Clients.ClientID, Clients._clientid, Clients.Latitude, Clien ts.Longitude, Clients.AccountID, PARTNER.* "
                     + " FROM Clients "
                     + " INNER JOIN PARTNER ON Clients._clientid = PARTNER.ID "
                     + " WHERE Clients._id = " + id, null);
