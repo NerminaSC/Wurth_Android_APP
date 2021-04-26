@@ -4,6 +4,8 @@ import android.database.Cursor;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.Collections;
 

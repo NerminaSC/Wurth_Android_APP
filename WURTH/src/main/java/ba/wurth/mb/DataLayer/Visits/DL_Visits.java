@@ -235,7 +235,9 @@ public class DL_Visits {
 				}  
 	        }	        
 		}
-		catch (Exception e) { wurthMB.AddError(className + " " + methodName, e.getMessage(), e); }
+		catch (Exception e) {
+		    wurthMB.AddError(className + " " + methodName, e.getMessage(), e);
+		}
 		
 		if (cur != null) cur.close();
 
