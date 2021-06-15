@@ -26,6 +26,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.content.FileProvider;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -42,6 +43,7 @@ import ba.wurth.mb.Activities.Orders.OrderActivity;
 import ba.wurth.mb.Activities.SettingsActivity;
 import ba.wurth.mb.Activities.Visits.VisitActivity;
 import ba.wurth.mb.Adapters.SearchSuggestionsAdapter;
+import ba.wurth.mb.BuildConfig;
 import ba.wurth.mb.Classes.Common;
 import ba.wurth.mb.Classes.Notifications;
 import ba.wurth.mb.Classes.wurthMB;
@@ -61,15 +63,15 @@ public abstract class AbstractNavDrawerActivity extends AppCompatActivity {
     private CharSequence mTitle;
 
     private SearchView mSearchView;
-    private MenuItem searchMenuItem ;
+    private MenuItem searchMenuItem;
 
     private SearchSuggestionsAdapter mSearchSuggestionsAdapter;
 
-    private NavDrawerActivityConfiguration navConf ;
+    private NavDrawerActivityConfiguration navConf;
 
     protected abstract NavDrawerActivityConfiguration getNavDrawerConfiguration();
 
-    protected abstract void onNavItemSelected( int id );
+    protected abstract void onNavItemSelected(int id);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,8 +115,7 @@ public abstract class AbstractNavDrawerActivity extends AppCompatActivity {
                         mDrawerLayout,
                         R.string.navigation_drawer_open,
                         R.string.navigation_drawer_close
-                )
-        {
+                ) {
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
@@ -141,9 +142,9 @@ public abstract class AbstractNavDrawerActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        if ( navConf.getActionMenuItemsToHideWhenDrawerOpen() != null ) {
+        if (navConf.getActionMenuItemsToHideWhenDrawerOpen() != null) {
             boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-            for( int iItem : navConf.getActionMenuItemsToHideWhenDrawerOpen()) {
+            for (int iItem : navConf.getActionMenuItemsToHideWhenDrawerOpen()) {
                 menu.findItem(iItem).setVisible(!drawerOpen);
             }
         }
@@ -168,8 +169,7 @@ public abstract class AbstractNavDrawerActivity extends AppCompatActivity {
 
         if (!Common.isServiceRunning(AbstractNavDrawerActivity.this, BluetoothService.class.getName())) {
             menu.findItem(R.id.action_bluetooth).setTitle(getString(R.string.BluetoothServiceStart));
-        }
-        else {
+        } else {
             menu.findItem(R.id.action_bluetooth).setTitle(getString(R.string.BluetoothServiceStop));
         }
 
@@ -180,8 +180,7 @@ public abstract class AbstractNavDrawerActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
-        }
-        else {
+        } else {
             switch (item.getItemId()) {
                 case R.id.action_settings:
                     startActivity(new Intent(AbstractNavDrawerActivity.this, SettingsActivity.class));
@@ -190,14 +189,12 @@ public abstract class AbstractNavDrawerActivity extends AppCompatActivity {
                     if (!Common.isServiceRunning(AbstractNavDrawerActivity.this, BluetoothService.class.getName())) {
                         if (!BluetoothAdapter.getDefaultAdapter().isEnabled()) {
                             Toast.makeText(this, getString(R.string.Notification_Bluetooth_AdapterOff), Toast.LENGTH_SHORT).show();
-                        }
-                        else {
+                        } else {
                             startService(new Intent(this, BluetoothService.class));
                             item.setTitle(getString(R.string.BluetoothServiceStop));
                         }
-                    }
-                    else {
-                        stopService(new Intent(this,BluetoothService.class));
+                    } else {
+                        stopService(new Intent(this, BluetoothService.class));
                         item.setTitle(getString(R.string.BluetoothServiceStart));
                     }
                     break;
@@ -247,11 +244,11 @@ public abstract class AbstractNavDrawerActivity extends AppCompatActivity {
         this.onNavItemSelected(selectedItem.getId());
         mDrawerList.setItemChecked(position, true);
 
-        if ( selectedItem.updateActionBarTitle()) {
+        if (selectedItem.updateActionBarTitle()) {
             setTitle(selectedItem.getLabel());
         }
 
-        if ( this.mDrawerLayout.isDrawerOpen(this.mDrawerList)) {
+        if (this.mDrawerLayout.isDrawerOpen(this.mDrawerList)) {
             mDrawerLayout.closeDrawer(mDrawerList);
         }
     }
@@ -270,20 +267,19 @@ public abstract class AbstractNavDrawerActivity extends AppCompatActivity {
             MenuItemCompat.setShowAsAction(searchItem, MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
         }
 
-        if (mSearchSuggestionsAdapter == null) mSearchSuggestionsAdapter = new SearchSuggestionsAdapter(this);
+        if (mSearchSuggestionsAdapter == null)
+            mSearchSuggestionsAdapter = new SearchSuggestionsAdapter(this);
 
         mSearchView.setSuggestionsAdapter(mSearchSuggestionsAdapter);
 
-        mSearchView.setOnSuggestionListener(new SearchView.OnSuggestionListener()
-        {
+        mSearchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
             @Override
-            public boolean onSuggestionClick(int position)
-            {
+            public boolean onSuggestionClick(int position) {
                 return true;
             }
+
             @Override
-            public boolean onSuggestionSelect(int position)
-            {
+            public boolean onSuggestionSelect(int position) {
                 return false;
             }
         });
@@ -303,7 +299,7 @@ public abstract class AbstractNavDrawerActivity extends AppCompatActivity {
         mSearchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean queryTextFocused) {
-                if(!queryTextFocused) {
+                if (!queryTextFocused) {
                     MenuItemCompat.collapseActionView(searchMenuItem);
                     mSearchView.setQuery("", false);
                 }
@@ -347,20 +343,19 @@ public abstract class AbstractNavDrawerActivity extends AppCompatActivity {
 
             dialog.show();
 
-        }
-        catch (Exception ex) {
-            Log.d("",ex.getMessage());
+        } catch (Exception ex) {
+            Log.d("", ex.getMessage());
         }
     }
 
     public static final String PACKAGE_NAME = "ba.wurth.mb";
     public static final String DATABASE_NAME = "wurthMB.db";
-    private static final File DATA_DIRECTORY_DATABASE = new File(Environment.getDataDirectory() + "/data/" + PACKAGE_NAME + "/databases/" + DATABASE_NAME );
+    private static final File DATA_DIRECTORY_DATABASE = new File(Environment.getDataDirectory() + "/data/" + PACKAGE_NAME + "/databases/" + DATABASE_NAME);
     protected static final File DATABASE_DIRECTORY = new File(Environment.getExternalStorageDirectory(), "WurthMB");
 
 
-    protected static boolean exportDb(){
-        if( ! SdIsPresent() ) return false;
+    protected static boolean exportDb() {
+        if (!SdIsPresent()) return false;
 
         File dbFile = DATA_DIRECTORY_DATABASE;
         String filename = "wurthMB.db";
@@ -393,8 +388,12 @@ public abstract class AbstractNavDrawerActivity extends AppCompatActivity {
         }
     }
 
-    /** Returns whether an SD card is present and writable **/
-    public static boolean SdIsPresent() {return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);}
+    /**
+     * Returns whether an SD card is present and writable
+     **/
+    public static boolean SdIsPresent() {
+        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+    }
 
     public class ExportDatabaseFileTask extends AsyncTask<Void, Void, Void> {
 
@@ -406,23 +405,31 @@ public abstract class AbstractNavDrawerActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(final Void... args) {
+            try {
+                exportDb();
+            } catch (Exception e) {
+            }
+
             return null;
 
         }
 
         @Override
         protected void onPostExecute(final Void success) {
+            try {
+                File database = new File(DATABASE_DIRECTORY, "wurthMB.db");
 
-            exportDb();
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Optimus - Database Backup");
+                intent.putExtra(Intent.EXTRA_TEXT, "");
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_STREAM,
+                        FileProvider.getUriForFile(getBaseContext(), "ba.wurth.mb" + ".FileProvider", database));
 
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"export@sourcecode.ba"});
-            intent.putExtra(Intent.EXTRA_SUBJECT, "WurthMB - Database Backup");
-            intent.putExtra(Intent.EXTRA_TEXT, "");
-            intent.setType("application/octet-stream");
-            intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(DATABASE_DIRECTORY, "wurthMB.db")));
-            startActivity(Intent.createChooser(intent, "Send Email"));
-            Notifications.hideLoading(AbstractNavDrawerActivity.this);
+                startActivity(Intent.createChooser(intent, "Send Email"));
+            } catch (Exception e) {
+                String temp = e.getMessage();
+            }
         }
     }
 }

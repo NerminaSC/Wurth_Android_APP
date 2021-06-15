@@ -11,15 +11,15 @@ repositories {
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "ba.wurth.mb"
         minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 34
-        versionName "4.0.5"
+        targetSdkVersion 29
+        versionCode 36
+        versionName "4.0.7"
     }
 
     buildTypes {

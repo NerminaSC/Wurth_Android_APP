@@ -327,7 +327,8 @@ public class DL_Wurth {
                             " INNER JOIN ARTIKLI ON PRODUCTS_FTS.ArtikalID = ARTIKLI.ID " +
                             " INNER JOIN Products ON ARTIKLI.ID = Products._productid " +
                             " LEFT JOIN ARTIKLI B ON ARTIKLI.Zamjenski_Artikal = B.ID " +
-                            " WHERE PRODUCTS_FTS MATCH 'Keyword:" + searchTextCompact + "* OR Keyword1:" + searchTextCompact + "* OR PRODUCTS_FTS.Name:" + searchText + "*' AND ARTIKLI.Status_Artikla <> 0 AND ARTIKLI.Status_Artikla <> 2 " +
+                            " WHERE PRODUCTS_FTS MATCH 'Keyword:" + searchTextCompact + "* OR Keyword1:" + searchTextCompact + "* OR Name:" + searchText + "*' " +
+                            //" AND ARTIKLI.Status_Artikla <> 0 AND ARTIKLI.Status_Artikla <> 2 " +
                             //" WHERE Keyword LIKE '%" + searchText + "%' OR Name LIKE '%" + searchText + "%' AND ARTIKLI.Status_Artikla <> 0 " +
 
                     /*
@@ -897,6 +898,30 @@ public class DL_Wurth {
                                 }
                             }
 
+                            if (exists) continue;
+
+
+                            for (int x = 0; x < items.size(); x++) {
+                                if(items.get(x).KolicinaOD == KolicinaOD && items.get(x).PopustOD <= PopustOD){
+                                    items.get(x).ArtikalID = ArtikalID;
+                                    items.get(x).PartnerID = PartnerID;
+                                    items.get(x).PotencijalOD = PotencijalOD;
+                                    items.get(x).PotencijalDO = PotencijalDO;
+                                    items.get(x).Bransa = Bransa;
+                                    items.get(x).OsnovnaCijena = OsnovnaCijena;
+                                    items.get(x).KljucCijene = KljucCijene;
+                                    items.get(x).PopustOD = PopustOD;
+                                    items.get(x).PopustDO = PopustDO;
+                                    items.get(x).KolicinaOD = KolicinaOD;
+                                    items.get(x).DodatniPopust = DodatniPopust;
+                                    items.get(x).DatumOd = DatumOd;
+                                    items.get(x).DatumDo = DatumDo;
+                                    items.get(x).CijenaPonude = CijenaPonude;
+                                    items.get(x).AkcijskaCijena = AkcijskaCijena;
+                                    items.get(x).Pakovanje = Pakovanje;
+                                    exists = true;
+                                }
+                            }
                             if (exists) continue;
 
                             pricelistItem.ArtikalID = ArtikalID;

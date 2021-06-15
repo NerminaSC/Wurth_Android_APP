@@ -32,6 +32,7 @@
         android:name="ba.wurth.mb.Classes.wurthMB"
         android:icon="@drawable/ic_launcher"
         android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
         android:label="@string/app_name">
 
         <activity
@@ -88,6 +89,18 @@
 
         <!-- Debug -->
       <!--  <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyC-Uxfr4arpMH_1IIZisEbNtYQXdJLxoDc"/>-->
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:grantUriPermissions="true"
+            android:exported="false"
+            android:authorities="${applicationId}.FileProvider">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths"/>
+
+        </provider>
 
     </application>
 

@@ -99,7 +99,7 @@ public class SearchSuggestionsAdapter extends SimpleCursorAdapter {
 
                 if (!TextUtils.isEmpty(constraint)) {
 
-                    if (constraint.length() < 5) return;
+                    if (constraint.length() < 4) return;
 
                     Cursor cur = DL_Wurth.GET_Search(constraint.toString().replace(" ", ""));
 
