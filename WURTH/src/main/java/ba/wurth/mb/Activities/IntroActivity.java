@@ -61,23 +61,24 @@ public class IntroActivity extends Activity {
 
             wurthMB.App_Version = info.versionName;
 
-            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                wurthMB.IMEI = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-            } else {
-                final TelephonyManager mTelephony = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-                if (mTelephony.getDeviceId() != null) {
-                    wurthMB.IMEI = mTelephony.getDeviceId();
-                } else {
-                    wurthMB.IMEI = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-                }
-            }
-
             ((TextView) findViewById(R.id.litStatus)).setText(getString(R.string.InitializingDatabase));
 
             if (check_permissions()){
+
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    wurthMB.IMEI = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+                } else {
+                    final TelephonyManager mTelephony = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                        return;
+                    }
+                    if (mTelephony.getDeviceId() != null) {
+                        wurthMB.IMEI = mTelephony.getDeviceId();
+                    } else {
+                        wurthMB.IMEI = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+                    }
+                }
+
                 new checkDatabase().execute();
             }
 
